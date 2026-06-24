@@ -374,5 +374,180 @@
         ],
         "recommendation_level": "추천 👍",
         "status_color": "status-good"
+    },
+    "현대자동차_0_20260625": {
+        "id": "현대자동차_0_20260625",
+        "company": "현대자동차",
+        "title": "전기차(EV) 배터리 팩 기구 설계 경력 채용",
+        "description": "배터리 시스템 기구 구조 설계, 하우징 다이캐스팅 및 사출 설계, 배터리 모듈 열관리 냉각 플레이트 설계, 진동/내구 해석 대응 및 공차 분석. 기계공학 전공자 우대. CAD 설계 4년 이상.",
+        "link": "https://talent.hyundai.com",
+        "date": "2026-06-25",
+        "match_percent": 100,
+        "matched_keywords": [
+            "기계",
+            "기구",
+            "설계",
+            "CAD",
+            "사출",
+            "구조",
+            "진동",
+            "공차"
+        ],
+        "recommendation_level": "적극 추천 🔥",
+        "status_color": "status-hot"
+    },
+    "현대자동차_1_20260625": {
+        "id": "현대자동차_1_20260625",
+        "company": "현대자동차",
+        "title": "신차 개발 프로젝트 매니저(PM/PL)",
+        "description": "신차 개발 일정 관리 및 프로젝트 리스크 매니지먼트. 설계-구매-품질 부서 간 조율 및 협력업체 일정 관리. 원가 절감(VE) 기획 및 양산 전환 대응.",
+        "link": "https://talent.hyundai.com",
+        "date": "2026-06-25",
+        "match_percent": 100,
+        "matched_keywords": [
+            "설계",
+            "PM",
+            "PL",
+            "프로젝트",
+            "일정",
+            "원가",
+            "품질"
+        ],
+        "recommendation_level": "적극 추천 🔥",
+        "status_color": "status-hot"
+    },
+    "현대자동차_2_20260625": {
+        "id": "현대자동차_2_20260625",
+        "company": "현대자동차",
+        "title": "울산/아산공장 조립 라인 자동화 설비 기구 설계",
+        "description": "스마트 팩토리 조립 자동화 라인 기획 및 설비 설계, 물류 로봇(AGV/AMR) 도입 레이아웃 검토, 공정 개선 및 트러블슈팅, 설비 투자 일정/원가 관리 PM 역량.",
+        "link": "https://talent.hyundai.com",
+        "date": "2026-06-25",
+        "match_percent": 100,
+        "matched_keywords": [
+            "기구",
+            "설계",
+            "PM",
+            "일정",
+            "원가",
+            "자동화",
+            "로봇",
+            "설비",
+            "물류"
+        ],
+        "recommendation_level": "적극 추천 🔥",
+        "status_color": "status-hot"
+    },
+    "기아_4_20260625": {
+        "id": "기아_4_20260625",
+        "company": "기아",
+        "title": "부품 물류 창고 자동화 및 레이아웃 기획 담당자",
+        "description": "스마트 물류 창고 자동화 설비 구축 및 설계 검토. CAD 도면을 기반으로 공간 배치 및 자재 수급 일정 관리, 물류 시뮬레이션 활용 능력 우대.",
+        "link": "https://recruit.kia.com",
+        "date": "2026-06-25",
+        "match_percent": 100,
+        "matched_keywords": [
+            "설계",
+            "CAD",
+            "도면",
+            "일정",
+            "자동화",
+            "설비",
+            "자재",
+            "물류"
+        ],
+        "recommendation_level": "적극 추천 🔥",
+        "status_color": "status-hot"
+    },
+    "현대모비스_5_20260625": {
+        "id": "현대모비스_5_20260625",
+        "company": "현대모비스",
+        "title": "섀시 기구 구조 설계 및 방진 시스템 설계",
+        "description": "현가장치 기구설계, 고무 부시 및 유압 댐퍼 설계. 차량 진동 및 소음(NVH) 저감 설계 최적화. 3D CAD(CATIA/UG-NX) 활용 능력 필수.",
+        "link": "https://recruit.mobis.co.kr",
+        "date": "2026-06-25",
+        "match_percent": 100,
+        "matched_keywords": [
+            "기구",
+            "설계",
+            "CAD",
+            "구조",
+            "진동",
+            "소음"
+        ],
+        "recommendation_level": "적극 추천 🔥",
+        "status_color": "status-hot"
+    },
+    "두산로보틱스_6_20260625": {
+        "id": "두산로보틱스_6_20260625",
+        "company": "두산로보틱스",
+        "title": "협동로봇 관절 액추에이터 기구 설계",
+        "description": "로봇 관절 모듈 기구 설계, 하모닉 드라이브 감속기 및 모터 통합 패키징 설계. 베어링 선정 및 하중 모멘트 계산. 기계/자동화 전공 우대.",
+        "link": "https://www.doosanrobotics.com",
+        "date": "2026-06-25",
+        "match_percent": 100,
+        "matched_keywords": [
+            "기계",
+            "기구",
+            "설계",
+            "자동화",
+            "로봇",
+            "액추에이터"
+        ],
+        "recommendation_level": "적극 추천 🔥",
+        "status_color": "status-hot"
+    },
+    "두산로보틱스_7_20260625": {
+        "id": "두산로보틱스_7_20260625",
+        "company": "두산로보틱스",
+        "title": "로봇 신뢰성 시험 및 품질 보증 엔지니어",
+        "description": "신규 개발 로봇 관절 모듈 및 프레임의 피로 내구 수명 시험, 진동 및 열충격 환경 시험 기획/평가. 공차 분석 및 품질 프로세스(APQP/PPAP) 준수 관리.",
+        "link": "https://www.doosanrobotics.com",
+        "date": "2026-06-25",
+        "match_percent": 88,
+        "matched_keywords": [
+            "품질",
+            "로봇",
+            "진동",
+            "신뢰성",
+            "시험",
+            "공차"
+        ],
+        "recommendation_level": "적극 추천 🔥",
+        "status_color": "status-hot"
+    },
+    "기아_3_20260625": {
+        "id": "기아_3_20260625",
+        "company": "기아",
+        "title": "신차 품질 평가 및 조립 품질 관리 (경력)",
+        "description": "양산 초기 신차 품질 조기 확보 및 조립 공정 불량 분석. 사출 및 금형 불량에 대한 설계 개선 피드백 반영. 해외 생산 법인 품질 대응 및 협력사 관리.",
+        "link": "https://recruit.kia.com",
+        "date": "2026-06-25",
+        "match_percent": 68,
+        "matched_keywords": [
+            "설계",
+            "금형",
+            "사출",
+            "품질"
+        ],
+        "recommendation_level": "추천 👍",
+        "status_color": "status-good"
+    },
+    "레인보우로보틱스_8_20260625": {
+        "id": "레인보우로보틱스_8_20260625",
+        "company": "레인보우로보틱스",
+        "title": "AMR/AGV 모빌리티 프레임 구조 설계",
+        "description": "자율주행 로봇 본체 프레임 구조 설계 및 경량 링크 구조 설계. 시뮬레이션 기반 강성/처짐 최적화. 용접 및 사출 부품 설계 경험자 우대.",
+        "link": "https://www.rainbow-robotics.com",
+        "date": "2026-06-25",
+        "match_percent": 68,
+        "matched_keywords": [
+            "설계",
+            "사출",
+            "구조",
+            "로봇"
+        ],
+        "recommendation_level": "추천 👍",
+        "status_color": "status-good"
     }
 }

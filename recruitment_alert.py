@@ -228,7 +228,6 @@ def generate_html_dashboard(notices):
 
         keywords_badges = "".join([f'<span class="keyword-tag">{k}</span>' for k in n["matched_keywords"][:6]])
 
-        # 회사 및 페이지 이동 td에 white-space: nowrap; 및 스타일 최적화 적용
         table_rows += f"""
         <tr class="job-row">
             <td style="white-space: nowrap;">
@@ -628,6 +627,7 @@ def generate_html_dashboard(notices):
         <!-- 탭 메뉴 -->
         <div class="tabs">
             <button class="tab-btn active" onclick="openTab(event, 'tab-jobs')">🎯 채용 추천 리스트</button>
+            <button class="tab-btn" onclick="openTab(event, 'tab-analysis')">⚖️ 합격률 & 약점 분석</button>
             <button class="tab-btn" onclick="openTab(event, 'tab-roadmap-semi')">🔬 반도체 기술 로드맵</button>
             <button class="tab-btn" onclick="openTab(event, 'tab-roadmap-auto')">⚙️ 완성차/로봇 로드맵</button>
         </div>
@@ -653,7 +653,70 @@ def generate_html_dashboard(notices):
             </div>
         </div>
 
-        <!-- 탭 2: 반도체 학습 로드맵 -->
+        <!-- 탭 2: 합격률 & 약점 분석 -->
+        <div id="tab-analysis" class="tab-content">
+            <div class="dashboard-card">
+                <table style="margin-top: 10px;">
+                    <thead>
+                        <tr>
+                            <th style="width: 18%; white-space: nowrap;">타겟 직무군</th>
+                            <th style="width: 22%; white-space: nowrap;">예상 경쟁자 프로필</th>
+                            <th style="width: 12%; text-align: center; white-space: nowrap;">예상 합격률</th>
+                            <th style="width: 48%; white-space: nowrap;">약점 요인 및 극복 전략</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="job-row">
+                            <td class="job-title" style="white-space: nowrap;">1. 반도체 설비 인프라</td>
+                            <td class="job-desc">플랜트 전문 건설사 및 유틸리티 협력사 엔지니어</td>
+                            <td style="text-align: center; white-space: nowrap;"><span class="recommendation-badge status-good">15%~25%</span></td>
+                            <td class="job-desc">
+                                <strong>약점:</strong> 배관 규격, 고압가스안전관리법, CCSS/UPW 계통 실무 지식 부재.<br>
+                                <strong>전략:</strong> 대기업 8년 PM/PL 일정/프로젝트 관리 및 트러블슈팅 역량 위주로 어필.
+                            </td>
+                        </tr>
+                        <tr class="job-row">
+                            <td class="job-title" style="white-space: nowrap;">2. 이차전지 배터리 팩</td>
+                            <td class="job-desc">타 가전사 설계자 및 배터리 협력사 설계 엔지니어</td>
+                            <td style="text-align: center; white-space: nowrap;"><span class="recommendation-badge status-hot">30%~45%</span></td>
+                            <td class="job-desc">
+                                <strong>약점:</strong> 배터리 셀 팽창(Swelling), 고전압 배선 및 열폭주 제어 지식 부족.<br>
+                                <strong>전략:</strong> 배터리 팩/모듈은 사실상 기구 프레임 설계이므로, 사출 설계 및 금형 DFM 역량을 100% 매칭.
+                            </td>
+                        </tr>
+                        <tr class="job-row">
+                            <td class="job-title" style="white-space: nowrap;">3. 완성차 & 부품사</td>
+                            <td class="job-desc">현대위아, 만도 등 자동차 1차 협력사 경력자</td>
+                            <td style="text-align: center; white-space: nowrap;"><span class="recommendation-badge status-good">20%~30%</span></td>
+                            <td class="job-desc">
+                                <strong>약점:</strong> 자동차 부품 개발 프로세스(APQP) 및 규격(IATF 16949), 차량용 NVH 지식 부족.<br>
+                                <strong>전략:</strong> 가전 조립 라인 셋업 및 공차 개선 성공 사례를 신차 품질 평가 부서에 적극 매핑.
+                            </td>
+                        </tr>
+                        <tr class="job-row">
+                            <td class="job-title" style="white-space: nowrap;">4. 로봇 기구 설계</td>
+                            <td class="job-desc">로봇 벤처, 자동화 설비 설계 경력 엔지니어</td>
+                            <td style="text-align: center; white-space: nowrap;"><span class="recommendation-badge status-normal">15%~20%</span></td>
+                            <td class="job-desc">
+                                <strong>약점:</strong> 정밀 감속기(하모닉 드라이브) 및 중공형 회전 액추에이터 설계 경험 부족.<br>
+                                <strong>전략:</strong> 대형 모터/베어링 구동부 설계 및 내구 수명 평가 경험을 로봇 관절 내구 설계 기술로 치환.
+                            </td>
+                        </tr>
+                        <tr class="job-row">
+                            <td class="job-title" style="white-space: nowrap;">5. 외국계 테크 PM</td>
+                            <td class="job-desc">글로벌 컨설팅사 출신 및 외국계 기업 PM 경력자</td>
+                            <td style="text-align: center; white-space: nowrap;"><span class="recommendation-badge status-normal">10%~15%</span></td>
+                            <td class="job-desc">
+                                <strong>약점:</strong> 글로벌 본사 및 제조 공급망과 커뮤니케이션할 수 있는 비즈니스 영어 장벽.<br>
+                                <strong>전략:</strong> 대기업 PM으로서의 확실한 일정 관리력과 협력사 조율 실적을 입증하고 영어 인터뷰 집중 대비.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 탭 3: 반도체 학습 로드맵 -->
         <div id="tab-roadmap-semi" class="tab-content">
             <div class="dashboard-card">
                 <div class="roadmap-container">
@@ -694,7 +757,7 @@ def generate_html_dashboard(notices):
             </div>
         </div>
 
-        <!-- 탭 3: 자동차/로봇 학습 로드맵 -->
+        <!-- 탭 4: 자동차/로봇 학습 로드맵 -->
         <div id="tab-roadmap-auto" class="tab-content">
             <div class="dashboard-card">
                 <div class="roadmap-container">
@@ -783,7 +846,7 @@ def run_alert_system():
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(history, f, ensure_ascii=False, indent=4)
         
-    print("줄바꿈 해제 및 출처 표기 완료.")
+    print("대시보드에 약점 분석 테이블 추가 및 빌드 완료.")
 
 if __name__ == "__main__":
     run_alert_system()
