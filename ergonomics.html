@@ -57,6 +57,14 @@
             background: linear-gradient(135deg, #a78bfa, #3b82f6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            white-space: nowrap;
+        }
+        @media (max-width: 768px) {
+            .header-left h1 {
+                white-space: normal;
+                word-break: keep-all;
+                font-size: 1.8rem;
+            }
         }
         .header-left p {
             color: var(--text-muted);
