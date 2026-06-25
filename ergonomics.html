@@ -491,6 +491,7 @@
             <button class="tab-btn active" onclick="openTab(event, 'tab-jobs')">🎯 실 등록 모집 직무 리스트</button>
             <button class="tab-btn" onclick="openTab(event, 'tab-analysis')">⚖️ 합격률 & 약점 분석</button>
             <button class="tab-btn" onclick="openTab(event, 'tab-roadmap-ergo')">🧠 인간공학 & 데이터 로드맵</button>
+            <button class="tab-btn" onclick="openTab(event, 'tab-expansion')">💼 타 업종 확장 추천</button>
         </div>
 
         <!-- 탭 1: 채용 추천 리스트 -->
@@ -702,6 +703,67 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- 탭 4: 타 업종 확장 추천 -->
+        <div id="tab-expansion" class="tab-content">
+            <div class="dashboard-card">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">추천 산업군</th>
+                            <th style="width: 45%;">핵심 직무 및 활용 시너지</th>
+                            <th style="width: 30%;">주요 대표 기업 및 준비 사항</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="job-row">
+                            <td class="job-title" style="color: #a78bfa;">1. 헬스케어 & 스마트 웨어러블</td>
+                            <td class="job-desc">
+                                <strong>스마트 워치/링 등 헬스 트래커 사용성 검증</strong><br>
+                                디바이스의 인체공학적 착용감(피팅 메커니즘) 설계와 센서 수집 생체 신호(심박수, 수면 로그, 모션 센서) 데이터 정량 통계 분석 및 모델링 연계.
+                            </td>
+                            <td class="job-desc">
+                                • <strong>대상</strong>: 삼성전자 MX사업부, 인바디, 헬스케어 디바이스 제조사<br>
+                                • <strong>핵심 역량</strong>: 생체 데이터 통계적 이상치(Noise) 필터링 능력 제시.
+                            </td>
+                        </tr>
+                        <tr class="job-row">
+                            <td class="job-title" style="color: #a78bfa;">2. 이커머스 & 스마트 물류공정</td>
+                            <td class="job-desc">
+                                <strong>풀필먼트 물류센터 작업성 및 공정 레이아웃 기획</strong><br>
+                                현장 수작업자의 작업 자세(RULA/REBA) 가이드라인 수립 및 고강도 공정 구간의 물류 처리량/피로도 로그 분석을 통한 생산성 정량 예측 설계.
+                            </td>
+                            <td class="job-desc">
+                                • <strong>대상</strong>: 쿠팡(Coupang Engineering), 마켓컬리, CJ대한통운 등 물류 테크 대기업<br>
+                                • <strong>핵심 역량</strong>: 공정 분석 및 DFMA(조립/해체 용이성) 기반 레이아웃 성과 제시.
+                            </td>
+                        </tr>
+                        <tr class="job-row">
+                            <td class="job-title" style="color: #a78bfa;">3. 인체공학 가구 & 스마트 오피스</td>
+                            <td class="job-desc">
+                                <strong>스마트 오피스 환경 및 인체공학적 가구 선행 설계</strong><br>
+                                모션 데스크, 모션 체어 등 신체 접촉식 기구의 피실험자 체압 분포(Pressure mapping) 데이터 분석 및 자세 모니터링 센서 데이터 처리.
+                            </td>
+                            <td class="job-desc">
+                                • <strong>대상</strong>: 퍼시스, 시디즈, 일룸 연구소 등<br>
+                                • <strong>핵심 역량</strong>: 체압 분포 및 인체 계측 빅데이터 가이드라인 활용력 강조.
+                            </td>
+                        </tr>
+                        <tr class="job-row">
+                            <td class="job-title" style="color: #a78bfa;">4. 스마트 서비스 로봇 HCI</td>
+                            <td class="job-desc">
+                                <strong>배달/안내 로봇의 조작부 편의성 및 인터랙션 연구</strong><br>
+                                자율주행 서비스 로봇과 대고객 상호작용(HRI) 시 발생하는 조작 오류 로그 및 이동 동선 데이터 분석을 통한 물리 형상 개선 제안.
+                            </td>
+                            <td class="job-desc">
+                                • <strong>대상</strong>: 우아한형제들(배달로봇), 한화로보틱스, LG전자 로봇사업부<br>
+                                • <strong>핵심 역량</strong>: HCI/UT 실험 설계 및 정량적 가설 검정 포트폴리오.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
