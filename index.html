@@ -479,19 +479,19 @@
                 gap: 12px !important;
             }
 
-            /* 테이블을 카드 레이아웃으로 변경 (가로스크롤 제거용) */
-            table, thead, tbody, th, td, tr {
+            /* 1. 채용 공고 테이블 카드 레이아웃 */
+            .job-list-table, .job-list-table thead, .job-list-table tbody, .job-list-table th, .job-list-table td, .job-list-table tr {
                 display: block !important;
                 width: 100% !important;
                 box-sizing: border-box !important;
             }
-            table {
-                min-width: auto !important; /* 가로크기 강제성 해제 */
+            .job-list-table {
+                min-width: auto !important;
             }
-            thead {
+            .job-list-table thead {
                 display: none !important;
             }
-            tr.job-row {
+            .job-list-table tr.job-row {
                 border: 1px solid var(--border-color) !important;
                 border-radius: 12px !important;
                 margin-bottom: 16px !important;
@@ -500,7 +500,7 @@
                 box-shadow: 0 4px 6px rgba(0,0,0,0.15);
                 box-sizing: border-box !important;
             }
-            td {
+            .job-list-table td {
                 border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
                 padding: 10px 0 !important;
                 display: flex !important;
@@ -509,27 +509,142 @@
                 white-space: normal !important;
                 box-sizing: border-box !important;
             }
-            td:last-child {
+            .job-list-table td:last-child {
                 border-bottom: none !important;
                 justify-content: flex-end !important;
                 padding-top: 15px !important;
             }
-            
-            /* 카드 내부 속성 라벨 지정 */
-            td:nth-of-type(1):before { content: "추천 등급"; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; }
-            td:nth-of-type(2):before { content: "매칭률"; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; }
-            td:nth-of-type(3):before { content: "회사"; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; }
-            
-            /* 직무명 및 요구 역량은 세로로 넓게 배치 */
-            td:nth-of-type(4) {
+
+            /* Active jobs table mobile view */
+            .active-jobs td:nth-of-type(1):before { content: "추천 등급"; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; }
+            .active-jobs td:nth-of-type(2):before { content: "매칭률"; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; }
+            .active-jobs td:nth-of-type(3):before { content: "회사"; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; }
+            .active-jobs td:nth-of-type(4) {
                 flex-direction: column !important;
                 align-items: flex-start !important;
                 gap: 6px;
             }
-            td:nth-of-type(4):before { content: "채용 직무 및 요구 역량"; font-weight: 700; color: var(--primary-hover); font-size: 0.8rem; margin-bottom: 4px; }
-            
-            td:nth-of-type(5):before { content: "매칭 키워드"; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; }
-            td:nth-of-type(6):before { content: "마감 일정"; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; }
+            .active-jobs td:nth-of-type(4):before { content: "채용 직무 및 요구 역량"; font-weight: 700; color: var(--primary-hover); font-size: 0.8rem; margin-bottom: 4px; }
+            .active-jobs td:nth-of-type(5):before { content: "매칭 키워드"; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; }
+            .active-jobs td:nth-of-type(6):before { content: "마감 일정"; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; }
+
+            /* Waitlist jobs table mobile view */
+            .waitlist-jobs td:nth-of-type(1):before { content: "추천 등급"; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; }
+            .waitlist-jobs td:nth-of-type(2):before { content: "매칭률"; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; }
+            .waitlist-jobs td:nth-of-type(3):before { content: "회사"; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; }
+            .waitlist-jobs td:nth-of-type(4) {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 6px;
+            }
+            .waitlist-jobs td:nth-of-type(4):before { content: "채용 대기 직무 및 요구 역량"; font-weight: 700; color: var(--primary-hover); font-size: 0.8rem; margin-bottom: 4px; }
+            .waitlist-jobs td:nth-of-type(5):before { content: "매칭 키워드"; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; }
+            .waitlist-jobs td:nth-of-type(6):before { content: "채용 형태"; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; }
+
+            /* 2. 합격률 및 약점 분석 테이블 카드 레이아웃 */
+            .analysis-table, .analysis-table thead, .analysis-table tbody, .analysis-table th, .analysis-table td, .analysis-table tr {
+                display: block !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            .analysis-table {
+                min-width: auto !important;
+            }
+            .analysis-table thead {
+                display: none !important;
+            }
+            .analysis-table tr.job-row {
+                border: 1px solid var(--border-color) !important;
+                border-radius: 12px !important;
+                margin-bottom: 16px !important;
+                padding: 16px !important;
+                background-color: rgba(255, 255, 255, 0.01) !important;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+                box-sizing: border-box !important;
+            }
+            .analysis-table td {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
+                padding: 10px 0 !important;
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                white-space: normal !important;
+                box-sizing: border-box !important;
+            }
+            .analysis-table td:last-child {
+                border-bottom: none !important;
+            }
+            .analysis-table td:nth-of-type(1) {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 4px;
+            }
+            .analysis-table td:nth-of-type(1):before { content: "타겟 직무군"; font-weight: 700; color: var(--primary-hover); font-size: 0.8rem; margin-bottom: 2px; }
+            .analysis-table.mech-analysis td:nth-of-type(2):before { content: "예상 경쟁자"; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; }
+            .analysis-table.ergo-analysis td:nth-of-type(2):before { content: "대비 강점"; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; }
+            .analysis-table td:nth-of-type(3):before { content: "예상 합격률"; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; }
+            .analysis-table td:nth-of-type(4) {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 4px;
+                padding-top: 12px !important;
+            }
+            .analysis-table.mech-analysis td:nth-of-type(4):before { content: "약점 요인 및 극복 전략"; font-weight: 700; color: var(--status-hot-text); font-size: 0.8rem; margin-bottom: 4px; }
+            .analysis-table.ergo-analysis td:nth-of-type(4):before { content: "보완 필요 요인 및 극복 전략"; font-weight: 700; color: var(--status-hot-text); font-size: 0.8rem; margin-bottom: 4px; }
+
+            /* 3. 타업종 확장 추천 테이블 카드 레이아웃 (Ergonomics Only) */
+            .expansion-table, .expansion-table thead, .expansion-table tbody, .expansion-table th, .expansion-table td, .expansion-table tr {
+                display: block !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            .expansion-table {
+                min-width: auto !important;
+            }
+            .expansion-table thead {
+                display: none !important;
+            }
+            .expansion-table tr.job-row {
+                border: 1px solid var(--border-color) !important;
+                border-radius: 12px !important;
+                margin-bottom: 16px !important;
+                padding: 16px !important;
+                background-color: rgba(255, 255, 255, 0.01) !important;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+                box-sizing: border-box !important;
+            }
+            .expansion-table td {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
+                padding: 10px 0 !important;
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                white-space: normal !important;
+                box-sizing: border-box !important;
+            }
+            .expansion-table td:last-child {
+                border-bottom: none !important;
+            }
+            .expansion-table td:nth-of-type(1) {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 4px;
+            }
+            .expansion-table td:nth-of-type(1):before { content: "추천 산업군"; font-weight: 700; color: #a78bfa; font-size: 0.8rem; margin-bottom: 2px; }
+            .expansion-table td:nth-of-type(2) {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 4px;
+                padding-top: 10px !important;
+            }
+            .expansion-table td:nth-of-type(2):before { content: "핵심 직무 및 활용 시너지"; font-weight: 700; color: var(--primary-hover); font-size: 0.8rem; margin-bottom: 4px; }
+            .expansion-table td:nth-of-type(3) {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 4px;
+                padding-top: 10px !important;
+            }
+            .expansion-table td:nth-of-type(3):before { content: "대표 기업 및 준비 사항"; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; margin-bottom: 4px; }
             
             .keywords-container {
                 justify-content: flex-end;
@@ -543,7 +658,23 @@
                 box-sizing: border-box;
             }
         }
-</style>
+    
+        .btn-copy {
+            padding: 2px 8px;
+            font-size: 0.75rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-copy:hover {
+            background: rgba(255, 255, 255, 0.15) !important;
+            color: #fff !important;
+            border-color: var(--primary) !important;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -558,7 +689,7 @@
                     <a href="ergonomics.html">🧠 인간공학</a>
                 </div>
                 <div class="update-time">
-                    <div>최근 업데이트: 2026-06-25 21:53:53</div>
+                    <div>최근 업데이트: 2026-06-25 21:58:44</div>
                     <div class="source-text">데이터 출처: 현대차 talent.hyundai.com, 기아 recruit.kia.com, 모비스 recruit.mobis.co.kr, 두산 www.doosanrobotics.com, 레인보우 www.rainbow-robotics.com</div>
                 </div>
             </div>
@@ -640,222 +771,225 @@
 
         <!-- 탭 1: 채용 추천 리스트 -->
         <div id="tab-jobs" class="tab-content active">
-            <div class="dashboard-card">
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="width: 10%;">추천 등급</th>
-                            <th style="width: 10%;">매칭률</th>
-                            <th style="width: 12%;">회사</th>
-                            <th style="width: 36%;">채용 직무 및 요구 역량</th>
-                            <th style="width: 14%;">매칭 키워드</th>
-                            <th style="width: 12%;">마감 일정</th>
-                            <th style="width: 6%;">이동</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-                        <tr class="job-row">
-                            <td style="white-space: nowrap;">
-                                <span class="recommendation-badge status-hot">적극 추천 🔥</span>
-                            </td>
-                            <td>
-                                <div class="match-container">
-                                    <span class="match-val">98%</span>
-                                    <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill" style="width: 98%;"></div>
+                <div class="recommendation-section" style="margin-top: 20px; font-size: 1.3rem;">🎯 실시간 진행 중인 매칭 공고</div>
+                <div class="dashboard-card" style="margin-top: 15px; margin-bottom: 30px;">
+                    <table class="job-list-table active-jobs">
+                        <thead>
+                            <tr>
+                                <th style="width: 10%;">추천 등급</th>
+                                <th style="width: 10%;">매칭률</th>
+                                <th style="width: 12%;">회사</th>
+                                <th style="width: 36%;">채용 직무 및 요구 역량</th>
+                                <th style="width: 14%;">매칭 키워드</th>
+                                <th style="width: 12%;">마감 일정</th>
+                                <th style="width: 6%;">이동</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="job-row">
+                                <td style="white-space: nowrap;"><span class="recommendation-badge status-hot">적극 추천 🔥</span></td>
+                                <td>
+                                    <div class="match-container">
+                                        <span class="match-val">98%</span>
+                                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 98%;"></div></div>
                                     </div>
-                                </div>
-                            </td>
-                            <td style="white-space: nowrap;"><span class="badge badge-hyundai">현대자동차</span></td>
-                            <td>
-                                <div class="job-title">배터리 안전성 개발 (에너지솔루션개발)</div>
-                                <div class="job-desc">[6월 경력채용] 배터리 시스템(팩/모듈) 단위 열폭주 전이 방지 기구 설계, 고전압 배터리 충격 및 진동 방진 구조 설계 및 내구 신뢰성 평가.</div>
-                            </td>
-                            <td>
-                                <div class="keywords-container">
-                                    <span class="keyword-tag">배터리시스템</span>
-                                    <span class="keyword-tag">열폭주방지</span>
-                                    <span class="keyword-tag">기구구조</span>
-                                    <span class="keyword-tag">신뢰성평가</span>
-                                </div>
-                            </td>
-                            <td style="white-space: nowrap;">
-                                <span class="dday-badge dday-active" style="display: inline-block;">D-5</span>
-                                <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">2026-06-30</div>
-                            </td>
-                            <td style="white-space: nowrap;"><a href="https://talent.hyundai.com/theme/hall.hc" target="_blank" class="btn-link">지원 ↗</a></td>
-                        </tr>
-                        
-                        <tr class="job-row">
-                            <td style="white-space: nowrap;">
-                                <span class="recommendation-badge status-hot">적극 추천 🔥</span>
-                            </td>
-                            <td>
-                                <div class="match-container">
-                                    <span class="match-val">95%</span>
-                                    <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill" style="width: 95%;"></div>
+                                </td>
+                                <td style="white-space: nowrap;"><span class="badge badge-hyundai">현대자동차</span></td>
+                                <td>
+                                    <div class="job-title" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                                        <span>배터리 안전성 개발 (에너지솔루션개발)</span>
+                                        <button onclick="copyToClipboard('배터리 안전성 개발')" class="btn-copy">📋 복사</button>
                                     </div>
-                                </div>
-                            </td>
-                            <td style="white-space: nowrap;"><span class="badge badge-hyundai">현대자동차</span></td>
-                            <td>
-                                <div class="job-title">항공용 전동화 파워트레인 열유동해석 (모빌리티 선행개발)</div>
-                                <div class="job-desc">[6월 경력채용] 미래항공모빌리티(AAM)용 모터 및 배터리 시스템의 열관리(TMS) 기구 설계 및 열유동 시뮬레이션(CFD) 해석 최적화.</div>
-                            </td>
-                            <td>
-                                <div class="keywords-container">
-                                    <span class="keyword-tag">열유동해석</span>
-                                    <span class="keyword-tag">TMS설계</span>
-                                    <span class="keyword-tag">CFD</span>
-                                    <span class="keyword-tag">AAM</span>
-                                </div>
-                            </td>
-                            <td style="white-space: nowrap;">
-                                <span class="dday-badge dday-active" style="display: inline-block;">D-5</span>
-                                <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">2026-06-30</div>
-                            </td>
-                            <td style="white-space: nowrap;"><a href="https://talent.hyundai.com/theme/hall.hc" target="_blank" class="btn-link">지원 ↗</a></td>
-                        </tr>
-                        
-                        <tr class="job-row">
-                            <td style="white-space: nowrap;">
-                                <span class="recommendation-badge status-hot">적극 추천 🔥</span>
-                            </td>
-                            <td>
-                                <div class="match-container">
-                                    <span class="match-val">92%</span>
-                                    <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill" style="width: 92%;"></div>
+                                    <div class="job-desc">[6월 R&D 경력채용] 배터리 시스템(팩/모듈) 단위 열폭주 전이 방지 기구 설계, 고전압 배터리 충격 및 진동 방진 구조 설계 및 내구 신뢰성 평가. (남양연구소 근무)</div>
+                                </td>
+                                <td>
+                                    <div class="keywords-container">
+                                        <span class="keyword-tag">배터리시스템</span>
+                                        <span class="keyword-tag">열폭주방지</span>
+                                        <span class="keyword-tag">기구구조</span>
+                                        <span class="keyword-tag">신뢰성평가</span>
                                     </div>
-                                </div>
-                            </td>
-                            <td style="white-space: nowrap;"><span class="badge badge-hyundai">현대자동차</span></td>
-                            <td>
-                                <div class="job-title">배터리 셀 제조 공정기술 개발 (생산기술)</div>
-                                <div class="job-desc">[6월 경력채용] 의왕연구소 배터리 시범 생산라인 구축, 전극/조립/활성화 공정 자동화 설비 기구 설계 및 DFM 검토, 프로세스 표준화.</div>
-                            </td>
-                            <td>
-                                <div class="keywords-container">
-                                    <span class="keyword-tag">배터리셀</span>
-                                    <span class="keyword-tag">공정자동화</span>
-                                    <span class="keyword-tag">설비기구</span>
-                                    <span class="keyword-tag">DFM</span>
-                                </div>
-                            </td>
-                            <td style="white-space: nowrap;">
-                                <span class="dday-badge dday-active" style="display: inline-block;">D-5</span>
-                                <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">2026-06-30</div>
-                            </td>
-                            <td style="white-space: nowrap;"><a href="https://talent.hyundai.com/theme/hall.hc" target="_blank" class="btn-link">지원 ↗</a></td>
-                        </tr>
-                        
-                        <tr class="job-row">
-                            <td style="white-space: nowrap;">
-                                <span class="recommendation-badge status-good">추천 👍</span>
-                            </td>
-                            <td>
-                                <div class="match-container">
-                                    <span class="match-val">88%</span>
-                                    <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill" style="width: 88%;"></div>
+                                </td>
+                                <td style="white-space: nowrap;">
+                                    <span class="dday-badge dday-active" style="display: inline-block;">D-5</span>
+                                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">2026-06-30</div>
+                                </td>
+                                <td style="white-space: nowrap;"><a href="https://talent.hyundai.com/theme/hall.hc?themeId=june_career" target="_blank" class="btn-link">지원 ↗</a></td>
+                            </tr>
+                            <tr class="job-row">
+                                <td style="white-space: nowrap;"><span class="recommendation-badge status-hot">적극 추천 🔥</span></td>
+                                <td>
+                                    <div class="match-container">
+                                        <span class="match-val">92%</span>
+                                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 92%;"></div></div>
                                     </div>
-                                </div>
-                            </td>
-                            <td style="white-space: nowrap;"><span class="badge badge-kia">기아</span></td>
-                            <td>
-                                <div class="job-title">부품 물류 창고 자동화 및 레이아웃 기획 담당자</div>
-                                <div class="job-desc">[수시채용] 스마트 물류 창고 자동화 설비 구축 및 설계 검토. CAD 도면을 기반으로 공간 배치 및 자재 수급 일정 관리.</div>
-                            </td>
-                            <td>
-                                <div class="keywords-container">
-                                    <span class="keyword-tag">물류자동화</span>
-                                    <span class="keyword-tag">CAD도면</span>
-                                    <span class="keyword-tag">공간배치</span>
-                                    <span class="keyword-tag">일정관리</span>
-                                </div>
-                            </td>
-                            <td style="white-space: nowrap;">
-                                <span class="dday-badge" style="display: inline-block; background-color: rgba(255, 255, 255, 0.05); color: var(--text-muted);">수시 채용</span>
-                                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; line-height: 1.2;">채용 시 마감</div>
-                            </td>
-                            <td style="white-space: nowrap;"><a href="https://recruit.kia.com" target="_blank" class="btn-link">지원 ↗</a></td>
-                        </tr>
-                        
-                        <tr class="job-row">
-                            <td style="white-space: nowrap;">
-                                <span class="recommendation-badge status-good">추천 👍</span>
-                            </td>
-                            <td>
-                                <div class="match-container">
-                                    <span class="match-val">85%</span>
-                                    <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill" style="width: 85%;"></div>
+                                </td>
+                                <td style="white-space: nowrap;"><span class="badge badge-hyundai">현대자동차</span></td>
+                                <td>
+                                    <div class="job-title" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                                        <span>배터리 셀 제조 공정기술 개발 (생산기술)</span>
+                                        <button onclick="copyToClipboard('배터리 셀 제조')" class="btn-copy">📋 복사</button>
                                     </div>
-                                </div>
-                            </td>
-                            <td style="white-space: nowrap;"><span class="badge badge-hyundai">현대모비스</span></td>
-                            <td>
-                                <div class="job-title">섀시 기구 구조 설계 및 방진 시스템 설계</div>
-                                <div class="job-desc">[상시채용] 현가장치 기구설계, 고무 부시 및 유압 댐퍼 설계. 차량 진동 및 소음(NVH) 저감 설계 최적화. 3D CAD(CATIA/UG-NX) 필수.</div>
-                            </td>
-                            <td>
-                                <div class="keywords-container">
-                                    <span class="keyword-tag">섀시설계</span>
-                                    <span class="keyword-tag">방진댐퍼</span>
-                                    <span class="keyword-tag">NVH최적화</span>
-                                    <span class="keyword-tag">CATIA</span>
-                                </div>
-                            </td>
-                            <td style="white-space: nowrap;">
-                                <span class="dday-badge" style="display: inline-block; background-color: rgba(59, 130, 246, 0.15); color: #60a5fa;">상시 채용</span>
-                                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; line-height: 1.2;">인재풀 등록</div>
-                            </td>
-                            <td style="white-space: nowrap;"><a href="https://recruit.mobis.co.kr" target="_blank" class="btn-link">지원 ↗</a></td>
-                        </tr>
-                        
-                        <tr class="job-row">
-                            <td style="white-space: nowrap;">
-                                <span class="recommendation-badge status-good">추천 👍</span>
-                            </td>
-                            <td>
-                                <div class="match-container">
-                                    <span class="match-val">82%</span>
-                                    <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill" style="width: 82%;"></div>
+                                    <div class="job-desc">[6월 R&D 경력채용] 의왕연구소 배터리 시범 생산라인 구축, 전극/조립/활성화 공정 자동화 설비 기구 설계 및 DFM 검토, 프로세스 표준화.</div>
+                                </td>
+                                <td>
+                                    <div class="keywords-container">
+                                        <span class="keyword-tag">배터리셀</span>
+                                        <span class="keyword-tag">공정자동화</span>
+                                        <span class="keyword-tag">설비기구</span>
+                                        <span class="keyword-tag">DFM</span>
                                     </div>
-                                </div>
-                            </td>
-                            <td style="white-space: nowrap;"><span class="badge badge-robot">두산로보틱스</span></td>
-                            <td>
-                                <div class="job-title">협동로봇 관절 액추에이터 기구 설계</div>
-                                <div class="job-desc">로봇 관절 모듈 기구 설계, 하모닉 드라이브 감속기 및 모터 통합 패키징 설계. 베어링 선정 및 하중 모멘트 계산. 기계/자동화 전공 우대.</div>
-                            </td>
-                            <td>
-                                <div class="keywords-container">
-                                    <span class="keyword-tag">관절모듈</span>
-                                    <span class="keyword-tag">정밀감속기</span>
-                                    <span class="keyword-tag">패키징</span>
-                                    <span class="keyword-tag">하중계산</span>
-                                </div>
-                            </td>
-                            <td style="white-space: nowrap;">
-                                <span class="dday-badge" style="display: inline-block; background-color: rgba(255, 255, 255, 0.05); color: var(--text-muted);">수시 채용</span>
-                                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; line-height: 1.2;">채용 시 마감</div>
-                            </td>
-                            <td style="white-space: nowrap;"><a href="https://www.doosanrobotics.com" target="_blank" class="btn-link">지원 ↗</a></td>
-                        </tr>
-                        
-                    </tbody>
-                </table>
-            </div>
+                                </td>
+                                <td style="white-space: nowrap;">
+                                    <span class="dday-badge dday-active" style="display: inline-block;">D-5</span>
+                                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">2026-06-30</div>
+                                </td>
+                                <td style="white-space: nowrap;"><a href="https://talent.hyundai.com/theme/hall.hc?themeId=june_career" target="_blank" class="btn-link">지원 ↗</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="recommendation-section" style="margin-top: 40px; font-size: 1.3rem; color: var(--text-muted);">⏳ 상시 대기 및 인재풀 등록 권장 직무</div>
+                <div class="dashboard-card" style="margin-top: 15px; margin-bottom: 30px;">
+                    <table class="job-list-table waitlist-jobs">
+                        <thead>
+                            <tr>
+                                <th style="width: 10%;">추천 등급</th>
+                                <th style="width: 10%;">매칭률</th>
+                                <th style="width: 12%;">회사</th>
+                                <th style="width: 36%;">채용 대기 직무 및 요구 역량</th>
+                                <th style="width: 14%;">매칭 키워드</th>
+                                <th style="width: 12%;">채용 형태</th>
+                                <th style="width: 6%;">이동</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="job-row" style="opacity: 0.85;">
+                                <td style="white-space: nowrap;"><span class="recommendation-badge status-good">추천 👍</span></td>
+                                <td>
+                                    <div class="match-container">
+                                        <span class="match-val">95%</span>
+                                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 95%; background: #9ca3af;"></div></div>
+                                    </div>
+                                </td>
+                                <td style="white-space: nowrap;"><span class="badge badge-hyundai">현대자동차</span></td>
+                                <td>
+                                    <div class="job-title" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                                        <span>항공용 전동화 파워트레인 열유동해석 (모빌리티 선행개발)</span>
+                                        <button onclick="copyToClipboard('항공용 전동화')" class="btn-copy">📋 복사</button>
+                                    </div>
+                                    <div class="job-desc">[오픈 대기] 미래항공모빌리티(AAM)용 모터 및 배터리 시스템의 열관리(TMS) 기구 설계 및 열유동 시뮬레이션(CFD) 해석 최적화.</div>
+                                </td>
+                                <td>
+                                    <div class="keywords-container">
+                                        <span class="keyword-tag">열유동해석</span>
+                                        <span class="keyword-tag">TMS설계</span>
+                                        <span class="keyword-tag">CFD</span>
+                                    </div>
+                                </td>
+                                <td style="white-space: nowrap;">
+                                    <span class="dday-badge" style="background-color: rgba(239, 68, 68, 0.1); color: #f87171;">공고 대기</span>
+                                    <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">수시 오픈 대기</div>
+                                </td>
+                                <td style="white-space: nowrap;"><a href="https://talent.hyundai.com" target="_blank" class="btn-link" style="background-color: #4b5563;">이동 ↗</a></td>
+                            </tr>
+                            <tr class="job-row" style="opacity: 0.85;">
+                                <td style="white-space: nowrap;"><span class="recommendation-badge status-good">추천 👍</span></td>
+                                <td>
+                                    <div class="match-container">
+                                        <span class="match-val">88%</span>
+                                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 88%; background: #9ca3af;"></div></div>
+                                    </div>
+                                </td>
+                                <td style="white-space: nowrap;"><span class="badge badge-kia">기아</span></td>
+                                <td>
+                                    <div class="job-title" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                                        <span>부품 물류 창고 자동화 및 레이아웃 기획 담당자</span>
+                                        <button onclick="copyToClipboard('물류')" class="btn-copy">📋 복사</button>
+                                    </div>
+                                    <div class="job-desc">[오픈 대기] 스마트 물류 창고 자동화 설비 구축 및 설계 검토. CAD 도면을 기반으로 공간 배치 및 자재 수급 일정 관리.</div>
+                                </td>
+                                <td>
+                                    <div class="keywords-container">
+                                        <span class="keyword-tag">물류자동화</span>
+                                        <span class="keyword-tag">CAD도면</span>
+                                        <span class="keyword-tag">공간배치</span>
+                                    </div>
+                                </td>
+                                <td style="white-space: nowrap;">
+                                    <span class="dday-badge" style="background-color: rgba(255, 255, 255, 0.05); color: var(--text-muted);">수시 채용</span>
+                                    <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; line-height: 1.2;">인재풀 대기</div>
+                                </td>
+                                <td style="white-space: nowrap;"><a href="https://career.kia.com/jobs/list.kia" target="_blank" class="btn-link" style="background-color: #4b5563;">이동 ↗</a></td>
+                            </tr>
+                            <tr class="job-row" style="opacity: 0.85;">
+                                <td style="white-space: nowrap;"><span class="recommendation-badge status-good">추천 👍</span></td>
+                                <td>
+                                    <div class="match-container">
+                                        <span class="match-val">85%</span>
+                                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 85%; background: #9ca3af;"></div></div>
+                                    </div>
+                                </td>
+                                <td style="white-space: nowrap;"><span class="badge badge-hyundai">현대모비스</span></td>
+                                <td>
+                                    <div class="job-title" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                                        <span>섀시 기구 구조 설계 및 방진 시스템 설계</span>
+                                        <button onclick="copyToClipboard('섀시 기구')" class="btn-copy">📋 복사</button>
+                                    </div>
+                                    <div class="job-desc">[인재풀 대상] 현가장치 기구설계, 고무 부시 및 유압 댐퍼 설계. 차량 진동 및 소음(NVH) 저감 설계 최적화. 3D CAD(CATIA/UG-NX) 필수.</div>
+                                </td>
+                                <td>
+                                    <div class="keywords-container">
+                                        <span class="keyword-tag">섀시설계</span>
+                                        <span class="keyword-tag">NVH최적화</span>
+                                        <span class="keyword-tag">CATIA</span>
+                                    </div>
+                                </td>
+                                <td style="white-space: nowrap;">
+                                    <span class="dday-badge" style="background-color: rgba(59, 130, 246, 0.15); color: #60a5fa;">상시 인재풀</span>
+                                    <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; line-height: 1.2;">인재풀 등록</div>
+                                </td>
+                                <td style="white-space: nowrap;"><a href="https://careers.mobis.com/jobs/" target="_blank" class="btn-link" style="background-color: #4b5563;">이동 ↗</a></td>
+                            </tr>
+                            <tr class="job-row" style="opacity: 0.85;">
+                                <td style="white-space: nowrap;"><span class="recommendation-badge status-good">추천 👍</span></td>
+                                <td>
+                                    <div class="match-container">
+                                        <span class="match-val">82%</span>
+                                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 82%; background: #9ca3af;"></div></div>
+                                    </div>
+                                </td>
+                                <td style="white-space: nowrap;"><span class="badge badge-robot">두산로보틱스</span></td>
+                                <td>
+                                    <div class="job-title" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                                        <span>협동로봇 관절 액추에이터 기구 설계</span>
+                                        <button onclick="copyToClipboard('관절 액추에이터')" class="btn-copy">📋 복사</button>
+                                    </div>
+                                    <div class="job-desc">[오픈 대기] 로봇 관절 모듈 기구 설계, 하모닉 드라이브 감속기 및 모터 통합 패키징 설계. 베어링 선정 및 하중 모멘트 계산.</div>
+                                </td>
+                                <td>
+                                    <div class="keywords-container">
+                                        <span class="keyword-tag">관절모듈</span>
+                                        <span class="keyword-tag">정밀감속기</span>
+                                        <span class="keyword-tag">패키징</span>
+                                    </div>
+                                </td>
+                                <td style="white-space: nowrap;">
+                                    <span class="dday-badge" style="background-color: rgba(255, 255, 255, 0.05); color: var(--text-muted);">수시 채용</span>
+                                    <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; line-height: 1.2;">채용 대기</div>
+                                </td>
+                                <td style="white-space: nowrap;"><a href="https://careers.doosan.com/" target="_blank" class="btn-link" style="background-color: #4b5563;">이동 ↗</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
         </div>
 
         <!-- 탭 2: 합격률 & 약점 분석 -->
         <div id="tab-analysis" class="tab-content">
             <div class="dashboard-card">
-                <table>
+                <table class="analysis-table mech-analysis">
                     <thead>
                         <tr>
                             <th style="width: 18%;">타겟 직무군</th>
@@ -913,34 +1047,37 @@
                     <div class="roadmap-phase">
                         <div class="phase-title">🟢 1단계: 입문 (Beginner) - 반도체 기본 개념 및 공정 이해</div>
                         <div class="phase-content">
-                            반도체 8대 공정 기초 흐름(웨이퍼 제조 ➡️ 노광 ➡️ 식각 ➡️ 증착 ➡️ 패키징) 및 클린룸(Clean Room)의 원리(차압, FFU 작동)를 이해합니다.
+                            반도체 8대 공정(웨이퍼 제조 ➡️ 산화 ➡️ 포토공정 ➡️ 식각 ➡️ 박막증착 ➡️ 금속배선 ➡️ EDC 테스트 ➡️ 패키징)의 물리화학적 기초 프로세스를 정형화합니다. 특히 클린룸(Clean Room) 환경 제어를 위해 FFU(Fan Filter Unit), 차압 관리(+0.5 ~ +1.5 mmAq 유지), 헤파/울파(HEPA/ULPA) 필터의 파티클 여과 메커니즘 및 등급 관리 기준(Class 1 ~ 1000)을 완벽히 학습하여 설비 최적화 역량의 토대를 닦습니다.
                         </div>
                         <div class="phase-resources">
                             <div class="resource-title">📚 추천 자료:</div>
-                            - <strong>유튜브</strong>: 삼성반도체 '반도체 과외선생님' 시리즈 / SK하이닉스 '반도체 제조공정' 다큐멘터리<br>
-                            - <strong>온라인 강의</strong>: K-MOOC '반도체 공정 기초 및 소자 이해' 강좌 (무료)
+                            - <strong>기술 도서</strong>: *반도체 제조공정 기초 (강구민 저)*<br>
+                            - <strong>유튜브</strong>: 삼성반도체 '반도체 과외선생님' 시리즈 / SK하이닉스 공식 공정 설명 다큐멘터리<br>
+                            - <strong>온라인 강의</strong>: K-MOOC '반도체 소자 및 설비공학 입문' (무료 수료증 발급 코스)
                         </div>
                     </div>
                     <div class="roadmap-phase">
-                        <div class="phase-title">🟡 2단계: 중급 (Intermediate) - 기계 기반 유틸리티 인프라</div>
+                        <div class="phase-title">🟡 2단계: 중급 (Intermediate) - 기계 기반 유틸리티 인프라 및 가스 안전</div>
                         <div class="phase-content">
-                            초순수(UPW) 정밀 배관 설계, 화학물질 중앙공급장치(CCSS) 안전 배관(이중 배관), 클린룸 공조(HVAC) 방진 마운트 설계 및 초고진공 펌프(Dry/TMP) 구동 역학 학습.
+                            공장 생산 라인에서 개별 반도체 장비까지 초순수(UPW)와 화학 배액을 안정적으로 공급하기 위한 배관 설계 규격(ASME B31.3 Process Piping Standard) 및 베르누이와 달시-바이스바흐 방정식을 응용한 압력 강하(Pressure Drop) 설계를 이론적/실무적으로 내재화합니다. 화학물질 중앙공급장치(CCSS)의 독성/가압 가스 누출 차단용 이중관(Coaxial Piping) 설계와 고압가스안전관리법을 매핑하며, 진공 계통(Dry Pump, Turbo Molecular Pump)의 유량 배기 성능 계산 능력을 확보합니다.
                         </div>
                         <div class="phase-resources">
                             <div class="resource-title">📚 추천 자료:</div>
-                            - <strong>전문 도서</strong>: *진공공학 (한상준 저)* / *반도체 클린룸 및 공조 설계 가이드 (한국설비기술협회)*<br>
-                            - <strong>지침서</strong>: 안전보건공단(KOSHA Guide) '특수가스 공급 설비 안전 지침'
+                            - <strong>전문 서적</strong>: *진공공학 (한상준 저)* / *기하공차 실무 설계 GD&T (정영훈 저)*<br>
+                            - <strong>학회 지침서</strong>: 한국설비기술협회 *반도체 클린룸 및 공조 설계 가이드라인*<br>
+                            - <strong>안전 표준</strong>: 안전보건공단(KOSHA Guide) '반도체 가스 설비 안전 가이드 및 긴급 차단 시스템 구성 표준'
                         </div>
                     </div>
                     <div class="roadmap-phase">
-                        <div class="phase-title">🔴 3단계: 고급 (Advanced) - 차세대 패키징 물리 및 플랜트 PM</div>
+                        <div class="phase-title">🔴 3단계: 고급 (Advanced) - 차세대 패키징 물리 및 대형 FAB 건설 PM</div>
                         <div class="phase-content">
-                            HBM 적층 시 이종 접합부 열팽창 계수(CTE) 차이에 따른 Warpage(휨) 제어 및 Mechanical Stress 수치 해석, 대형 FAB 건설 관리 프로세스 학습.
+                            차세대 AI 반도체의 핵심 축인 2.5D/3D 이종 집합 패키징(HBM 적층) 시 조립 압력과 열에 의해 발생하는 실리콘 관통전극(TSV) 열응력(Thermal Stress) 및 열팽창계수(CTE) 차이에 의한 기판 휨(Warpage) 해석 최적화 기법을 습득합니다. ANSYS/ABAQUS 유한요소해석(FEA) 시뮬레이션을 연계하고, 대형 반도체 공장(FAB) 설계 단계부터 시공 단계까지 모듈러 공법(Modular Construction) 도입 및 Primavera P6/MS Project를 활용한 설비-조달-건설(EPC) 일정 및 리스크 관리 PM 기법을 고도화합니다.
                         </div>
                         <div class="phase-resources">
                             <div class="resource-title">📚 추천 자료:</div>
-                            - <strong>학술 자료</strong>: RISS 학술지 'HBM Warpage', '패키징 열변형 해석' 검색 논문 정독<br>
-                            - <strong>기술 자료</strong>: SK하이닉스 뉴스룸 기술 칼럼 / TSMC/ASML 기술 백서
+                            - <strong>전문 도서</strong>: *반도체 패키징 기술 (김종덕 저)*<br>
+                            - <strong>학술 데이터베이스</strong>: RISS 또는 학술논문 포털에서 'HBM Warpage 및 TSV 물리적 열팽창 최적화' 검색 논문 분석<br>
+                            - <strong>업계 기술 백서</strong>: ASML/TSMC 기술 백서 및 SK하이닉스 공식 뉴스룸 테크 칼럼 정독
                         </div>
                     </div>
                 </div>
@@ -954,36 +1091,40 @@
                     <div class="roadmap-phase">
                         <div class="phase-title">🟢 1단계: 입문 (Beginner) - EV 플랫폼 및 로봇 매커니즘 기초</div>
                         <div class="phase-content">
-                            현대차 E-GMP 플랫폼 기반 전기차 아키텍처(배터리 팩, PE 시스템) 및 다관절 로봇 매니퓰레이터의 링크와 기본 좌표 변환(Kinematics) 이해.
+                            현대자동차 E-GMP 등 전용 전기차 스케이트보드 아키텍처 상의 고전압 배터리 시스템(팩/모듈) 통합 패키지 배치 레이아웃 구조를 학습합니다. 다관절 로봇 매니퓰레이터의 설계적 뼈대인 순방향/역방향 기하학(Forward/Inverse Kinematics)과 D-H 파라미터(Denavit-Hartenberg) 축 변환 모델 설정을 마스터하여 로봇 암 설계 매커니즘의 기초 체력을 마련합니다.
                         </div>
                         <div class="phase-resources">
                             <div class="resource-title">📚 추천 자료:</div>
-                            - <strong>유튜브</strong>: 현대자동차그룹 공식 'E-GMP 기술 설명회' 영상 / 두산로보틱스 협동로봇 구동 시연<br>
-                            - <strong>온라인 강의</strong>: K-MOOC '로봇공학 입문' 또는 '로봇 매니퓰레이터 설계'
+                            - <strong>전공 도서</strong>: *로봇공학 (John J. Craig 저)*<br>
+                            - <strong>기술 영상</strong>: 현대자동차그룹 공식 R&D 기술 설명회 (HMG Tech Channel) 재생목록<br>
+                            - <strong>카탈로그</strong>: 두산로보틱스, 레인보우로보틱스 협동로봇/AMR 관절 사양서 및 모터 구동 사양 분석
                         </div>
                     </div>
                     <div class="roadmap-phase">
                         <div class="phase-title">🟡 2단계: 중급 (Intermediate) - 차량 NVH, 열관리 및 로봇 감속기 관절 설계</div>
                         <div class="phase-content">
-                            EV 배터리 팩 냉각 유로 설계, 모터 마운트/고무 부시를 통한 차량 진동/소음(NVH) 최적화, 로봇 하모닉 감속기 및 크로스 롤러 베어링 선정, 자동차 부품 품질 표준(IATF 16949 / APQP) 학습.
+                            EV 모듈 내부의 열폭주 전이 방지를 위한 기구 구조 최적화 및 팩 냉각용 쿨링 플레이트(TMS) 냉각 채널 설계를 심화합니다. 주행 시 발생하는 충격/진동 차단을 위해 구동계 모터 마운팅 러버 부시(Rubber Bush) 및 충격 저감 섀시 방진 구조 설계 능력을 배양합니다. 로봇 관절 모듈 설계 시 정밀 구동용 하모닉 드라이브 감속기 및 크로스 롤러 베어링 선정 시 허용 모멘트 하중 및 내구 수명 계산 실무 능력을 체계적으로 연마합니다.
                         </div>
                         <div class="phase-resources">
                             <div class="resource-title">📚 추천 자료:</div>
-                            - <strong>전문 도서</strong>: *자동차 진동 소음의 기초 (서병선 저)* / *기하공차(GD&T) 실무 설계 (정영훈 저)*<br>
-                            - <strong>지침서</strong>: IATF 16949 규격 해설서 및 APQP 협력사 부품 품질 교육서 / Harmonic Drive Systems 카탈로그
+                            - <strong>전문 서적</strong>: *자동차 진동 소음의 기초 (서병선 저)* / *기계요소설계 (Shigley 저)*<br>
+                            - <strong>실무 지침</strong>: GD&T(기하공차 ASME Y14.5) 치수 관리 공차 분석 설계 매뉴얼<br>
+                            - <strong>품질 규격</strong>: 완성차 개발 프로세스 핵심 가이드 (IATF 16949 / APQP / FMEA 협력사 부품 품질 교육서)
                         </div>
                     </div>
                     <div class="roadmap-phase">
-                        <div class="phase-title">🔴 3단계: 고급 (Advanced) - 하우징 경량화 및 로봇 링크 동역학 최적화</div>
+                        <div class="phase-title">🔴 3단계: 고급 (Advanced) - 경량화 최적 설계 및 동역학 해석 제어</div>
                         <div class="phase-content">
-                            알루미늄 다이캐스팅 파워트레인 하우징 강성 최적화 설계, 가감속 시 관성(Inertia) 최소화를 위한 로봇 암(Arm) 프레임 위상 최적화 및 굽힘 처짐 시뮬레이션 제어.
+                            차량 배터리 팩 하우징 및 다관절 로봇 암(Arm)의 위상 최적화(Topology Optimization) 기법을 사용하여, 부품의 자중은 최소화하면서 비틀림 강성과 휨 한계를 극한으로 끌어올리는 설계를 체계화합니다. 용접 및 사출 부품을 대체하는 초대형 기가캐스팅 공법의 주조 DFM(구배 각도, 리브 배치 규칙) 및 알루미늄 다이캐스팅 기구 구조 설계 기준을 확립하고, 동역학 시뮬레이션 툴을 연계한 강성 해석 모델링 기법을 고도화합니다.
                         </div>
                         <div class="phase-resources">
                             <div class="resource-title">📚 추천 자료:</div>
-                            - <strong>추천 도서 및 소프트웨어 자료</strong>: 재료역학 및 기계요소설계 동역학 이론 검토 / KSAE 학술지 논문 참고
+                            - <strong>추천 도서</strong>: *자동차 차체설계 (신영재 저)* / ABAQUS/Ansys 기구 구조/피로 해석 지침서<br>
+                            - <strong>논문 자료</strong>: 한국자동차공학회(KSAE) 및 한국정밀공학회 '로봇 링크 진동 감쇄 위상 최적화 설계' 학술 논문
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
         
         <!-- 검증 및 업데이트 이력 -->
@@ -999,6 +1140,11 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr class="job-row">
+                        <td style="padding: 12px; color: #fff; font-family: monospace; white-space: nowrap;">2026-06-25 21:58:44</td>
+                        <td style="padding: 12px; white-space: nowrap;"><span class="recommendation-badge status-good" style="width: auto; padding: 4px 8px;">성공 (6/6)</span></td>
+                        <td style="padding: 12px; color: var(--text-muted); line-height: 1.5;"><span style="color: #34d399; margin-right: 10px;">● 현대자동차: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 기아: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 현대모비스: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 두산로보틱스: 정상</span> <span style="color: #34d399; margin-right: 10px;">● LG전자: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 네이버랩스: 정상</span></td>
+                    </tr>
                     <tr class="job-row">
                         <td style="padding: 12px; color: #fff; font-family: monospace; white-space: nowrap;">2026-06-25 21:53:53</td>
                         <td style="padding: 12px; white-space: nowrap;"><span class="recommendation-badge status-good" style="width: auto; padding: 4px 8px;">성공 (6/6)</span></td>
@@ -1019,11 +1165,6 @@
                         <td style="padding: 12px; white-space: nowrap;"><span class="recommendation-badge status-good" style="width: auto; padding: 4px 8px;">성공 (6/6)</span></td>
                         <td style="padding: 12px; color: var(--text-muted); line-height: 1.5;"><span style="color: #34d399; margin-right: 10px;">● 현대자동차: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 기아: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 현대모비스: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 두산로보틱스: 정상</span> <span style="color: #34d399; margin-right: 10px;">● LG전자: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 네이버랩스: 정상</span></td>
                     </tr>
-                    <tr class="job-row">
-                        <td style="padding: 12px; color: #fff; font-family: monospace; white-space: nowrap;">2026-06-25 21:44:34</td>
-                        <td style="padding: 12px; white-space: nowrap;"><span class="recommendation-badge status-good" style="width: auto; padding: 4px 8px;">성공 (6/6)</span></td>
-                        <td style="padding: 12px; color: var(--text-muted); line-height: 1.5;"><span style="color: #34d399; margin-right: 10px;">● 현대자동차: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 기아: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 현대모비스: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 두산로보틱스: 정상</span> <span style="color: #34d399; margin-right: 10px;">● LG전자: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 네이버랩스: 정상</span></td>
-                    </tr>
                 </tbody>
             </table>
             <!-- UPDATE_HISTORY_END -->
@@ -1031,6 +1172,15 @@
     </div>
 
     <script>
+        
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert('직무명이 클립보드에 복사되었습니다: ' + text + '\n지원 페이지 이동 후 돋보기 검색 또는 직무 찾기에 적용하여 바로 지원하세요.');
+            }, function(err) {
+                console.error('복사 실패: ', err);
+            });
+        }
+        
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tab-content");
