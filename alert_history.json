@@ -549,5 +549,93 @@
         ],
         "recommendation_level": "추천 👍",
         "status_color": "status-good"
+    },
+    "기아_12_20260625": {
+        "id": "기아_12_20260625",
+        "company": "기아",
+        "title": "스마트팩토리 조립 공정 인간공학 작업 개선 담당자",
+        "description": "생산 라인 작업자의 작업 자세 평가(RULA, REBA) 및 유해 요인 제거, 제조 생산 설비의 인간공학적 배치 및 작업대 레이아웃 표준화, 피로도 평가 시스템 구축.",
+        "link": "https://recruit.kia.com",
+        "date": "2026-06-25",
+        "match_percent": 32,
+        "matched_keywords": [
+            "스마트팩토리",
+            "설비"
+        ],
+        "recommendation_level": "보통 💬",
+        "status_color": "status-normal"
+    },
+    "SK하이닉스_9_20260625": {
+        "id": "SK하이닉스_9_20260625",
+        "company": "SK하이닉스",
+        "title": "안전보건 보건관리자 경력 채용 (SHE)",
+        "description": "반도체 팹(FAB) 내 보건 관리 가이드라인 수립, 작업환경 측정 및 위해요인 분석, 근골격계 부담 작업 유해요인조사 및 근무환경 개선. 인간공학기사 또는 산업위생관리기사 자격증 소지자 필수.",
+        "link": "https://careers.skhynix.com",
+        "date": "2026-06-25",
+        "match_percent": 100,
+        "matched_keywords": [
+            "인간공학",
+            "인간공학기사",
+            "보건",
+            "안전보건",
+            "작업환경",
+            "근골격계",
+            "안전"
+        ],
+        "recommendation_level": "적극 추천 🔥",
+        "status_color": "status-hot"
+    },
+    "두산로보틱스_13_20260625": {
+        "id": "두산로보틱스_13_20260625",
+        "company": "두산로보틱스",
+        "title": "협동로봇 인간-로봇 상호작용(HRI) 안전성 평가 담당",
+        "description": "로봇 제어용 티칭 펜던트 및 UI/UX 사용성 평가, 협동로봇 작업 공간의 인간공학적 안전 보장 가이드라인 수립, 인간-로봇 협업 강도 정량 분석 및 신뢰성 검증.",
+        "link": "https://www.doosanrobotics.com",
+        "date": "2026-06-25",
+        "match_percent": 92,
+        "matched_keywords": [
+            "인간공학",
+            "사용성",
+            "HRI",
+            "UI/UX",
+            "안전"
+        ],
+        "recommendation_level": "적극 추천 🔥",
+        "status_color": "status-hot"
+    },
+    "현대자동차_10_20260625": {
+        "id": "현대자동차_10_20260625",
+        "company": "현대자동차",
+        "title": "차량 콕핏 및 감성 HMI 사용성 평가 연구원",
+        "description": "운전석 인체공학적 레이아웃 설계 검증, 차량용 계기판 및 디스플레이 시인성/사용성 평가(UT), 운전자 시선 추적(Eye-tracking) 기반 인터페이스 설계 분석.",
+        "link": "https://talent.hyundai.com",
+        "date": "2026-06-25",
+        "match_percent": 80,
+        "matched_keywords": [
+            "사용성",
+            "HMI",
+            "인터페이스",
+            "인체",
+            "설계"
+        ],
+        "recommendation_level": "적극 추천 🔥",
+        "status_color": "status-hot"
+    },
+    "현대모비스_11_20260625": {
+        "id": "현대모비스_11_20260625",
+        "company": "현대모비스",
+        "title": "자동차 인테리어 인간공학 시뮬레이션 연구원",
+        "description": "시트 안락감 평가 및 정량화 기하 모형 개발, 디지털 마네킹(RAMSIS 등) 기반의 인체 거동 해석 및 운전 편의성 시뮬레이션 검증. 인간공학/산업공학 전공자 우대.",
+        "link": "https://recruit.mobis.co.kr",
+        "date": "2026-06-25",
+        "match_percent": 68,
+        "matched_keywords": [
+            "인간공학",
+            "인체",
+            "안락감",
+            "시뮬레이션"
+        ],
+        "recommendation_level": "추천 👍",
+        "status_color": "status-good"
     }
 }

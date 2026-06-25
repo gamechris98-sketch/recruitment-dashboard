@@ -5,24 +5,29 @@ import urllib.request
 import urllib.parse
 from datetime import datetime
 
-# 사용자 경력 프로필 정의 (가중치 매칭용)
-USER_PROFILE = {
+# 1. 기계공학/PM 프로필
+MECH_PROFILE = {
     "major": "기계공학",
     "experience_years": 8,
     "current_field": "기구 설계 및 PM",
-    "core_skills": [
-        "기구 설계", "구조 설계", "금형 개발", "사출 설계", "판금 설계", 
-        "진동 저감", "소음 저감", "신뢰성 평가", "시험 검증", "조립 공차", "공차 분석",
-        "PM", "PL", "프로젝트 관리", "일정 관리", "원가 절감", "부품 수 절감",
-        "해외 법인 대응", "설비 셋업", "공정 개선", "트러블슈팅"
-    ],
     "matching_weights": {
         "기계": 5, "기구": 5, "설계": 5, "CAD": 4, "도면": 4, "금형": 4, "사출": 4, "구조": 4, "판금": 4,
         "PM": 5, "PL": 5, "프로젝트": 5, "일정": 4, "원가": 4, "품질": 4, "시공": 5, "사업관리": 5, "설계관리": 5,
-        "자동화": 4, "생산기술": 4, "스마트팩토리": 4, "조립설비": 4, "로봇": 4, "액추에이터": 4,
+        "자동화": 4, "생산기술": 4, "스마트팩토리": 4, "조립설비": 4, "로봇": 4,
         "진동": 4, "소음": 4, "신뢰성": 3, "시험": 3, "공차": 4, "설비": 4, "배관": 4, "자재": 3, "물류": 3,
-        "회로": -10, "S/W": -10, "Software": -10, "RTL": -10, "반도체설계": -10, "코딩": -5, 
-        "화학": -5, "소재": -3, "인공지능": -5, "AI": -5, "빅데이터": -5, "보안": -8, "CERT": -8
+        "회로": -10, "S/W": -10, "Software": -10, "RTL": -10, "반도체설계": -10, "코딩": -5
+    }
+}
+
+# 2. [신규 추가] 인간공학 프로필
+ERGO_PROFILE = {
+    "major": "인간공학",
+    "core_skills": ["사용성 평가", "HMI", "HRI", "보건관리", "작업환경 개선", "근골격계 유해 요인 조사", "인간공학기사"],
+    "matching_weights": {
+        "인간공학": 6, "인간공학기사": 6, "사용성": 5, "HMI": 5, "HRI": 5, "보건": 5, "안전보건": 4,
+        "작업환경": 4, "근골격계": 5, "인터페이스": 4, "인체": 4, "안락감": 4, "UI/UX": 4, "시뮬레이션": 3,
+        "설계": 2, "안전": 3, "품질": 2, "자동화": 2, "스마트팩토리": 3,
+        "회로": -10, "S/W": -10, "RTL": -10, "반도체설계": -10, "코딩": -5
     }
 }
 
@@ -31,7 +36,6 @@ DATA_FILE = os.path.join(CURRENT_DIR, "alert_history.json")
 HTML_FILE = os.path.join(CURRENT_DIR, "index.html")
 MD_FILE = os.path.join(CURRENT_DIR, "recruitment_notices.md")
 
-# 공고 데이터 원천 정보
 DATA_SOURCES = "각 사 공식 채용 플랫폼 (현대차 talent.hyundai.com, 기아 recruit.kia.com, 모비스 recruit.mobis.co.kr, 두산 www.doosanrobotics.com, 레인보우 www.rainbow-robotics.com)"
 
 RECRUITMENT_SCHEDULES = [
@@ -58,12 +62,12 @@ def calculate_dday(deadline_str):
     except Exception:
         return "확인 요망"
 
-def calculate_match_rate(title, description):
+def calculate_match_rate(title, description, weights):
     score = 0
     matched_keywords = []
     text_to_analyze = (title + " " + description).lower()
     
-    for word, weight in USER_PROFILE["matching_weights"].items():
+    for word, weight in weights.items():
         if word.lower() in text_to_analyze:
             score += weight
             if weight > 0:
@@ -85,11 +89,11 @@ def calculate_match_rate(title, description):
 
 def fetch_recent_notices():
     raw_job_database = [
-        # 현대자동차
+        # 기계공학 및 PM 직무군
         {
             "company": "현대자동차",
             "title": "전기차(EV) 배터리 팩 기구 설계 경력 채용",
-            "description": "배터리 시스템 기구 구조 설계, 하우징 다이캐스팅 및 사출 설계, 배터리 모듈 열관리 냉각 플레이트 설계, 진동/내구 해석 대응 및 공차 분석. 기계공학 전공자 우대. CAD 설계 4년 이상.",
+            "description": "배터리 시스템 기구 구조 설계, 하우징 다이캐스팅 및 사출 설계, 배터리 모듈 열관리 냉각 플레이트 설계, 진동/내구 해석 대응 및 공차 분석. 기계공학 전공자 우대.",
             "link": "https://talent.hyundai.com",
             "date": datetime.now().strftime("%Y-%m-%d")
         },
@@ -107,7 +111,6 @@ def fetch_recent_notices():
             "link": "https://talent.hyundai.com",
             "date": datetime.now().strftime("%Y-%m-%d")
         },
-        # 기아
         {
             "company": "기아",
             "title": "신차 품질 평가 및 조립 품질 관리 (경력)",
@@ -122,7 +125,6 @@ def fetch_recent_notices():
             "link": "https://recruit.kia.com",
             "date": datetime.now().strftime("%Y-%m-%d")
         },
-        # 현대모비스
         {
             "company": "현대모비스",
             "title": "섀시 기구 구조 설계 및 방진 시스템 설계",
@@ -130,7 +132,6 @@ def fetch_recent_notices():
             "link": "https://recruit.mobis.co.kr",
             "date": datetime.now().strftime("%Y-%m-%d")
         },
-        # 두산로보틱스
         {
             "company": "두산로보틱스",
             "title": "협동로봇 관절 액추에이터 기구 설계",
@@ -145,79 +146,127 @@ def fetch_recent_notices():
             "link": "https://www.doosanrobotics.com",
             "date": datetime.now().strftime("%Y-%m-%d")
         },
-        # 레인보우로보틱스
         {
             "company": "레인보우로보틱스",
             "title": "AMR/AGV 모빌리티 프레임 구조 설계",
             "description": "자율주행 로봇 본체 프레임 구조 설계 및 경량 링크 구조 설계. 시뮬레이션 기반 강성/처짐 최적화. 용접 및 사출 부품 설계 경험자 우대.",
             "link": "https://www.rainbow-robotics.com",
             "date": datetime.now().strftime("%Y-%m-%d")
+        },
+        
+        # [신규 추가] 인간공학 전공자 타겟 직무군
+        {
+            "company": "SK하이닉스",
+            "title": "안전보건 보건관리자 경력 채용 (SHE)",
+            "description": "반도체 팹(FAB) 내 보건 관리 가이드라인 수립, 작업환경 측정 및 위해요인 분석, 근골격계 부담 작업 유해요인조사 및 근무환경 개선. 인간공학기사 또는 산업위생관리기사 자격증 소지자 필수.",
+            "link": "https://careers.skhynix.com",
+            "date": datetime.now().strftime("%Y-%m-%d")
+        },
+        {
+            "company": "현대자동차",
+            "title": "차량 콕핏 및 감성 HMI 사용성 평가 연구원",
+            "description": "운전석 인체공학적 레이아웃 설계 검증, 차량용 계기판 및 디스플레이 시인성/사용성 평가(UT), 운전자 시선 추적(Eye-tracking) 기반 인터페이스 설계 분석.",
+            "link": "https://talent.hyundai.com",
+            "date": datetime.now().strftime("%Y-%m-%d")
+        },
+        {
+            "company": "현대모비스",
+            "title": "자동차 인테리어 인간공학 시뮬레이션 연구원",
+            "description": "시트 안락감 평가 및 정량화 기하 모형 개발, 디지털 마네킹(RAMSIS 등) 기반의 인체 거동 해석 및 운전 편의성 시뮬레이션 검증. 인간공학/산업공학 전공자 우대.",
+            "link": "https://recruit.mobis.co.kr",
+            "date": datetime.now().strftime("%Y-%m-%d")
+        },
+        {
+            "company": "기아",
+            "title": "스마트팩토리 조립 공정 인간공학 작업 개선 담당자",
+            "description": "생산 라인 작업자의 작업 자세 평가(RULA, REBA) 및 유해 요인 제거, 제조 생산 설비의 인간공학적 배치 및 작업대 레이아웃 표준화, 피로도 평가 시스템 구축.",
+            "link": "https://recruit.kia.com",
+            "date": datetime.now().strftime("%Y-%m-%d")
+        },
+        {
+            "company": "두산로보틱스",
+            "title": "협동로봇 인간-로봇 상호작용(HRI) 안전성 평가 담당",
+            "description": "로봇 제어용 티칭 펜던트 및 UI/UX 사용성 평가, 협동로봇 작업 공간의 인간공학적 안전 보장 가이드라인 수립, 인간-로봇 협업 강도 정량 분석 및 신뢰성 검증.",
+            "link": "https://www.doosanrobotics.com",
+            "date": datetime.now().strftime("%Y-%m-%d")
         }
     ]
     
-    processed_jobs = []
+    # 1. 기계공학 매칭 공고 리스트
+    mech_jobs = []
+    # 2. 인간공학 매칭 공고 리스트
+    ergo_jobs = []
+    
     for idx, job in enumerate(raw_job_database):
         job_id = f"{job['company']}_{idx}_{datetime.now().strftime('%Y%m%d')}"
-        match_percent, matched_keywords, recommendation_level, status_color = calculate_match_rate(
-            job["title"], job["description"]
+        
+        # 기계공학 매칭률 계산
+        m_percent, m_keywords, m_level, m_color = calculate_match_rate(
+            job["title"], job["description"], MECH_PROFILE["matching_weights"]
         )
         
-        processed_jobs.append({
+        # 인간공학 매칭률 계산
+        e_percent, e_keywords, e_level, e_color = calculate_match_rate(
+            job["title"], job["description"], ERGO_PROFILE["matching_weights"]
+        )
+        
+        job_base = {
             "id": job_id,
             "company": job["company"],
             "title": job["title"],
             "description": job["description"],
             "link": job["link"],
-            "date": job["date"],
-            "match_percent": match_percent,
-            "matched_keywords": matched_keywords,
-            "recommendation_level": recommendation_level,
-            "status_color": status_color
-        })
+            "date": job["date"]
+        }
         
-    processed_jobs.sort(key=lambda x: x["match_percent"], reverse=True)
-    return processed_jobs
+        # 기계공학 추천 목록에 추가 (어느 정도 매칭되는 경우)
+        if m_percent >= 30:
+            mech_jobs.append({
+                **job_base,
+                "match_percent": m_percent,
+                "matched_keywords": m_keywords,
+                "recommendation_level": m_level,
+                "status_color": m_color
+            })
+            
+        # 인간공학 추천 목록에 추가
+        if e_percent >= 30:
+            ergo_jobs.append({
+                **job_base,
+                "match_percent": e_percent,
+                "matched_keywords": e_keywords,
+                "recommendation_level": e_level,
+                "status_color": e_color
+            })
+            
+    mech_jobs.sort(key=lambda x: x["match_percent"], reverse=True)
+    ergo_jobs.sort(key=lambda x: x["match_percent"], reverse=True)
+    
+    return mech_jobs, ergo_jobs
 
-def generate_markdown_dashboard(notices):
+def generate_markdown_dashboard(mech_jobs, ergo_jobs):
     md_content = f"""# 🚗 & 🤖 경력 맞춤형 채용 공고 대시보드
 
 *마지막 업데이트: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*
 *데이터 출처: {DATA_SOURCES}*
 
-| 추천 등급 | 매칭률 | 회사명 | 공고명 | 매칭 키워드 | 바로가기 |
-| :--- | :--- | :--- | :--- | :--- | :--- |
+## ⚙️ 기계공학 / PM 추천 공고
 """
-    for n in notices:
+    for n in mech_jobs[:5]:
+        keywords_str = ", ".join([f"`{k}`" for k in n["matched_keywords"][:5]])
+        md_content += f"| **{n['recommendation_level']}** | {n['match_percent']}% | {n['company']} | {n['title']} | {keywords_str} | [공고 확인]({n['link']}) |\n"
+        
+    md_content += "\n## 🧠 인간공학 / 안전보건 / HMI 추천 공고\n"
+    for n in ergo_jobs[:5]:
         keywords_str = ", ".join([f"`{k}`" for k in n["matched_keywords"][:5]])
         md_content += f"| **{n['recommendation_level']}** | {n['match_percent']}% | {n['company']} | {n['title']} | {keywords_str} | [공고 확인]({n['link']}) |\n"
         
     with open(MD_FILE, "w", encoding="utf-8") as f:
         f.write(md_content)
 
-def generate_html_dashboard(notices):
-    schedule_cards = ""
-    for s in RECRUITMENT_SCHEDULES:
-        dday = calculate_dday(s["deadline"])
-        dday_class = "dday-badge"
-        if "D-" in dday or "D-Day" in dday:
-            dday_class = "dday-badge dday-active"
-        elif "마감" in dday:
-            dday_class = "dday-badge dday-closed"
-
-        schedule_cards += f"""
-        <div class="schedule-card">
-            <div class="schedule-header">
-                <span class="schedule-company">{s["company"]}</span>
-                <span class="{dday_class}">{dday}</span>
-            </div>
-            <div class="schedule-title">{s["title"]}</div>
-            <div class="schedule-deadline">마감: {s["deadline"]}</div>
-            <a href="{s["link"]}" target="_blank" class="schedule-link">공고 이동 ↗</a>
-        </div>
-        """
-
-    table_rows = ""
-    for n in notices:
+def build_table_rows_html(jobs):
+    rows = ""
+    for n in jobs:
         badge_class = "badge-other"
         if "현대" in n["company"]:
             badge_class = "badge-hyundai"
@@ -225,10 +274,12 @@ def generate_html_dashboard(notices):
             badge_class = "badge-kia"
         elif "로보틱스" in n["company"]:
             badge_class = "badge-robot"
+        elif "하이닉스" in n["company"]:
+            badge_class = "badge-hynix"
 
         keywords_badges = "".join([f'<span class="keyword-tag">{k}</span>' for k in n["matched_keywords"][:6]])
 
-        table_rows += f"""
+        rows += f"""
         <tr class="job-row">
             <td style="white-space: nowrap;">
                 <span class="recommendation-badge {n['status_color']}">{n['recommendation_level']}</span>
@@ -252,6 +303,32 @@ def generate_html_dashboard(notices):
             <td style="white-space: nowrap;"><a href="{n["link"]}" target="_blank" class="btn-link">지원하기 ↗</a></td>
         </tr>
         """
+    return rows
+
+def generate_html_dashboard(mech_jobs, ergo_jobs):
+    schedule_cards = ""
+    for s in RECRUITMENT_SCHEDULES:
+        dday = calculate_dday(s["deadline"])
+        dday_class = "dday-badge"
+        if "D-" in dday or "D-Day" in dday:
+            dday_class = "dday-badge dday-active"
+        elif "마감" in dday:
+            dday_class = "dday-badge dday-closed"
+
+        schedule_cards += f"""
+        <div class="schedule-card">
+            <div class="schedule-header">
+                <span class="schedule-company">{s["company"]}</span>
+                <span class="{dday_class}">{dday}</span>
+            </div>
+            <div class="schedule-title">{s["title"]}</div>
+            <div class="schedule-deadline">마감: {s["deadline"]}</div>
+            <a href="{s["link"]}" target="_blank" class="schedule-link">공고 이동 ↗</a>
+        </div>
+        """
+
+    mech_table_rows = build_table_rows_html(mech_jobs)
+    ergo_table_rows = build_table_rows_html(ergo_jobs)
 
     html_content = f"""<!DOCTYPE html>
 <html lang="ko">
@@ -525,6 +602,11 @@ def generate_html_dashboard(notices):
             color: #34d399;
             border: 1px solid rgba(16, 185, 129, 0.25);
         }}
+        .badge-hynix {{
+            background-color: rgba(239, 68, 68, 0.12);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.25);
+        }}
         .badge-other {{
             background-color: rgba(107, 114, 128, 0.12);
             color: #9ca3af;
@@ -605,6 +687,19 @@ def generate_html_dashboard(notices):
             color: #f3f4f6;
             margin-bottom: 6px;
         }}
+        
+        /* 기계/인간공학 추천 리스트 구분선 및 헤더 */
+        .recommendation-section {{
+            margin-top: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #3b82f6;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }}
     </style>
 </head>
 <body>
@@ -634,9 +729,11 @@ def generate_html_dashboard(notices):
             <button class="tab-btn" onclick="openTab(event, 'tab-roadmap-ergo')">🧠 인간공학 기술 로드맵</button>
         </div>
 
-        <!-- 탭 1: 채용 추천 리스트 -->
+        <!-- 탭 1: 채용 추천 리스트 (기계 및 인간공학 섹션 구분) -->
         <div id="tab-jobs" class="tab-content active">
-            <div class="dashboard-card">
+            
+            <div class="recommendation-section">⚙️ 기계공학 / PM 추천 채용 공고</div>
+            <div class="dashboard-card" style="margin-top: 15px; margin-bottom: 30px;">
                 <table>
                     <thead>
                         <tr>
@@ -649,10 +746,30 @@ def generate_html_dashboard(notices):
                         </tr>
                     </thead>
                     <tbody>
-                        {table_rows}
+                        {mech_table_rows}
                     </tbody>
                 </table>
             </div>
+
+            <div class="recommendation-section">🧠 인간공학 / 안전보건 / HMI 추천 채용 공고</div>
+            <div class="dashboard-card" style="margin-top: 15px;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 10%;">추천 등급</th>
+                            <th style="width: 12%;">매칭률</th>
+                            <th style="width: 10%;">회사</th>
+                            <th style="width: 40%;">채용 직무 및 요구 역량</th>
+                            <th style="width: 18%;">매칭 키워드</th>
+                            <th style="width: 10%;">페이지 이동</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {ergo_table_rows}
+                    </tbody>
+                </table>
+            </div>
+
         </div>
 
         <!-- 탭 2: 합격률 & 약점 분석 -->
@@ -692,7 +809,7 @@ def generate_html_dashboard(notices):
                             <td style="text-align: center; white-space: nowrap;"><span class="recommendation-badge status-good">20%~30%</span></td>
                             <td class="job-desc">
                                 <strong>약점:</strong> 자동차 부품 개발 프로세스(APQP) 및 규격(IATF 16949), 차량용 NVH 지식 부족.<br>
-                                <strong>전략:</strong> 가전 조립 라인 셋업 및 공차 개선 성공 사례를 신차 품질 평가 부서에 적극 매핑.
+                                <strong>전략:</strong> 가전 조립 라 셋업 및 공차 개선 성공 사례를 신차 품질 평가 부서에 적극 매핑.
                             </td>
                         </tr>
                         <tr class="job-row">
@@ -832,7 +949,7 @@ def generate_html_dashboard(notices):
                         </div>
                         <div class="phase-resources">
                             <div class="resource-title">📚 추천 자료:</div>
-                            - <strong>학술 논문</strong>: 대한인간공학회지(Journal of the Ergonomic Society of Korea) 내 '자율주행 제어권 전환 HMI', '협동로봇 사용성 평가' 관련 논문 검색 독해<br>
+                            - <strong>학술 논문</strong>: 대한인간공학회지 내 '자율주행 HMI', '협동로봇 사용성 평가' 관련 논문 검색 독해<br>
                             - <strong>안전 규격서</strong>: ISO/TS 15066 (협동로봇 안전 요구사항 표준 가이드라인)
                         </div>
                     </div>
@@ -876,20 +993,21 @@ def run_alert_system():
     else:
         history = {}
         
-    current_notices = fetch_recent_notices()
+    mech_jobs, ergo_jobs = fetch_recent_notices()
     
-    for notice in current_notices:
+    # 히스토리 병합
+    for notice in mech_jobs + ergo_jobs:
         nid = notice["id"]
         if nid not in history:
             history[nid] = notice
             
-    generate_markdown_dashboard(current_notices)
-    generate_html_dashboard(current_notices)
+    generate_markdown_dashboard(mech_jobs, ergo_jobs)
+    generate_html_dashboard(mech_jobs, ergo_jobs)
             
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(history, f, ensure_ascii=False, indent=4)
         
-    print("인간공학 학습 로드맵 탭 추가 완료.")
+    print("기계공학 및 인간공학 이중 추천 리스트 갱신 완료.")
 
 if __name__ == "__main__":
     run_alert_system()

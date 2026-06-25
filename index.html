@@ -270,6 +270,11 @@
             color: #34d399;
             border: 1px solid rgba(16, 185, 129, 0.25);
         }
+        .badge-hynix {
+            background-color: rgba(239, 68, 68, 0.12);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.25);
+        }
         .badge-other {
             background-color: rgba(107, 114, 128, 0.12);
             color: #9ca3af;
@@ -350,6 +355,19 @@
             color: #f3f4f6;
             margin-bottom: 6px;
         }
+        
+        /* 기계/인간공학 추천 리스트 구분선 및 헤더 */
+        .recommendation-section {
+            margin-top: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #3b82f6;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
     </style>
 </head>
 <body>
@@ -359,7 +377,7 @@
                 <h1>🚗 & 🤖 채용 공고 & 기술 로드맵 대시보드</h1>
             </div>
             <div class="update-time">
-                <div>최근 업데이트: 2026-06-25 20:57:25</div>
+                <div>최근 업데이트: 2026-06-25 21:00:24</div>
                 <div class="source-text">데이터 출처: 각 사 공식 채용 플랫폼 (현대차 talent.hyundai.com, 기아 recruit.kia.com, 모비스 recruit.mobis.co.kr, 두산 www.doosanrobotics.com, 레인보우 www.rainbow-robotics.com)</div>
             </div>
         </header>
@@ -429,9 +447,11 @@
             <button class="tab-btn" onclick="openTab(event, 'tab-roadmap-ergo')">🧠 인간공학 기술 로드맵</button>
         </div>
 
-        <!-- 탭 1: 채용 추천 리스트 -->
+        <!-- 탭 1: 채용 추천 리스트 (기계 및 인간공학 섹션 구분) -->
         <div id="tab-jobs" class="tab-content active">
-            <div class="dashboard-card">
+            
+            <div class="recommendation-section">⚙️ 기계공학 / PM 추천 채용 공고</div>
+            <div class="dashboard-card" style="margin-top: 15px; margin-bottom: 30px;">
                 <table>
                     <thead>
                         <tr>
@@ -460,10 +480,10 @@
             <td style="white-space: nowrap;"><span class="badge badge-hyundai">현대자동차</span></td>
             <td>
                 <div class="job-title">전기차(EV) 배터리 팩 기구 설계 경력 채용</div>
-                <div class="job-desc">배터리 시스템 기구 구조 설계, 하우징 다이캐스팅 및 사출 설계, 배터리 모듈 열관리 냉각 플레이트 설계, 진동/내구 해석 대응 및 공차 분석. 기계공학 전공자 우대. CAD 설계 4년 이상.</div>
+                <div class="job-desc">배터리 시스템 기구 구조 설계, 하우징 다이캐스팅 및 사출 설계, 배터리 모듈 열관리 냉각 플레이트 설계, 진동/내구 해석 대응 및 공차 분석. 기계공학 전공자 우대.</div>
             </td>
             <td>
-                <div class="keywords-container"><span class="keyword-tag">기계</span><span class="keyword-tag">기구</span><span class="keyword-tag">설계</span><span class="keyword-tag">CAD</span><span class="keyword-tag">사출</span><span class="keyword-tag">구조</span></div>
+                <div class="keywords-container"><span class="keyword-tag">기계</span><span class="keyword-tag">기구</span><span class="keyword-tag">설계</span><span class="keyword-tag">사출</span><span class="keyword-tag">구조</span><span class="keyword-tag">진동</span></div>
             </td>
             <td style="white-space: nowrap;"><a href="https://talent.hyundai.com" target="_blank" class="btn-link">지원하기 ↗</a></td>
         </tr>
@@ -566,9 +586,9 @@
             </td>
             <td>
                 <div class="match-container">
-                    <span class="match-val">100%</span>
+                    <span class="match-val">92%</span>
                     <div class="progress-bar-bg">
-                        <div class="progress-bar-fill" style="width: 100%;"></div>
+                        <div class="progress-bar-fill" style="width: 92%;"></div>
                     </div>
                 </div>
             </td>
@@ -578,7 +598,7 @@
                 <div class="job-desc">로봇 관절 모듈 기구 설계, 하모닉 드라이브 감속기 및 모터 통합 패키징 설계. 베어링 선정 및 하중 모멘트 계산. 기계/자동화 전공 우대.</div>
             </td>
             <td>
-                <div class="keywords-container"><span class="keyword-tag">기계</span><span class="keyword-tag">기구</span><span class="keyword-tag">설계</span><span class="keyword-tag">자동화</span><span class="keyword-tag">로봇</span><span class="keyword-tag">액추에이터</span></div>
+                <div class="keywords-container"><span class="keyword-tag">기계</span><span class="keyword-tag">기구</span><span class="keyword-tag">설계</span><span class="keyword-tag">자동화</span><span class="keyword-tag">로봇</span></div>
             </td>
             <td style="white-space: nowrap;"><a href="https://www.doosanrobotics.com" target="_blank" class="btn-link">지원하기 ↗</a></td>
         </tr>
@@ -652,9 +672,167 @@
             <td style="white-space: nowrap;"><a href="https://www.rainbow-robotics.com" target="_blank" class="btn-link">지원하기 ↗</a></td>
         </tr>
         
+        <tr class="job-row">
+            <td style="white-space: nowrap;">
+                <span class="recommendation-badge status-normal">보통 💬</span>
+            </td>
+            <td>
+                <div class="match-container">
+                    <span class="match-val">32%</span>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 32%;"></div>
+                    </div>
+                </div>
+            </td>
+            <td style="white-space: nowrap;"><span class="badge badge-kia">기아</span></td>
+            <td>
+                <div class="job-title">스마트팩토리 조립 공정 인간공학 작업 개선 담당자</div>
+                <div class="job-desc">생산 라인 작업자의 작업 자세 평가(RULA, REBA) 및 유해 요인 제거, 제조 생산 설비의 인간공학적 배치 및 작업대 레이아웃 표준화, 피로도 평가 시스템 구축.</div>
+            </td>
+            <td>
+                <div class="keywords-container"><span class="keyword-tag">스마트팩토리</span><span class="keyword-tag">설비</span></div>
+            </td>
+            <td style="white-space: nowrap;"><a href="https://recruit.kia.com" target="_blank" class="btn-link">지원하기 ↗</a></td>
+        </tr>
+        
                     </tbody>
                 </table>
             </div>
+
+            <div class="recommendation-section">🧠 인간공학 / 안전보건 / HMI 추천 채용 공고</div>
+            <div class="dashboard-card" style="margin-top: 15px;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 10%;">추천 등급</th>
+                            <th style="width: 12%;">매칭률</th>
+                            <th style="width: 10%;">회사</th>
+                            <th style="width: 40%;">채용 직무 및 요구 역량</th>
+                            <th style="width: 18%;">매칭 키워드</th>
+                            <th style="width: 10%;">페이지 이동</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+        <tr class="job-row">
+            <td style="white-space: nowrap;">
+                <span class="recommendation-badge status-hot">적극 추천 🔥</span>
+            </td>
+            <td>
+                <div class="match-container">
+                    <span class="match-val">100%</span>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+            </td>
+            <td style="white-space: nowrap;"><span class="badge badge-hynix">SK하이닉스</span></td>
+            <td>
+                <div class="job-title">안전보건 보건관리자 경력 채용 (SHE)</div>
+                <div class="job-desc">반도체 팹(FAB) 내 보건 관리 가이드라인 수립, 작업환경 측정 및 위해요인 분석, 근골격계 부담 작업 유해요인조사 및 근무환경 개선. 인간공학기사 또는 산업위생관리기사 자격증 소지자 필수.</div>
+            </td>
+            <td>
+                <div class="keywords-container"><span class="keyword-tag">인간공학</span><span class="keyword-tag">인간공학기사</span><span class="keyword-tag">보건</span><span class="keyword-tag">안전보건</span><span class="keyword-tag">작업환경</span><span class="keyword-tag">근골격계</span></div>
+            </td>
+            <td style="white-space: nowrap;"><a href="https://careers.skhynix.com" target="_blank" class="btn-link">지원하기 ↗</a></td>
+        </tr>
+        
+        <tr class="job-row">
+            <td style="white-space: nowrap;">
+                <span class="recommendation-badge status-hot">적극 추천 🔥</span>
+            </td>
+            <td>
+                <div class="match-container">
+                    <span class="match-val">92%</span>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 92%;"></div>
+                    </div>
+                </div>
+            </td>
+            <td style="white-space: nowrap;"><span class="badge badge-robot">두산로보틱스</span></td>
+            <td>
+                <div class="job-title">협동로봇 인간-로봇 상호작용(HRI) 안전성 평가 담당</div>
+                <div class="job-desc">로봇 제어용 티칭 펜던트 및 UI/UX 사용성 평가, 협동로봇 작업 공간의 인간공학적 안전 보장 가이드라인 수립, 인간-로봇 협업 강도 정량 분석 및 신뢰성 검증.</div>
+            </td>
+            <td>
+                <div class="keywords-container"><span class="keyword-tag">인간공학</span><span class="keyword-tag">사용성</span><span class="keyword-tag">HRI</span><span class="keyword-tag">UI/UX</span><span class="keyword-tag">안전</span></div>
+            </td>
+            <td style="white-space: nowrap;"><a href="https://www.doosanrobotics.com" target="_blank" class="btn-link">지원하기 ↗</a></td>
+        </tr>
+        
+        <tr class="job-row">
+            <td style="white-space: nowrap;">
+                <span class="recommendation-badge status-hot">적극 추천 🔥</span>
+            </td>
+            <td>
+                <div class="match-container">
+                    <span class="match-val">80%</span>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 80%;"></div>
+                    </div>
+                </div>
+            </td>
+            <td style="white-space: nowrap;"><span class="badge badge-hyundai">현대자동차</span></td>
+            <td>
+                <div class="job-title">차량 콕핏 및 감성 HMI 사용성 평가 연구원</div>
+                <div class="job-desc">운전석 인체공학적 레이아웃 설계 검증, 차량용 계기판 및 디스플레이 시인성/사용성 평가(UT), 운전자 시선 추적(Eye-tracking) 기반 인터페이스 설계 분석.</div>
+            </td>
+            <td>
+                <div class="keywords-container"><span class="keyword-tag">사용성</span><span class="keyword-tag">HMI</span><span class="keyword-tag">인터페이스</span><span class="keyword-tag">인체</span><span class="keyword-tag">설계</span></div>
+            </td>
+            <td style="white-space: nowrap;"><a href="https://talent.hyundai.com" target="_blank" class="btn-link">지원하기 ↗</a></td>
+        </tr>
+        
+        <tr class="job-row">
+            <td style="white-space: nowrap;">
+                <span class="recommendation-badge status-good">추천 👍</span>
+            </td>
+            <td>
+                <div class="match-container">
+                    <span class="match-val">68%</span>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 68%;"></div>
+                    </div>
+                </div>
+            </td>
+            <td style="white-space: nowrap;"><span class="badge badge-hyundai">현대모비스</span></td>
+            <td>
+                <div class="job-title">자동차 인테리어 인간공학 시뮬레이션 연구원</div>
+                <div class="job-desc">시트 안락감 평가 및 정량화 기하 모형 개발, 디지털 마네킹(RAMSIS 등) 기반의 인체 거동 해석 및 운전 편의성 시뮬레이션 검증. 인간공학/산업공학 전공자 우대.</div>
+            </td>
+            <td>
+                <div class="keywords-container"><span class="keyword-tag">인간공학</span><span class="keyword-tag">인체</span><span class="keyword-tag">안락감</span><span class="keyword-tag">시뮬레이션</span></div>
+            </td>
+            <td style="white-space: nowrap;"><a href="https://recruit.mobis.co.kr" target="_blank" class="btn-link">지원하기 ↗</a></td>
+        </tr>
+        
+        <tr class="job-row">
+            <td style="white-space: nowrap;">
+                <span class="recommendation-badge status-normal">보통 💬</span>
+            </td>
+            <td>
+                <div class="match-container">
+                    <span class="match-val">36%</span>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 36%;"></div>
+                    </div>
+                </div>
+            </td>
+            <td style="white-space: nowrap;"><span class="badge badge-kia">기아</span></td>
+            <td>
+                <div class="job-title">스마트팩토리 조립 공정 인간공학 작업 개선 담당자</div>
+                <div class="job-desc">생산 라인 작업자의 작업 자세 평가(RULA, REBA) 및 유해 요인 제거, 제조 생산 설비의 인간공학적 배치 및 작업대 레이아웃 표준화, 피로도 평가 시스템 구축.</div>
+            </td>
+            <td>
+                <div class="keywords-container"><span class="keyword-tag">인간공학</span><span class="keyword-tag">스마트팩토리</span></div>
+            </td>
+            <td style="white-space: nowrap;"><a href="https://recruit.kia.com" target="_blank" class="btn-link">지원하기 ↗</a></td>
+        </tr>
+        
+                    </tbody>
+                </table>
+            </div>
+
         </div>
 
         <!-- 탭 2: 합격률 & 약점 분석 -->
@@ -694,7 +872,7 @@
                             <td style="text-align: center; white-space: nowrap;"><span class="recommendation-badge status-good">20%~30%</span></td>
                             <td class="job-desc">
                                 <strong>약점:</strong> 자동차 부품 개발 프로세스(APQP) 및 규격(IATF 16949), 차량용 NVH 지식 부족.<br>
-                                <strong>전략:</strong> 가전 조립 라인 셋업 및 공차 개선 성공 사례를 신차 품질 평가 부서에 적극 매핑.
+                                <strong>전략:</strong> 가전 조립 라 셋업 및 공차 개선 성공 사례를 신차 품질 평가 부서에 적극 매핑.
                             </td>
                         </tr>
                         <tr class="job-row">
@@ -834,7 +1012,7 @@
                         </div>
                         <div class="phase-resources">
                             <div class="resource-title">📚 추천 자료:</div>
-                            - <strong>학술 논문</strong>: 대한인간공학회지(Journal of the Ergonomic Society of Korea) 내 '자율주행 제어권 전환 HMI', '협동로봇 사용성 평가' 관련 논문 검색 독해<br>
+                            - <strong>학술 논문</strong>: 대한인간공학회지 내 '자율주행 HMI', '협동로봇 사용성 평가' 관련 논문 검색 독해<br>
                             - <strong>안전 규격서</strong>: ISO/TS 15066 (협동로봇 안전 요구사항 표준 가이드라인)
                         </div>
                     </div>
