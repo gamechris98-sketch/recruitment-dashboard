@@ -28,7 +28,7 @@ USER_PROFILE = {
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_FILE = os.path.join(CURRENT_DIR, "alert_history.json")
-HTML_FILE = os.path.join(CURRENT_DIR, "recruitment_dashboard.html")
+HTML_FILE = os.path.join(CURRENT_DIR, "index.html")
 MD_FILE = os.path.join(CURRENT_DIR, "recruitment_notices.md")
 
 # 공고 데이터 원천 정보
