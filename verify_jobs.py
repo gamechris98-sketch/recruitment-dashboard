@@ -3,6 +3,7 @@ import sys
 import io
 import urllib.request
 import urllib.error
+import json
 from datetime import datetime
 import re
 
@@ -13,6 +14,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 INDEX_FILE = os.path.join(BASE_DIR, "index.html")
 ERGO_FILE = os.path.join(BASE_DIR, "ergonomics.html")
+HISTORY_FILE = os.path.join(BASE_DIR, "update_history.json")
 
 JOBS_TO_VERIFY = [
     {"company": "현대자동차", "url": "https://talent.hyundai.com"},
@@ -56,7 +58,64 @@ def verify_url(url):
         print(f"FAIL (Exception: {str(e)})")
         return False, str(e)
 
-def update_html_verification(file_path, results):
+def load_history():
+    if os.path.exists(HISTORY_FILE):
+        try:
+            with open(HISTORY_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            return []
+    return []
+
+def save_history(history):
+    with open(HISTORY_FILE, "w", encoding="utf-8") as f:
+        json.dump(history, f, ensure_ascii=False, indent=4)
+
+def generate_history_html(history):
+    html = """
+            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+                <thead>
+                    <tr>
+                        <th style="border-bottom: 2px solid var(--border-color); padding: 12px; color: var(--text-muted);">검증 일시</th>
+                        <th style="border-bottom: 2px solid var(--border-color); padding: 12px; color: var(--text-muted);">전체 결과</th>
+                        <th style="border-bottom: 2px solid var(--border-color); padding: 12px; color: var(--text-muted);">기업별 채용 포털 연결성</th>
+                    </tr>
+                </thead>
+                <tbody>"""
+    
+    # 최근 5개 로그만 표시
+    for run in history[:5]:
+        timestamp = run.get("timestamp", "-")
+        success_count = sum(1 for status in run.get("details", {}).values() if status.get("status"))
+        total_count = len(run.get("details", {}))
+        
+        status_badge = ""
+        if success_count == total_count:
+            status_badge = f'<span class="recommendation-badge status-good" style="width: auto; padding: 4px 8px;">성공 ({success_count}/{total_count})</span>'
+        else:
+            status_badge = f'<span class="recommendation-badge status-hot" style="width: auto; padding: 4px 8px;">일부 지연 ({success_count}/{total_count})</span>'
+            
+        details_str = []
+        for company, info in run.get("details", {}).items():
+            color = "#34d399" if info.get("status") else "#f87171"
+            status_text = "정상" if info.get("status") else "지연/오류"
+            details_str.append(f'<span style="color: {color}; margin-right: 10px;">● {company}: {status_text}</span>')
+            
+        details_html = " ".join(details_str)
+        
+        html += f"""
+                    <tr class="job-row">
+                        <td style="padding: 12px; color: #fff; font-family: monospace; white-space: nowrap;">{timestamp}</td>
+                        <td style="padding: 12px; white-space: nowrap;">{status_badge}</td>
+                        <td style="padding: 12px; color: var(--text-muted); line-height: 1.5;">{details_html}</td>
+                    </tr>"""
+                    
+    html += """
+                </tbody>
+            </table>"""
+    return html
+
+def update_html_verification(file_path, results, history_html):
     if not os.path.exists(file_path):
         print(f"[Warning] File not found: {file_path}")
         return
@@ -100,6 +159,11 @@ def update_html_verification(file_path, results):
         flags=re.DOTALL
     )
     
+    # 4. 검증 이력 동적 주입
+    history_pattern = r"<!-- UPDATE_HISTORY_START -->.*?<!-- UPDATE_HISTORY_END -->"
+    replacement = f"<!-- UPDATE_HISTORY_START -->{history_html}\n            <!-- UPDATE_HISTORY_END -->"
+    content = re.sub(history_pattern, replacement, content, flags=re.DOTALL)
+    
     with open(file_path, "w", encoding="utf-8") as f:
         f.write(content)
     print(f"[Update Completed] {os.path.basename(file_path)}")
@@ -114,11 +178,24 @@ def main():
         success, desc = verify_url(item["url"])
         results[item["company"]] = {"status": success, "desc": desc}
         
+    # 히스토리 누적 기록
+    history = load_history()
+    new_run = {
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "details": results
+    }
+    history.insert(0, new_run) # 앞에 추가
+    history = history[:20] # 최대 20개만 보관
+    save_history(history)
+    
+    # 이력용 HTML 생성
+    history_html = generate_history_html(history)
+    
     print("\n[Updating HTML Dashboards]")
-    update_html_verification(INDEX_FILE, results)
-    update_html_verification(ERGO_FILE, results)
+    update_html_verification(INDEX_FILE, results, history_html)
+    update_html_verification(ERGO_FILE, results, history_html)
     print("==========================================")
-    print("  Success: Dashboards updated with verified live data.")
+    print("  Success: Dashboards updated with verified live data & history.")
     print("==========================================")
 
 if __name__ == "__main__":
