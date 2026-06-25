@@ -5,7 +5,7 @@ import urllib.request
 import urllib.parse
 from datetime import datetime
 
-# 1. 기계공학/PM 프로필
+# 1. 남편 프로필 (기계공학 / PM)
 MECH_PROFILE = {
     "major": "기계공학",
     "experience_years": 8,
@@ -19,7 +19,7 @@ MECH_PROFILE = {
     }
 }
 
-# 2. [신규 추가] 인간공학 프로필
+# 2. 아내 프로필 (인간공학 / 보건 / HMI)
 ERGO_PROFILE = {
     "major": "인간공학",
     "core_skills": ["사용성 평가", "HMI", "HRI", "보건관리", "작업환경 개선", "근골격계 유해 요인 조사", "인간공학기사"],
@@ -36,6 +36,7 @@ DATA_FILE = os.path.join(CURRENT_DIR, "alert_history.json")
 HTML_FILE = os.path.join(CURRENT_DIR, "index.html")
 MD_FILE = os.path.join(CURRENT_DIR, "recruitment_notices.md")
 
+# 공고 데이터 원천 정보
 DATA_SOURCES = "각 사 공식 채용 플랫폼 (현대차 talent.hyundai.com, 기아 recruit.kia.com, 모비스 recruit.mobis.co.kr, 두산 www.doosanrobotics.com, 레인보우 www.rainbow-robotics.com)"
 
 RECRUITMENT_SCHEDULES = [
@@ -154,7 +155,7 @@ def fetch_recent_notices():
             "date": datetime.now().strftime("%Y-%m-%d")
         },
         
-        # [신규 추가] 인간공학 전공자 타겟 직무군
+        # 인간공학 전공자 타겟 직무군
         {
             "company": "SK하이닉스",
             "title": "안전보건 보건관리자 경력 채용 (SHE)",
@@ -192,20 +193,14 @@ def fetch_recent_notices():
         }
     ]
     
-    # 1. 기계공학 매칭 공고 리스트
     mech_jobs = []
-    # 2. 인간공학 매칭 공고 리스트
     ergo_jobs = []
     
     for idx, job in enumerate(raw_job_database):
         job_id = f"{job['company']}_{idx}_{datetime.now().strftime('%Y%m%d')}"
-        
-        # 기계공학 매칭률 계산
         m_percent, m_keywords, m_level, m_color = calculate_match_rate(
             job["title"], job["description"], MECH_PROFILE["matching_weights"]
         )
-        
-        # 인간공학 매칭률 계산
         e_percent, e_keywords, e_level, e_color = calculate_match_rate(
             job["title"], job["description"], ERGO_PROFILE["matching_weights"]
         )
@@ -219,7 +214,6 @@ def fetch_recent_notices():
             "date": job["date"]
         }
         
-        # 기계공학 추천 목록에 추가 (어느 정도 매칭되는 경우)
         if m_percent >= 30:
             mech_jobs.append({
                 **job_base,
@@ -229,7 +223,6 @@ def fetch_recent_notices():
                 "status_color": m_color
             })
             
-        # 인간공학 추천 목록에 추가
         if e_percent >= 30:
             ergo_jobs.append({
                 **job_base,
@@ -250,13 +243,13 @@ def generate_markdown_dashboard(mech_jobs, ergo_jobs):
 *마지막 업데이트: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*
 *데이터 출처: {DATA_SOURCES}*
 
-## ⚙️ 기계공학 / PM 추천 공고
+## ⚙️ 남편 추천 채용 공고 (기계공학 / PM)
 """
     for n in mech_jobs[:5]:
         keywords_str = ", ".join([f"`{k}`" for k in n["matched_keywords"][:5]])
         md_content += f"| **{n['recommendation_level']}** | {n['match_percent']}% | {n['company']} | {n['title']} | {keywords_str} | [공고 확인]({n['link']}) |\n"
         
-    md_content += "\n## 🧠 인간공학 / 안전보건 / HMI 추천 공고\n"
+    md_content += "\n## 🧠 아내 추천 채용 공고 (인간공학 / 보건 / HMI)\n"
     for n in ergo_jobs[:5]:
         keywords_str = ", ".join([f"`{k}`" for k in n["matched_keywords"][:5]])
         md_content += f"| **{n['recommendation_level']}** | {n['match_percent']}% | {n['company']} | {n['title']} | {keywords_str} | [공고 확인]({n['link']}) |\n"
@@ -520,6 +513,7 @@ def generate_html_dashboard(mech_jobs, ergo_jobs):
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.08em;
+            white-space: nowrap; /* 제목 줄바꿈 방지 */
         }}
         td {{
             padding: 22px 16px;
@@ -617,11 +611,13 @@ def generate_html_dashboard(mech_jobs, ergo_jobs):
             font-size: 1.05rem;
             color: #f3f4f6;
             margin-bottom: 6px;
+            word-break: keep-all; /* 한글 낱글자 줄바꿈 방지 */
         }}
         .job-desc {{
             font-size: 0.88rem;
             color: var(--text-muted);
             line-height: 1.5;
+            word-break: keep-all; /* 한글 낱글자 줄바꿈 방지 */
         }}
         .keywords-container {{
             display: flex;
@@ -729,10 +725,10 @@ def generate_html_dashboard(mech_jobs, ergo_jobs):
             <button class="tab-btn" onclick="openTab(event, 'tab-roadmap-ergo')">🧠 인간공학 기술 로드맵</button>
         </div>
 
-        <!-- 탭 1: 채용 추천 리스트 (기계 및 인간공학 섹션 구분) -->
+        <!-- 탭 1: 채용 추천 리스트 (남편 및 아내 섹션 명시적 구분) -->
         <div id="tab-jobs" class="tab-content active">
             
-            <div class="recommendation-section">⚙️ 기계공학 / PM 추천 채용 공고</div>
+            <div class="recommendation-section">⚙️ 남편 추천 채용 공고 (기계공학 / PM)</div>
             <div class="dashboard-card" style="margin-top: 15px; margin-bottom: 30px;">
                 <table>
                     <thead>
@@ -751,7 +747,7 @@ def generate_html_dashboard(mech_jobs, ergo_jobs):
                 </table>
             </div>
 
-            <div class="recommendation-section">🧠 인간공학 / 안전보건 / HMI 추천 채용 공고</div>
+            <div class="recommendation-section">🧠 아내 추천 채용 공고 (인간공학 / 보건 / HMI)</div>
             <div class="dashboard-card" style="margin-top: 15px;">
                 <table>
                     <thead>
@@ -809,7 +805,7 @@ def generate_html_dashboard(mech_jobs, ergo_jobs):
                             <td style="text-align: center; white-space: nowrap;"><span class="recommendation-badge status-good">20%~30%</span></td>
                             <td class="job-desc">
                                 <strong>약점:</strong> 자동차 부품 개발 프로세스(APQP) 및 규격(IATF 16949), 차량용 NVH 지식 부족.<br>
-                                <strong>전략:</strong> 가전 조립 라 셋업 및 공차 개선 성공 사례를 신차 품질 평가 부서에 적극 매핑.
+                                <strong>전략:</strong> 가전 조립 라인 셋업 및 공차 개선 성공 사례를 신차 품질 평가 부서에 적극 매핑.
                             </td>
                         </tr>
                         <tr class="job-row">
@@ -1007,7 +1003,7 @@ def run_alert_system():
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(history, f, ensure_ascii=False, indent=4)
         
-    print("기계공학 및 인간공학 이중 추천 리스트 갱신 완료.")
+    print("남편/아내 구분 탭 및 타이틀 줄바꿈 방지 스타일 갱신 완료.")
 
 if __name__ == "__main__":
     run_alert_system()

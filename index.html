@@ -188,6 +188,7 @@
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.08em;
+            white-space: nowrap; /* 제목 줄바꿈 방지 */
         }
         td {
             padding: 22px 16px;
@@ -285,11 +286,13 @@
             font-size: 1.05rem;
             color: #f3f4f6;
             margin-bottom: 6px;
+            word-break: keep-all; /* 한글 낱글자 줄바꿈 방지 */
         }
         .job-desc {
             font-size: 0.88rem;
             color: var(--text-muted);
             line-height: 1.5;
+            word-break: keep-all; /* 한글 낱글자 줄바꿈 방지 */
         }
         .keywords-container {
             display: flex;
@@ -377,7 +380,7 @@
                 <h1>🚗 & 🤖 채용 공고 & 기술 로드맵 대시보드</h1>
             </div>
             <div class="update-time">
-                <div>최근 업데이트: 2026-06-25 21:00:24</div>
+                <div>최근 업데이트: 2026-06-25 21:03:17</div>
                 <div class="source-text">데이터 출처: 각 사 공식 채용 플랫폼 (현대차 talent.hyundai.com, 기아 recruit.kia.com, 모비스 recruit.mobis.co.kr, 두산 www.doosanrobotics.com, 레인보우 www.rainbow-robotics.com)</div>
             </div>
         </header>
@@ -447,10 +450,10 @@
             <button class="tab-btn" onclick="openTab(event, 'tab-roadmap-ergo')">🧠 인간공학 기술 로드맵</button>
         </div>
 
-        <!-- 탭 1: 채용 추천 리스트 (기계 및 인간공학 섹션 구분) -->
+        <!-- 탭 1: 채용 추천 리스트 (남편 및 아내 섹션 명시적 구분) -->
         <div id="tab-jobs" class="tab-content active">
             
-            <div class="recommendation-section">⚙️ 기계공학 / PM 추천 채용 공고</div>
+            <div class="recommendation-section">⚙️ 남편 추천 채용 공고 (기계공학 / PM)</div>
             <div class="dashboard-card" style="margin-top: 15px; margin-bottom: 30px;">
                 <table>
                     <thead>
@@ -699,7 +702,7 @@
                 </table>
             </div>
 
-            <div class="recommendation-section">🧠 인간공학 / 안전보건 / HMI 추천 채용 공고</div>
+            <div class="recommendation-section">🧠 아내 추천 채용 공고 (인간공학 / 보건 / HMI)</div>
             <div class="dashboard-card" style="margin-top: 15px;">
                 <table>
                     <thead>
@@ -872,7 +875,7 @@
                             <td style="text-align: center; white-space: nowrap;"><span class="recommendation-badge status-good">20%~30%</span></td>
                             <td class="job-desc">
                                 <strong>약점:</strong> 자동차 부품 개발 프로세스(APQP) 및 규격(IATF 16949), 차량용 NVH 지식 부족.<br>
-                                <strong>전략:</strong> 가전 조립 라 셋업 및 공차 개선 성공 사례를 신차 품질 평가 부서에 적극 매핑.
+                                <strong>전략:</strong> 가전 조립 라인 셋업 및 공차 개선 성공 사례를 신차 품질 평가 부서에 적극 매핑.
                             </td>
                         </tr>
                         <tr class="job-row">
