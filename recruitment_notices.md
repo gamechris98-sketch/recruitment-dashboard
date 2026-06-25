@@ -1,6 +1,6 @@
 # 🚗 & 🤖 경력 맞춤형 채용 공고 대시보드
 
-*마지막 업데이트: 2026-06-25 01:12:37*
+*마지막 업데이트: 2026-06-25 20:55:39*
 *데이터 출처: 각 사 공식 채용 플랫폼 (현대차 talent.hyundai.com, 기아 recruit.kia.com, 모비스 recruit.mobis.co.kr, 두산 www.doosanrobotics.com, 레인보우 www.rainbow-robotics.com)*
 
 | 추천 등급 | 매칭률 | 회사명 | 공고명 | 매칭 키워드 | 바로가기 |

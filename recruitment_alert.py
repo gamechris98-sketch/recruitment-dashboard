@@ -31,7 +31,7 @@ DATA_FILE = os.path.join(CURRENT_DIR, "alert_history.json")
 HTML_FILE = os.path.join(CURRENT_DIR, "recruitment_dashboard.html")
 MD_FILE = os.path.join(CURRENT_DIR, "recruitment_notices.md")
 
-# 공고 데이터 원천 정보 (출처 표기용)
+# 공고 데이터 원천 정보
 DATA_SOURCES = "각 사 공식 채용 플랫폼 (현대차 talent.hyundai.com, 기아 recruit.kia.com, 모비스 recruit.mobis.co.kr, 두산 www.doosanrobotics.com, 레인보우 www.rainbow-robotics.com)"
 
 RECRUITMENT_SCHEDULES = [
@@ -326,6 +326,7 @@ def generate_html_dashboard(notices):
             margin-bottom: 24px;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 12px;
+            flex-wrap: wrap;
         }}
         .tab-btn {{
             background: none;
@@ -630,6 +631,7 @@ def generate_html_dashboard(notices):
             <button class="tab-btn" onclick="openTab(event, 'tab-analysis')">⚖️ 합격률 & 약점 분석</button>
             <button class="tab-btn" onclick="openTab(event, 'tab-roadmap-semi')">🔬 반도체 기술 로드맵</button>
             <button class="tab-btn" onclick="openTab(event, 'tab-roadmap-auto')">⚙️ 완성차/로봇 로드맵</button>
+            <button class="tab-btn" onclick="openTab(event, 'tab-roadmap-ergo')">🧠 인간공학 기술 로드맵</button>
         </div>
 
         <!-- 탭 1: 채용 추천 리스트 -->
@@ -796,6 +798,47 @@ def generate_html_dashboard(notices):
                 </div>
             </div>
         </div>
+
+        <!-- 탭 5: 인간공학 학습 로드맵 -->
+        <div id="tab-roadmap-ergo" class="tab-content">
+            <div class="dashboard-card">
+                <div class="roadmap-container">
+                    <div class="roadmap-phase">
+                        <div class="phase-title">🟢 1단계: 입문 (Beginner) - 산업 안전 보건 및 작업 환경 평가 기초</div>
+                        <div class="phase-content">
+                            반도체/제조 팹 내 근골격계 질환 예방 가이드라인 학습, 유해요인조사 제도 이해, HMI(Human-Machine Interface) 사용성 및 인체 치수 적합성 기본 개념 습득.
+                        </div>
+                        <div class="phase-resources">
+                            <div class="resource-title">📚 추천 자료:</div>
+                            - <strong>지침 및 규격</strong>: 고용노동부 '근골격계 부담작업 유해요인조사 지침' / 한국산업안전보건공단 안전보건기술지침(KOSHA GUIDE)<br>
+                            - <strong>기본 이론</strong>: 인간공학기사 필기 교재 (작업생리학, 산업심리학 파트 발췌 학습)
+                        </div>
+                    </div>
+                    <div class="roadmap-phase">
+                        <div class="phase-title">🟡 2단계: 중급 (Intermediate) - 근골격계 정량 평가 및 모빌리티 인체공학 설계</div>
+                        <div class="phase-content">
+                            REBA, RULA, OWAS 평가 모델을 적용한 현장 작업자 부하량 정량 평가법 적용, 자동차 시트 안락감(Seat Comfort) 및 운전석 컨트롤 패널 레이아웃 설계, ISO 9241 사용성 표준 가이드 준수 검증.
+                        </div>
+                        <div class="phase-resources">
+                            <div class="resource-title">📚 추천 자료:</div>
+                            - <strong>추천 도서</strong>: *인간공학 (저자: 이순요 외)* / *인간공학 실무 가이드 (한국인간공학회)*<br>
+                            - <strong>학술 규격</strong>: ISO 9241 (사용자 시스템의 인간공학 표준) / NASA-TLX 작업부하 평가지 모델 공부
+                        </div>
+                    </div>
+                    <div class="roadmap-phase">
+                        <div class="phase-title">🔴 3단계: 고급 (Advanced) - 자율주행 HMI 제어권 전환 시나리오 및 협동로봇 안전성 설계</div>
+                        <div class="phase-content">
+                            자율주행 레벨 3 이상에서 시스템 ➡️ 운전자 제어권 전환(Take-over) 시 운전자 모니터링 시스템(DMS) 및 최적 알람 햅틱/시각 시나리오 설계, 협동로봇 안전 규격(ISO/TS 15066) 충돌력 계산 및 시뮬레이션 검증.
+                        </div>
+                        <div class="phase-resources">
+                            <div class="resource-title">📚 추천 자료:</div>
+                            - <strong>학술 논문</strong>: 대한인간공학회지(Journal of the Ergonomic Society of Korea) 내 '자율주행 제어권 전환 HMI', '협동로봇 사용성 평가' 관련 논문 검색 독해<br>
+                            - <strong>안전 규격서</strong>: ISO/TS 15066 (협동로봇 안전 요구사항 표준 가이드라인)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -846,7 +889,7 @@ def run_alert_system():
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(history, f, ensure_ascii=False, indent=4)
         
-    print("대시보드에 약점 분석 테이블 추가 및 빌드 완료.")
+    print("인간공학 학습 로드맵 탭 추가 완료.")
 
 if __name__ == "__main__":
     run_alert_system()
