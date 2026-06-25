@@ -126,6 +126,7 @@ def save_markdown_history(history):
 
 def generate_history_html(history):
     html = """
+            <div class="history-table-wrapper" style="width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;">
             <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
                 <thead>
                     <tr>
@@ -165,7 +166,8 @@ def generate_history_html(history):
                     
     html += """
                 </tbody>
-            </table>"""
+            </table>
+            </div>"""
     return html
 
 def update_html_verification(file_path, results, history_html):
