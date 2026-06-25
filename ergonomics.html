@@ -59,13 +59,7 @@
             -webkit-text-fill-color: transparent;
             white-space: nowrap;
         }
-        @media (max-width: 768px) {
-            .header-left h1 {
-                white-space: normal;
-                word-break: keep-all;
-                font-size: 1.8rem;
-            }
-        }
+        
         .header-left p {
             color: var(--text-muted);
             margin: 0;
@@ -415,41 +409,143 @@
             line-height: 1.5;
         }
     
+        
+
+        /* 전역 박스 사이징 설정 (오버플로우 방지) */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* 검증 상태바 스타일 데코레이션 */
+        .verification-status-bar {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.02));
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            color: #a7f3d0;
+            padding: 16px 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            line-height: 1.5;
+        }
+        .verification-status-bar strong {
+            color: #34d399;
+        }
+        .verification-text {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .verification-badge-label {
+            font-weight: 700;
+            white-space: nowrap;
+            background-color: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            font-family: monospace;
+        }
+
         @media (max-width: 768px) {
             body {
-                padding: 20px 10px !important;
+                padding: 15px 8px !important;
             }
             .dashboard-card {
-                padding: 15px !important;
-                overflow-x: auto !important;
-                -webkit-overflow-scrolling: touch;
+                padding: 12px !important;
+                overflow-x: visible !important;
             }
-            table {
-                width: 100% !important;
-                min-width: 750px !important; /* Force table horizontal scroll instead of crushing columns */
+            
+            /* H1 제목 줄바꿈 및 오버플로우 방지 */
+            .header-left h1 {
+                white-space: normal !important;
+                word-break: keep-all !important;
+                font-size: 1.5rem !important;
+                line-height: 1.3 !important;
             }
-            header {
+            
+            /* 검증바 모바일 대응 */
+            .verification-status-bar {
                 flex-direction: column !important;
                 align-items: flex-start !important;
-                gap: 15px !important;
+                gap: 12px !important;
+                padding: 14px 16px !important;
             }
-            .header-right {
-                align-items: flex-start !important;
-                width: 100% !important;
+            .verification-badge-label {
+                align-self: flex-end;
             }
-            .nav-switch {
-                width: 100% !important;
-                justify-content: space-between !important;
-            }
-            .nav-switch a {
-                flex: 1 !important;
-                text-align: center !important;
-            }
-            .update-time {
-                text-align: left !important;
-            }
+            
+            /* 일정표 모바일 그리드 */
             .schedule-grid {
-                grid-template-columns: 1fr !important; /* Stack schedules on mobile */
+                grid-template-columns: 1fr !important;
+                gap: 12px !important;
+            }
+
+            /* 테이블을 카드 레이아웃으로 변경 (가로스크롤 제거용) */
+            table, thead, tbody, th, td, tr {
+                display: block !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            table {
+                min-width: auto !important; /* 가로크기 강제성 해제 */
+            }
+            thead {
+                display: none !important;
+            }
+            tr.job-row {
+                border: 1px solid var(--border-color) !important;
+                border-radius: 12px !important;
+                margin-bottom: 16px !important;
+                padding: 16px !important;
+                background-color: rgba(255, 255, 255, 0.01) !important;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+                box-sizing: border-box !important;
+            }
+            td {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
+                padding: 10px 0 !important;
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                white-space: normal !important;
+                box-sizing: border-box !important;
+            }
+            td:last-child {
+                border-bottom: none !important;
+                justify-content: flex-end !important;
+                padding-top: 15px !important;
+            }
+            
+            /* 카드 내부 속성 라벨 지정 */
+            td:nth-of-type(1):before { content: "추천 등급"; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; }
+            td:nth-of-type(2):before { content: "매칭률"; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; }
+            td:nth-of-type(3):before { content: "회사"; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; }
+            
+            /* 직무명 및 요구 역량은 세로로 넓게 배치 */
+            td:nth-of-type(4) {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 6px;
+            }
+            td:nth-of-type(4):before { content: "채용 직무 및 요구 역량"; font-weight: 700; color: var(--primary-hover); font-size: 0.8rem; margin-bottom: 4px; }
+            
+            td:nth-of-type(5):before { content: "매칭 키워드"; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; }
+            td:nth-of-type(6):before { content: "마감 일정"; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; }
+            
+            .keywords-container {
+                justify-content: flex-end;
+            }
+            .job-title {
+                font-size: 1.1rem !important;
+                margin-top: 4px;
+            }
+            .btn-link {
+                width: 100%;
+                box-sizing: border-box;
             }
         }
 </style>
@@ -467,15 +563,15 @@
                     <a href="ergonomics.html" class="active">🧠 인간공학</a>
                 </div>
                 <div class="update-time">
-                    <div>최근 업데이트: 2026-06-25 21:45:31</div>
+                    <div>최근 업데이트: 2026-06-25 21:53:53</div>
                     <div class="source-text">데이터 출처: 현대차 talent.hyundai.com, 모비스 recruit.mobis.co.kr, LG전자 careers.lg.com, 네이버 채용</div>
                 </div>
             </div>
         </header>
 
-        <div class="verification-status-bar" style="background-color: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399; padding: 12px 18px; border-radius: 8px; margin-bottom: 25px; font-size: 0.9rem; display: flex; align-items: center; justify-content: space-between; gap: 10px;">
-            <span>🛡️ <strong>데이터 신뢰도 검증 필터 적용 완료</strong>: 공식 채용 사이트와 실시간 연동 상태를 확인했습니다. (가상/시뮬레이션 데이터 배제)</span>
-            <span style="font-weight: 700; white-space: nowrap;">✅ 전 직무 실시간 검증 완료 (2026-06-25)</span>
+        <div class="verification-status-bar">
+            <span class="verification-text">🛡️ <strong>데이터 신뢰도 검증 필터 적용 완료</strong>: 공식 채용 사이트와 실시간 연동 상태를 확인했습니다. (가상/시뮬레이션 데이터 배제)</span>
+            <span class="verification-badge-label">✅ 전 직무 실시간 검증 완료 (2026-06-25)</span>
         </div>
 
         <div class="alert-box">
@@ -872,22 +968,27 @@
                 </thead>
                 <tbody>
                     <tr class="job-row">
+                        <td style="padding: 12px; color: #fff; font-family: monospace; white-space: nowrap;">2026-06-25 21:53:53</td>
+                        <td style="padding: 12px; white-space: nowrap;"><span class="recommendation-badge status-good" style="width: auto; padding: 4px 8px;">성공 (6/6)</span></td>
+                        <td style="padding: 12px; color: var(--text-muted); line-height: 1.5;"><span style="color: #34d399; margin-right: 10px;">● 현대자동차: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 기아: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 현대모비스: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 두산로보틱스: 정상</span> <span style="color: #34d399; margin-right: 10px;">● LG전자: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 네이버랩스: 정상</span></td>
+                    </tr>
+                    <tr class="job-row">
+                        <td style="padding: 12px; color: #fff; font-family: monospace; white-space: nowrap;">2026-06-25 21:52:59</td>
+                        <td style="padding: 12px; white-space: nowrap;"><span class="recommendation-badge status-good" style="width: auto; padding: 4px 8px;">성공 (6/6)</span></td>
+                        <td style="padding: 12px; color: var(--text-muted); line-height: 1.5;"><span style="color: #34d399; margin-right: 10px;">● 현대자동차: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 기아: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 현대모비스: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 두산로보틱스: 정상</span> <span style="color: #34d399; margin-right: 10px;">● LG전자: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 네이버랩스: 정상</span></td>
+                    </tr>
+                    <tr class="job-row">
+                        <td style="padding: 12px; color: #fff; font-family: monospace; white-space: nowrap;">2026-06-25 21:49:56</td>
+                        <td style="padding: 12px; white-space: nowrap;"><span class="recommendation-badge status-good" style="width: auto; padding: 4px 8px;">성공 (6/6)</span></td>
+                        <td style="padding: 12px; color: var(--text-muted); line-height: 1.5;"><span style="color: #34d399; margin-right: 10px;">● 현대자동차: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 기아: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 현대모비스: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 두산로보틱스: 정상</span> <span style="color: #34d399; margin-right: 10px;">● LG전자: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 네이버랩스: 정상</span></td>
+                    </tr>
+                    <tr class="job-row">
                         <td style="padding: 12px; color: #fff; font-family: monospace; white-space: nowrap;">2026-06-25 21:45:31</td>
                         <td style="padding: 12px; white-space: nowrap;"><span class="recommendation-badge status-good" style="width: auto; padding: 4px 8px;">성공 (6/6)</span></td>
                         <td style="padding: 12px; color: var(--text-muted); line-height: 1.5;"><span style="color: #34d399; margin-right: 10px;">● 현대자동차: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 기아: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 현대모비스: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 두산로보틱스: 정상</span> <span style="color: #34d399; margin-right: 10px;">● LG전자: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 네이버랩스: 정상</span></td>
                     </tr>
                     <tr class="job-row">
                         <td style="padding: 12px; color: #fff; font-family: monospace; white-space: nowrap;">2026-06-25 21:44:34</td>
-                        <td style="padding: 12px; white-space: nowrap;"><span class="recommendation-badge status-good" style="width: auto; padding: 4px 8px;">성공 (6/6)</span></td>
-                        <td style="padding: 12px; color: var(--text-muted); line-height: 1.5;"><span style="color: #34d399; margin-right: 10px;">● 현대자동차: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 기아: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 현대모비스: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 두산로보틱스: 정상</span> <span style="color: #34d399; margin-right: 10px;">● LG전자: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 네이버랩스: 정상</span></td>
-                    </tr>
-                    <tr class="job-row">
-                        <td style="padding: 12px; color: #fff; font-family: monospace; white-space: nowrap;">2026-06-25 21:31:40</td>
-                        <td style="padding: 12px; white-space: nowrap;"><span class="recommendation-badge status-good" style="width: auto; padding: 4px 8px;">성공 (6/6)</span></td>
-                        <td style="padding: 12px; color: var(--text-muted); line-height: 1.5;"><span style="color: #34d399; margin-right: 10px;">● 현대자동차: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 기아: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 현대모비스: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 두산로보틱스: 정상</span> <span style="color: #34d399; margin-right: 10px;">● LG전자: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 네이버랩스: 정상</span></td>
-                    </tr>
-                    <tr class="job-row">
-                        <td style="padding: 12px; color: #fff; font-family: monospace; white-space: nowrap;">2026-06-25 21:29:40</td>
                         <td style="padding: 12px; white-space: nowrap;"><span class="recommendation-badge status-good" style="width: auto; padding: 4px 8px;">성공 (6/6)</span></td>
                         <td style="padding: 12px; color: var(--text-muted); line-height: 1.5;"><span style="color: #34d399; margin-right: 10px;">● 현대자동차: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 기아: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 현대모비스: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 두산로보틱스: 정상</span> <span style="color: #34d399; margin-right: 10px;">● LG전자: 정상</span> <span style="color: #34d399; margin-right: 10px;">● 네이버랩스: 정상</span></td>
                     </tr>

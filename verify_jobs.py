@@ -186,9 +186,9 @@ def update_html_verification(file_path, results, history_html):
     )
     
     # 2. 검증 배지 영역 생성 및 업데이트
-    status_html = f"""<div class="verification-status-bar" style="background-color: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399; padding: 12px 18px; border-radius: 8px; margin-bottom: 25px; font-size: 0.9rem; display: flex; align-items: center; justify-content: space-between; gap: 10px;">
-            <span>🛡️ <strong>데이터 신뢰도 검증 필터 적용 완료</strong>: 공식 채용 사이트와 실시간 연동 상태를 확인했습니다. (가상/시뮬레이션 데이터 배제)</span>
-            <span style="font-weight: 700; white-space: nowrap;">✅ 전 직무 실시간 검증 완료 ({now_str.split()[0]})</span>
+    status_html = f"""<div class="verification-status-bar">
+            <span class="verification-text">🛡️ <strong>데이터 신뢰도 검증 필터 적용 완료</strong>: 공식 채용 사이트와 실시간 연동 상태를 확인했습니다. (가상/시뮬레이션 데이터 배제)</span>
+            <span class="verification-badge-label">✅ 전 직무 실시간 검증 완료 ({now_str.split()[0]})</span>
         </div>"""
         
     if "verification-status-bar" in content:
