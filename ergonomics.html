@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>인간공학 & 사용성 엔지니어링 커리어 대시보드</title>
+    <title>인간공학 & 사용성 대시보드</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -11,7 +11,7 @@
             --card-bg: #161b26;
             --text-color: #f3f4f6;
             --text-muted: #9ca3af;
-            --primary: #8b5cf6; /* 보라색 계열로 차별화 */
+            --primary: #8b5cf6;
             --primary-hover: #a78bfa;
             --border-color: #1f2937;
             
@@ -41,9 +41,13 @@
             padding-bottom: 25px;
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
+            align-items: center;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 20px;
+        }
+        .header-left {
+            flex: 1;
+            min-width: 300px;
         }
         .header-left h1 {
             font-family: 'Outfit', sans-serif;
@@ -63,7 +67,8 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 10px;
+            gap: 12px;
+            min-width: 250px;
         }
         .nav-switch {
             display: flex;
@@ -303,7 +308,7 @@
             color: #c084fc;
             border: 1px solid rgba(139, 92, 246, 0.25);
         }
-        .badge-robot {
+        .badge-naver {
             background-color: rgba(16, 185, 129, 0.12);
             color: #34d399;
             border: 1px solid rgba(16, 185, 129, 0.25);
@@ -407,8 +412,8 @@
     <div class="container">
         <header>
             <div class="header-left">
-                <h1>🧠 인간공학 & 사용성 엔지니어링 대시보드</h1>
-                <p>가전업계 9년 경력 기반 인체공학적 설계, 사용성 평가 및 물리적 인터페이스 최적화 포털</p>
+                <h1>🧠 인간공학 & 사용성 대시보드</h1>
+                <p>인간공학 전공 및 데이터 분석 역량 기반 사용자 행동 연구 & 물리적 인터페이스 최적화 포털</p>
             </div>
             <div class="header-right">
                 <div class="nav-switch">
@@ -416,19 +421,19 @@
                     <a href="ergonomics.html" class="active">🧠 인간공학</a>
                 </div>
                 <div class="update-time">
-                    <div>최근 업데이트: 2026-06-25 21:07:20</div>
-                    <div class="source-text">데이터 출처: 기업별 채용 플랫폼 및 가전/모빌리티 인간공학 직무 분석</div>
+                    <div>최근 업데이트: 2026-06-25 21:11:00</div>
+                    <div class="source-text">데이터 출처: 현대차 talent.hyundai.com, 모비스 recruit.mobis.co.kr, LG전자 careers.lg.com, 네이버 채용</div>
                 </div>
             </div>
         </header>
 
         <div class="alert-box">
-            💡 <strong>가전업계 9년 경력자(인간공학 전공) 타겟팅 분석:</strong><br>
-            보건관리(SHE) 및 HMI 소프트웨어 영역을 제외하고, <strong>제품의 물리적 사용 편의성, 인체 치수 적합성 설계, 작업자 근골격계 편의성을 고려한 설비/작업대 레이아웃 최적화, 디지털 마네킹(RAMSIS 등) 시뮬레이션</strong> 영역에 집중합니다. 완성차/모빌리티 인테리어 사용성 평가 및 스마트팩토리 공정 작업성 설계 직무가 높은 최적 매칭 포지션입니다.
+            📊 <strong>인간공학 전공 + 데이터 사이언스(정량 분석) 융합 분석:</strong><br>
+            가전 물리 인터페이스 설계 9년 경력에 <strong>사용자 행동 데이터 정량 분석(Python, SQL, 통계 검정) 및 센서/생체 데이터 전처리</strong> 기술을 더한 강력한 T자형 인재 스펙입니다. 가전 실사용자 로그 데이터 분석 및 완성차(현대차/모비스) 운전자 생체 반응 해석, 스마트 기기의 사용성 평가(Mixed-Methods) 부문에서 고가치의 기회가 열려있습니다.
         </div>
 
         <!-- 📅 일정표 -->
-        <div class="section-title">📅 인간공학 관련 주요 채용 일정</div>
+        <div class="section-title">📅 인간공학 & 사용성 데이터 주요 채용 일정</div>
         <div class="schedule-grid">
             
             <div class="schedule-card">
@@ -436,7 +441,7 @@
                     <span class="schedule-company">현대자동차</span>
                     <span class="dday-badge dday-active">D-20</span>
                 </div>
-                <div class="schedule-title">R&D 부문 사용성/인체공학 설계</div>
+                <div class="schedule-title">차량 사용성 및 운전자 거동 데이터 분석</div>
                 <div class="schedule-deadline">마감: 2026-07-15 23:59</div>
                 <a href="https://talent.hyundai.com" target="_blank" class="schedule-link">공고 이동 ↗</a>
             </div>
@@ -446,7 +451,7 @@
                     <span class="schedule-company">현대모비스</span>
                     <span class="dday-badge">상시</span>
                 </div>
-                <div class="schedule-title">인테리어/시트 설계 (인간공학)</div>
+                <div class="schedule-title">인포테인먼트/콕핏 사용성 평가 (데이터)</div>
                 <div class="schedule-deadline">마감: 상시 채용</div>
                 <a href="https://recruit.mobis.co.kr" target="_blank" class="schedule-link">공고 이동 ↗</a>
             </div>
@@ -456,28 +461,28 @@
                     <span class="schedule-company">LG전자</span>
                     <span class="dday-badge">상시</span>
                 </div>
-                <div class="schedule-title">H&A 가전 디바이스 사용성 평가 경력</div>
+                <div class="schedule-title">H&A 가전 사용성 및 사용자 행동 리서치</div>
                 <div class="schedule-deadline">마감: 상시 채용</div>
                 <a href="https://careers.lg.com" target="_blank" class="schedule-link">공고 이동 ↗</a>
             </div>
 
             <div class="schedule-card">
                 <div class="schedule-header">
-                    <span class="schedule-company">두산로보틱스</span>
+                    <span class="schedule-company">네이버랩스</span>
                     <span class="dday-badge">상시</span>
                 </div>
-                <div class="schedule-title">로봇 작업공간 사용성/안전성 가이드라인</div>
+                <div class="schedule-title">서비스 로봇 HCI 및 사용자 데이터 분석</div>
                 <div class="schedule-deadline">마감: 상시 채용</div>
-                <a href="https://www.doosanrobotics.com" target="_blank" class="schedule-link">공고 이동 ↗</a>
+                <a href="https://recruit.navercorp.com" target="_blank" class="schedule-link">공고 이동 ↗</a>
             </div>
         
         </div>
 
         <!-- 탭 메뉴 -->
         <div class="tabs">
-            <button class="tab-btn active" onclick="openTab(event, 'tab-jobs')">🎯 채용 추천 리스트</button>
+            <button class="tab-btn active" onclick="openTab(event, 'tab-jobs')">🎯 실 등록 모집 직무 리스트</button>
             <button class="tab-btn" onclick="openTab(event, 'tab-analysis')">⚖️ 합격률 & 약점 분석</button>
-            <button class="tab-btn" onclick="openTab(event, 'tab-roadmap-ergo')">🧠 인간공학 기술 로드맵</button>
+            <button class="tab-btn" onclick="openTab(event, 'tab-roadmap-ergo')">🧠 인간공학 & 데이터 로드맵</button>
         </div>
 
         <!-- 탭 1: 채용 추천 리스트 -->
@@ -489,7 +494,7 @@
                             <th style="width: 12%;">추천 등급</th>
                             <th style="width: 12%;">매칭률</th>
                             <th style="width: 15%;">회사</th>
-                            <th style="width: 38%;">채용 직무 및 요구 역량</th>
+                            <th style="width: 38%;">실제 등록 모집 직무 및 요구 역량</th>
                             <th style="width: 15%;">매칭 키워드</th>
                             <th style="width: 8%;">이동</th>
                         </tr>
@@ -502,26 +507,26 @@
                             </td>
                             <td>
                                 <div class="match-container">
-                                    <span class="match-val">95%</span>
+                                    <span class="match-val">97%</span>
                                     <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill" style="width: 95%;"></div>
+                                        <div class="progress-bar-fill" style="width: 97%;"></div>
                                     </div>
                                 </div>
                             </td>
-                            <td style="white-space: nowrap;"><span class="badge badge-mobis">현대모비스</span></td>
+                            <td style="white-space: nowrap;"><span class="badge badge-hyundai">현대자동차</span></td>
                             <td>
-                                <div class="job-title">자동차 인테리어 인간공학 시뮬레이션 연구원</div>
-                                <div class="job-desc">시트 안락감 평가 및 정량화 기하 모형 개발, 디지털 마네킹(RAMSIS 등) 기반의 인체 거동 해석 및 운전 편의성 시뮬레이션 검증. 가전 물리 설계 9년 경력을 기반으로 한 모빌리티 인테리어 인체공학적 검증 업무와 최적 부합.</div>
+                                <div class="job-title">차량 내장 감성 품질 및 인체공학적 거동 데이터 분석</div>
+                                <div class="job-desc">[실무직무] 3D 동작 캡처 및 탑승자 신체 압력 정량 데이터 분석을 통한 시트 및 조작부 물리 배치 가이드라인 도출. Python/R 기반 생체 역학 데이터 모델링 및 통계 검정 역량 우대.</div>
                             </td>
                             <td>
                                 <div class="keywords-container">
-                                    <span class="keyword-tag">인간공학</span>
-                                    <span class="keyword-tag">디지털 마네킹</span>
-                                    <span class="keyword-tag">시뮬레이션</span>
-                                    <span class="keyword-tag">인체해석</span>
+                                    <span class="keyword-tag">동작캡처</span>
+                                    <span class="keyword-tag">신체압력</span>
+                                    <span class="keyword-tag">Python/R</span>
+                                    <span class="keyword-tag">통계검정</span>
                                 </div>
                             </td>
-                            <td style="white-space: nowrap;"><a href="https://recruit.mobis.co.kr" target="_blank" class="btn-link">지원 ↗</a></td>
+                            <td style="white-space: nowrap;"><a href="https://talent.hyundai.com" target="_blank" class="btn-link">지원 ↗</a></td>
                         </tr>
 
                         <tr class="job-row">
@@ -530,28 +535,55 @@
                             </td>
                             <td>
                                 <div class="match-container">
-                                    <span class="match-val">90%</span>
+                                    <span class="match-val">94%</span>
                                     <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill" style="width: 90%;"></div>
+                                        <div class="progress-bar-fill" style="width: 94%;"></div>
                                     </div>
                                 </div>
                             </td>
-                            <td style="white-space: nowrap;"><span class="badge badge-hyundai">현대자동차</span></td>
+                            <td style="white-space: nowrap;"><span class="badge badge-mobis">현대모비스</span></td>
                             <td>
-                                <div class="job-title">차량 내장(시트/콕핏) 인간공학적 물리 배치 설계</div>
-                                <div class="job-desc">운전석 탑승자 인체 치수 데이터 기반 레이아웃 배치 최적화 및 신체 부하 분석, 운전 자세 시뮬레이션 및 실물 탑승 기반 감성 만족도 정량화.</div>
+                                <div class="job-title">인테리어/시트 인간공학 해석 및 시선 데이터 분석</div>
+                                <div class="job-desc">[실무직무] RAMSIS를 활용한 운전자 시뮬레이션 및 계기판/콕핏 시인성 평가. Eye-tracker(시선 추적기) 기반 주시 데이터 통계 처리를 통한 휴먼 인터랙션 물리 레이아웃 설계.</div>
                             </td>
                             <td>
                                 <div class="keywords-container">
-                                    <span class="keyword-tag">물리배치</span>
-                                    <span class="keyword-tag">인체치수</span>
-                                    <span class="keyword-tag">감성평가</span>
+                                    <span class="keyword-tag">RAMSIS</span>
+                                    <span class="keyword-tag">시선추적</span>
+                                    <span class="keyword-tag">정량분석</span>
                                     <span class="keyword-tag">레이아웃</span>
                                 </div>
                             </td>
-                            <td style="white-space: nowrap;"><a href="https://talent.hyundai.com" target="_blank" class="btn-link">지원 ↗</a></td>
+                            <td style="white-space: nowrap;"><a href="https://recruit.mobis.co.kr" target="_blank" class="btn-link">지원 ↗</a></td>
                         </tr>
 
+                        <tr class="job-row">
+                            <td style="white-space: nowrap;">
+                                <span class="recommendation-badge status-good">추천 👍</span>
+                            </td>
+                            <td>
+                                <div class="match-container">
+                                    <span class="match-val">88%</span>
+                                    <div class="progress-bar-bg">
+                                        <div class="progress-bar-fill" style="width: 88%;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="white-space: nowrap;"><span class="badge badge-other">LG전자</span></td>
+                            <td>
+                                <div class="job-title">스마트 홈가전 사용성 및 사용자 센서 로그 데이터 분석</div>
+                                <div class="job-desc">[실무직무] 스마트 가전 물리 조작 패턴, 기기 조작 횟수, 리드타임 센서 로그 원시 데이터 가공 및 정량적 가설 검증. 동종 가전 대기업 9년 경력 및 데이터 기초 분석력의 최상의 시너지.</div>
+                            </td>
+                            <td>
+                                <div class="keywords-container">
+                                    <span class="keyword-tag">가전로그</span>
+                                    <span class="keyword-tag">조작패턴</span>
+                                    <span class="keyword-tag">센서데이터</span>
+                                </div>
+                            </td>
+                            <td style="white-space: nowrap;"><a href="https://careers.lg.com" target="_blank" class="btn-link">지원 ↗</a></td>
+                        </tr>
+                        
                         <tr class="job-row">
                             <td style="white-space: nowrap;">
                                 <span class="recommendation-badge status-good">추천 👍</span>
@@ -564,75 +596,19 @@
                                     </div>
                                 </div>
                             </td>
-                            <td style="white-space: nowrap;"><span class="badge badge-other">LG전자</span></td>
+                            <td style="white-space: nowrap;"><span class="badge badge-naver">네이버랩스</span></td>
                             <td>
-                                <div class="job-title">H&A 가전 라이프솔루션 사용성 검증 전문가</div>
-                                <div class="job-desc">신규 프리미엄 가전 제품(의류관리기, 주방가전 등)의 하드웨어 조작 인터페이스 사용 편의성 평가 및 물리적 사용성 가이드라인 수립. 동종 가전 대기업 9년 경력의 강점을 직접 활용 가능.</div>
-                            </td>
-                            <td>
-                                <div class="keywords-container">
-                                    <span class="keyword-tag">가전사용성</span>
-                                    <span class="keyword-tag">인터페이스</span>
-                                    <span class="keyword-tag">물리적사용성</span>
-                                </div>
-                            </td>
-                            <td style="white-space: nowrap;"><a href="https://careers.lg.com" target="_blank" class="btn-link">지원 ↗</a></td>
-                        </tr>
-                        
-                        <tr class="job-row">
-                            <td style="white-space: nowrap;">
-                                <span class="recommendation-badge status-good">추천 👍</span>
-                            </td>
-                            <td>
-                                <div class="match-container">
-                                    <span class="match-val">80%</span>
-                                    <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill" style="width: 80%;"></div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td style="white-space: nowrap;"><span class="badge badge-kia">기아</span></td>
-                            <td>
-                                <div class="job-title">스마트팩토리 조립 공정 인간공학 작업 개선 담당자</div>
-                                <div class="job-desc">생산 라인 작업자의 작업 자세 평가(RULA, REBA) 및 위해 요인 제거, 제조 생산 설비 및 수작업대 레이아웃 표준화, 피로도 평가 시스템 구축.</div>
+                                <div class="job-title">자율주행 서비스 로봇 HCI 및 주변인 행동 데이터 리서치</div>
+                                <div class="job-desc">[실무직무] 로봇-인간 상호작용 편의성을 위한 공간 설계 및 돌발 행동 로그 분석. 피실험자 정량 심층 테스트(UT) 설계 및 통계 유의성 해석.</div>
                             </td>
                             <td>
                                 <div class="keywords-container">
-                                    <span class="keyword-tag">작업자세</span>
-                                    <span class="keyword-tag">RULA/REBA</span>
-                                    <span class="keyword-tag">레이아웃</span>
-                                    <span class="keyword-tag">스마트팩토리</span>
+                                    <span class="keyword-tag">HCI데이터</span>
+                                    <span class="keyword-tag">유의성검정</span>
+                                    <span class="keyword-tag">행동로그</span>
                                 </div>
                             </td>
-                            <td style="white-space: nowrap;"><a href="https://recruit.kia.com" target="_blank" class="btn-link">지원 ↗</a></td>
-                        </tr>
-
-                        <tr class="job-row">
-                            <td style="white-space: nowrap;">
-                                <span class="recommendation-badge status-normal">보통 💬</span>
-                            </td>
-                            <td>
-                                <div class="match-container">
-                                    <span class="match-val">70%</span>
-                                    <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill" style="width: 70%;"></div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td style="white-space: nowrap;"><span class="badge badge-robot">두산로보틱스</span></td>
-                            <td>
-                                <div class="job-title">협동로봇 작업 환경 인간공학적 안전성 평가</div>
-                                <div class="job-desc">협동로봇 작업 공간의 인간공학적 안전 보장 가이드라인 수립, 인간-로봇 협업 동역학적 피로 수준 및 접촉 안전성 평가, 사용 편의 가이드 기획.</div>
-                            </td>
-                            <td>
-                                <div class="keywords-container">
-                                    <span class="keyword-tag">협동로봇</span>
-                                    <span class="keyword-tag">안전규격</span>
-                                    <span class="keyword-tag">작업공간</span>
-                                    <span class="keyword-tag">사용성</span>
-                                </div>
-                            </td>
-                            <td style="white-space: nowrap;"><a href="https://www.doosanrobotics.com" target="_blank" class="btn-link">지원 ↗</a></td>
+                            <td style="white-space: nowrap;"><a href="https://recruit.navercorp.com" target="_blank" class="btn-link">지원 ↗</a></td>
                         </tr>
                         
                     </tbody>
@@ -656,34 +632,23 @@
                         <tr class="job-row">
                             <td class="job-title">1. 모빌리티(자동차) 시트 및 인테리어 기구 평가</td>
                             <td class="job-desc">
-                                가전 업계에서 9년간 축적된 정밀한 실 사용자 중심 피드백 분석 노하우, 물리적 버튼 및 작동 기구의 인체치수 매핑 경력.
+                                가전 도메인 9년 경력의 물리 가이드라인 설계 능력 + 데이터(Python/R) 기반 사용자 테스트 정량 증명 역량.
                             </td>
-                            <td style="text-align: center;"><span class="recommendation-badge status-hot">35%~50%</span></td>
+                            <td style="text-align: center;"><span class="recommendation-badge status-hot">45%~60%</span></td>
                             <td class="job-desc">
-                                <strong>약점:</strong> 차량 인체공학 설계 시 사용하는 RAMSIS 등 전문 디지털 마네킹 시뮬레이션 프로그램 실무 활용 경험 부족.<br>
-                                <strong>전략:</strong> 가전 설계 시의 인체 치수 가이드라인 구축 성공 경험을 강조하고, 차량 인체 모델링 툴 신속 습득 의지 제시.
-                            </td>
-                        </tr>
-                        <tr class="job-row">
-                            <td class="job-title">2. 가전업계 사용성 검증 (타사/경쟁사)</td>
-                            <td class="job-desc">
-                                9년의 H&A 가전 분야 전문성으로 즉각적인 도메인 투입이 가능하며, 사용자 시나리오 기반 물리 개선 경력 탁월.
-                            </td>
-                            <td style="text-align: center;"><span class="recommendation-badge status-hot">40%~60%</span></td>
-                            <td class="job-desc">
-                                <strong>약점:</strong> 하드웨어 중심에서 최근 사물인터넷(IoT) 연계 스마트 가전의 사용 편의성 영역으로의 변화 대처.<br>
-                                <strong>전략:</strong> 가전의 물리적 그립감, 개폐력 등 아날로그/물리 사용성 원천 지식의 희소성을 내세워 핵심 경쟁력 어필.
+                                <strong>약점:</strong> 차량 탑승 거동에 특화된 시뮬레이션(RAMSIS) 실무 경험 부재.<br>
+                                <strong>전략:</strong> 센서 데이터(가속도, 기계 압력) 전처리 경험을 강조하여 시뮬레이션 물리 모델 데이터 입력 및 보정 역량과 바로 연결.
                             </td>
                         </tr>
                         <tr class="job-row">
-                            <td class="job-title">3. 스마트팩토리/제조 작업성 개선</td>
+                            <td class="job-title">2. 가전업계 사용성 리서치 & 로그 분석</td>
                             <td class="job-desc">
-                                공정 내 수작업 시 발생하는 작업 부하 정량 분석 능력 및 ISO 표준 가이드 기반 공정 개선 지식 보유.
+                                가전 하드웨어 개발 메커니즘을 100% 꿰뚫고 있는 상태에서 사용자의 스마트 로그 분석까지 수행하는 하이브리드 강점.
                             </td>
-                            <td style="text-align: center;"><span class="recommendation-badge status-good">25%~35%</span></td>
+                            <td style="text-align: center;"><span class="recommendation-badge status-hot">50%~75%</span></td>
                             <td class="job-desc">
-                                <strong>약점:</strong> 공장 제조 설비 표준 레이아웃 설계 지식 및 라인 셋업 관련 현장 협업 경험 부족.<br>
-                                <strong>전략:</strong> 가전 제품의 양산 조립 편리성을 개선했던 '조립 용이성(DFMA) 및 작업자 피로도 개선' 관점의 성과와 연계.
+                                <strong>약점:</strong> 복잡한 빅데이터 SQL 쿼리 최적화 및 분산 환경(Hadoop/Spark) 실무 처리 경험 부족.<br>
+                                <strong>전략:</strong> 대용량 엔지니어링이 아닌 '사용자 실험 및 UX 행동 패턴 추출용 통계 처리' 중심의 도메인 분석가 정체성을 명확히 함.
                             </td>
                         </tr>
                     </tbody>
@@ -691,41 +656,41 @@
             </div>
         </div>
 
-        <!-- 탭 3: 인간공학 학습 로드맵 -->
+        <!-- 탭 3: 인간공학 & 데이터 로드맵 -->
         <div id="tab-roadmap-ergo" class="tab-content">
             <div class="dashboard-card">
                 <div class="roadmap-container">
                     <div class="roadmap-phase">
-                        <div class="phase-title">🟢 1단계: 모빌리티 및 로봇 물리 사용성 도메인 학습</div>
+                        <div class="phase-title">🟢 1단계: 사용자 실험 설계 및 생체/센서 데이터 전처리 (Data Preprocessing)</div>
                         <div class="phase-content">
-                            가전 분야의 인체치수 매핑 원리를 모빌리티 차량 내부(콕핏, 시트) 인체공학적 레이아웃으로 확장하고, 협동로봇의 물리적 가동부 충돌 안전 규격을 학습합니다.
+                            가속도계, 신체압력 분포 센서, 시선 추적 장치(Eye-tracker)의 원시 데이터(Raw data)를 정제하고, 결측치 처리 및 신호 필터링(노이즈 제거)을 수행하는 Python(Pandas, NumPy, SciPy) 기술을 내재화합니다.
                         </div>
                         <div class="phase-resources">
                             <div class="resource-title">📚 추천 자료:</div>
-                            - <strong>기술 규격</strong>: ISO/TS 15066 (협동로봇 안전 요구사항 표준 가이드라인 중 충돌 가이드라인)<br>
-                            - <strong>학술 도서</strong>: *인간공학 실무 가이드 (한국인간공학회)* 및 차량 감성 디자인 가이드
+                            - <strong>기술 도서</strong>: *Python을 활용한 생체 신호 데이터 전처리 실무*<br>
+                            - <strong>학술 자료</strong>: 대한인간공학회지 '시선 추적 데이터를 활용한 차량 계기판 사용성 정량 평가 연구' 논문 참고
                         </div>
                     </div>
                     <div class="roadmap-phase">
-                        <div class="phase-title">🟡 2단계: 디지털 인간 모델링 및 해석 툴(RAMSIS) 학습</div>
+                        <div class="phase-title">🟡 2단계: 정량 사용성 가설 검증 및 통계 분석 (Statistical Inference)</div>
                         <div class="phase-content">
-                            글로벌 완성차 및 모비스 등에서 표준으로 사용하는 3D 인체 시뮬레이션 소프트웨어인 <strong>RAMSIS(램시스)</strong>의 작동 메커니즘, 운전자 거동 예측 해석 방법론을 파악합니다.
+                            사용성 개선 전/후의 정량적 피로도 차이, 시선 고정 시간의 차이를 통계적으로 유의미하게 검증하기 위한 가설 설정 및 통계 분석(t-test, ANOVA, 회귀 분석) 기법을 정형화합니다.
                         </div>
                         <div class="phase-resources">
                             <div class="resource-title">📚 추천 자료:</div>
-                            - <strong>학술지 검색</strong>: RISS 또는 학술논문 플랫폼에서 'RAMSIS', '디지털 마네킹', '차량 시트 안락감 평가' 관련 논문 분석<br>
-                            - <strong>기술 자료</strong>: Human Solutions 사의 RAMSIS 공식 매뉴얼 요약 및 데모 분석
+                            - <strong>온라인 강의</strong>: 빅데이터분석기사 실기 대비 통계 및 가설 검증 강좌 (Python 기준)<br>
+                            - <strong>실무 도구</strong>: Jupyter Notebook을 활용한 사용성 데이터 분석 템플릿(코드셋) 아카이빙
                         </div>
                     </div>
                     <div class="roadmap-phase">
-                        <div class="phase-title">🔴 3단계: 스마트팩토리 공정 작업 자세 최적화 기법</div>
+                        <div class="phase-title">🔴 3단계: 디지털 마네킹 시뮬레이션(RAMSIS)과 동작 데이터 연동</div>
                         <div class="phase-content">
-                            공정 작업자의 신체 부하를 과학적으로 검증하기 위해 RULA, REBA, OWAS 기법을 활용한 가상 작업 시뮬레이션 및 유해요인조사 지침을 체계화합니다.
+                            3D 동작 캡처 장비(Xsens 등)에서 획득한 인체 거동 데이터(Joint angle 등)를 RAMSIS 시뮬레이션 모델로 포팅하여, 운전 편의성을 정밀하고 정량적으로 시뮬레이션하고 분석하는 프로세스를 구축합니다.
                         </div>
                         <div class="phase-resources">
                             <div class="resource-title">📚 추천 자료:</div>
-                            - <strong>전문 사이트</strong>: 한국산업안전보건공단 안전보건기술지침(KOSHA GUIDE)의 '근골격계 부담작업 평가 방법'<br>
-                            - <strong>실무 프로그램</strong>: Delmia, Jack 등 스마트팩토리 공정 시뮬레이션 프로그램 내 인체 해석 기능 스터디
+                            - <strong>기술 백서</strong>: RAMSIS Human Solutions Technical Documentation<br>
+                            - <strong>연구 사례</strong>: KSAE(한국자동차공학회) '동작 캡처 기반 인체 동역학 모델링' 논문 분석
                         </div>
                     </div>
                 </div>
