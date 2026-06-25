@@ -15,6 +15,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 INDEX_FILE = os.path.join(BASE_DIR, "index.html")
 ERGO_FILE = os.path.join(BASE_DIR, "ergonomics.html")
 HISTORY_FILE = os.path.join(BASE_DIR, "update_history.json")
+MD_HISTORY_FILE = os.path.join(BASE_DIR, "update_history.md")
 
 JOBS_TO_VERIFY = [
     {"company": "현대자동차", "url": "https://talent.hyundai.com"},
@@ -70,6 +71,58 @@ def load_history():
 def save_history(history):
     with open(HISTORY_FILE, "w", encoding="utf-8") as f:
         json.dump(history, f, ensure_ascii=False, indent=4)
+
+def save_markdown_history(history):
+    md_content = """# ⏱️ 채용 데이터 검증 및 업데이트 이력 (Update History)
+
+본 문서는 공식 채용 포털의 실시간 상태를 검증한 이력을 투명하게 공개하며, 대시보드 운영과 관련된 핵심 규칙을 정의합니다.
+
+---
+
+## 🛡️ 대시보드 운영 및 검증 규칙 (Verification Rules)
+
+> [!IMPORTANT]
+> **RULE 1. 거짓/가상 데이터 배제 (Anti-Fabrication Rule)**
+> * 대시보드에 게시되는 모든 공고는 시뮬레이션용 가상 데이터를 배제하며, 실제 채용 포털에 유효하게 게시된 실재 공고만을 반영합니다.
+> * 마감되거나 확인되지 않는 공고는 검증 후 즉시 제외 또는 업데이트합니다.
+
+> [!NOTE]
+> **RULE 2. 주 단위 월요일 자동 갱신 (Monday Auto-Update Rule)**
+> * 매주 월요일 오전 09:00 (KST)에 GitHub Actions 워크플로가 가동되어 채용 포털의 생존 여부와 공고 상태를 자동으로 재검증하고 배포합니다.
+
+> [!TIP]
+> **RULE 3. 상시 채용의 실체 구분 (Status Classification Rule)**
+> * 예고 없이 닫힐 수 있는 **수시 채용**과 365일 접수 가능한 **상시 인재풀 등록형**을 정확히 분리하여 구직 피로도를 낮추고 효율적인 포트폴리오 사전 노출 전략을 유도합니다.
+
+> [!CAUTION]
+> **RULE 4. 개인정보 보안 준수 (Privacy Rule)**
+> * 어떠한 개인 신상 정보나 기밀 사항도 대시보드 및 코드베이스에 노출되지 않도록 엄격히 통제합니다.
+
+---
+
+## 📊 최근 검증 로그 히스토리 (Recent Verification Logs)
+
+| 검증 일시 (KST) | 종합 결과 | 기업별 포털 연결 여부 |
+| :--- | :--- | :--- |
+"""
+    for run in history:
+        timestamp = run.get("timestamp", "-")
+        success_count = sum(1 for status in run.get("details", {}).values() if status.get("status"))
+        total_count = len(run.get("details", {}))
+        
+        status_text = f"✅ 성공 ({success_count}/{total_count})" if success_count == total_count else f"⚠️ 일부 지연 ({success_count}/{total_count})"
+        
+        details_list = []
+        for company, info in run.get("details", {}).items():
+            icon = "🟢" if info.get("status") else "🔴"
+            details_list.append(f"{icon} {company}")
+        
+        details_str = ", ".join(details_list)
+        md_content += f"| {timestamp} | {status_text} | {details_str} |\n"
+        
+    with open(MD_HISTORY_FILE, "w", encoding="utf-8") as f:
+        f.write(md_content)
+    print(f"[Markdown History Updated] {os.path.basename(MD_HISTORY_FILE)}")
 
 def generate_history_html(history):
     html = """
@@ -187,6 +240,9 @@ def main():
     history.insert(0, new_run) # 앞에 추가
     history = history[:20] # 최대 20개만 보관
     save_history(history)
+    
+    # 마크다운 히스토리 및 룰 생성
+    save_markdown_history(history)
     
     # 이력용 HTML 생성
     history_html = generate_history_html(history)
