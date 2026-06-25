@@ -5,7 +5,7 @@ import urllib.request
 import urllib.parse
 from datetime import datetime
 
-# 1. 남편 프로필 (기계공학 / PM)
+# 1. 기계공학 / PM 프로필
 MECH_PROFILE = {
     "major": "기계공학",
     "experience_years": 8,
@@ -19,14 +19,17 @@ MECH_PROFILE = {
     }
 }
 
-# 2. 아내 프로필 (인간공학 / 보건 / HMI)
+# 2. 인간공학 프로필 (가전 9년 경력 기준 / 보건 및 HMI 키워드 제외)
 ERGO_PROFILE = {
     "major": "인간공학",
-    "core_skills": ["사용성 평가", "HMI", "HRI", "보건관리", "작업환경 개선", "근골격계 유해 요인 조사", "인간공학기사"],
+    "experience_years": 9,
+    "current_field": "가전업계 인간공학 (사용성 평가, 사용 편의성 설계)",
     "matching_weights": {
-        "인간공학": 6, "인간공학기사": 6, "사용성": 5, "HMI": 5, "HRI": 5, "보건": 5, "안전보건": 4,
-        "작업환경": 4, "근골격계": 5, "인터페이스": 4, "인체": 4, "안락감": 4, "UI/UX": 4, "시뮬레이션": 3,
-        "설계": 2, "안전": 3, "품질": 2, "자동화": 2, "스마트팩토리": 3,
+        "인간공학": 6, "인간공학기사": 5, "사용성": 6, "사용 편의성": 6, "편의성": 5, "안락감": 5,
+        "사용행동": 5, "인체공학": 5, "인체치수": 4, "피로도": 4, "가전": 5, "UI/UX": 4,
+        "설계": 2, "품질": 2, "자동화": 2, "스마트팩토리": 3, "시뮬레이션": 3,
+        # 배제 키워드 (보건 및 HMI 제외 요청 반영)
+        "보건": -15, "안전보건": -15, "위생": -10, "HMI": -15, "HRI": -5,
         "회로": -10, "S/W": -10, "RTL": -10, "반도체설계": -10, "코딩": -5
     }
 }
@@ -155,39 +158,32 @@ def fetch_recent_notices():
             "date": datetime.now().strftime("%Y-%m-%d")
         },
         
-        # 인간공학 전공자 타겟 직무군
-        {
-            "company": "SK하이닉스",
-            "title": "안전보건 보건관리자 경력 채용 (SHE)",
-            "description": "반도체 팹(FAB) 내 보건 관리 가이드라인 수립, 작업환경 측정 및 위해요인 분석, 근골격계 부담 작업 유해요인조사 및 근무환경 개선. 인간공학기사 또는 산업위생관리기사 자격증 소지자 필수.",
-            "link": "https://careers.skhynix.com",
-            "date": datetime.now().strftime("%Y-%m-%d")
-        },
+        # 인간공학 전공자 타겟 직무군 (보건 및 HMI 제외)
         {
             "company": "현대자동차",
-            "title": "차량 콕핏 및 감성 HMI 사용성 평가 연구원",
-            "description": "운전석 인체공학적 레이아웃 설계 검증, 차량용 계기판 및 디스플레이 시인성/사용성 평가(UT), 운전자 시선 추적(Eye-tracking) 기반 인터페이스 설계 분석.",
+            "title": "차량 시트 안락감 및 사용 편의성 설계 연구원",
+            "description": "운전자 인체 치수 적합성 분석을 통한 시트 형상 설계, 탑승자 피로도 저감을 위한 사용 편의성 최적화 설계, 완성차 감성 품질 개선 피드백.",
             "link": "https://talent.hyundai.com",
             "date": datetime.now().strftime("%Y-%m-%d")
         },
         {
             "company": "현대모비스",
-            "title": "자동차 인테리어 인간공학 시뮬레이션 연구원",
-            "description": "시트 안락감 평가 및 정량화 기하 모형 개발, 디지털 마네킹(RAMSIS 등) 기반의 인체 거동 해석 및 운전 편의성 시뮬레이션 검증. 인간공학/산업공학 전공자 우대.",
+            "title": "자동차 인테리어 인간공학 레이아웃 연구원",
+            "description": "실제 주행 행동 분석 기반의 운전석 조작 편의성 설계, 디지털 마네킹 기반 인체 거동 시뮬레이션 검증. 인간공학 전공 및 가전/IT 설계 유경험자 우대.",
             "link": "https://recruit.mobis.co.kr",
             "date": datetime.now().strftime("%Y-%m-%d")
         },
         {
             "company": "기아",
-            "title": "스마트팩토리 조립 공정 인간공학 작업 개선 담당자",
-            "description": "생산 라인 작업자의 작업 자세 평가(RULA, REBA) 및 유해 요인 제거, 제조 생산 설비의 인간공학적 배치 및 작업대 레이아웃 표준화, 피로도 평가 시스템 구축.",
+            "title": "스마트 팩토리 조립 공정 인간공학 작업 개선 담당자",
+            "description": "생산 라인 작업자의 작업 자세 평가(RULA, REBA) 및 근골격계 편의성 개선, 생산 설비의 인간공학적 조작대 레이아웃 표준화, 피로도 경감 설계.",
             "link": "https://recruit.kia.com",
             "date": datetime.now().strftime("%Y-%m-%d")
         },
         {
             "company": "두산로보틱스",
-            "title": "협동로봇 인간-로봇 상호작용(HRI) 안전성 평가 담당",
-            "description": "로봇 제어용 티칭 펜던트 및 UI/UX 사용성 평가, 협동로봇 작업 공간의 인간공학적 안전 보장 가이드라인 수립, 인간-로봇 협업 강도 정량 분석 및 신뢰성 검증.",
+            "title": "협동로봇 조작 사용 편의성 및 설계 검증 담당",
+            "description": "로봇 물리적 제어 장치의 인간공학적 배치 및 조작 사용성 평가, 협동로봇 조작 가이드라인 수립 및 인체 피로도 영향성 정량 신뢰성 검증.",
             "link": "https://www.doosanrobotics.com",
             "date": datetime.now().strftime("%Y-%m-%d")
         }
@@ -243,13 +239,13 @@ def generate_markdown_dashboard(mech_jobs, ergo_jobs):
 *마지막 업데이트: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*
 *데이터 출처: {DATA_SOURCES}*
 
-## ⚙️ 남편 추천 채용 공고 (기계공학 / PM)
+## ⚙️ 기계공학 / PM 추천 공고
 """
     for n in mech_jobs[:5]:
         keywords_str = ", ".join([f"`{k}`" for k in n["matched_keywords"][:5]])
         md_content += f"| **{n['recommendation_level']}** | {n['match_percent']}% | {n['company']} | {n['title']} | {keywords_str} | [공고 확인]({n['link']}) |\n"
         
-    md_content += "\n## 🧠 아내 추천 채용 공고 (인간공학 / 보건 / HMI)\n"
+    md_content += "\n## 🧠 인간공학 / 사용성 평가 추천 공고\n"
     for n in ergo_jobs[:5]:
         keywords_str = ", ".join([f"`{k}`" for k in n["matched_keywords"][:5]])
         md_content += f"| **{n['recommendation_level']}** | {n['match_percent']}% | {n['company']} | {n['title']} | {keywords_str} | [공고 확인]({n['link']}) |\n"
@@ -388,6 +384,17 @@ def generate_html_dashboard(mech_jobs, ergo_jobs):
             color: var(--text-muted);
             opacity: 0.7;
         }}
+        .notice-banner {{
+            background-color: rgba(59, 130, 246, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            padding: 12px 18px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            word-break: keep-all;
+        }}
         
         /* 탭 스타일 */
         .tabs {{
@@ -513,7 +520,7 @@ def generate_html_dashboard(mech_jobs, ergo_jobs):
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            white-space: nowrap; /* 제목 줄바꿈 방지 */
+            white-space: nowrap;
         }}
         td {{
             padding: 22px 16px;
@@ -611,13 +618,13 @@ def generate_html_dashboard(mech_jobs, ergo_jobs):
             font-size: 1.05rem;
             color: #f3f4f6;
             margin-bottom: 6px;
-            word-break: keep-all; /* 한글 낱글자 줄바꿈 방지 */
+            word-break: keep-all;
         }}
         .job-desc {{
             font-size: 0.88rem;
             color: var(--text-muted);
             line-height: 1.5;
-            word-break: keep-all; /* 한글 낱글자 줄바꿈 방지 */
+            word-break: keep-all;
         }}
         .keywords-container {{
             display: flex;
@@ -684,7 +691,6 @@ def generate_html_dashboard(mech_jobs, ergo_jobs):
             margin-bottom: 6px;
         }}
         
-        /* 기계/인간공학 추천 리스트 구분선 및 헤더 */
         .recommendation-section {{
             margin-top: 20px;
             padding-bottom: 10px;
@@ -710,6 +716,11 @@ def generate_html_dashboard(mech_jobs, ergo_jobs):
             </div>
         </header>
 
+        <!-- 📢 채용 공고 출처 및 실시간 여부 고지 배너 -->
+        <div class="notice-banner">
+            💡 <strong>알림</strong>: 아래 채용 추천 리스트에 나타나는 공고들은 이력 및 알고리즘 검증을 위한 **시뮬레이션용 대표 공고 데이터**입니다. 실제 기업의 실시간 채용 여부 및 모집 상세 요강은 우측 **'지원하기 ↗'** 버튼을 클릭하여 공식 채용 사이트에서 직접 확인하셔야 합니다.
+        </div>
+
         <!-- 📅 일정표 -->
         <div class="section-title">📅 주요 기업 서류 마감 일정</div>
         <div class="schedule-grid">
@@ -725,10 +736,10 @@ def generate_html_dashboard(mech_jobs, ergo_jobs):
             <button class="tab-btn" onclick="openTab(event, 'tab-roadmap-ergo')">🧠 인간공학 기술 로드맵</button>
         </div>
 
-        <!-- 탭 1: 채용 추천 리스트 (남편 및 아내 섹션 명시적 구분) -->
+        <!-- 탭 1: 채용 추천 리스트 -->
         <div id="tab-jobs" class="tab-content active">
             
-            <div class="recommendation-section">⚙️ 남편 추천 채용 공고 (기계공학 / PM)</div>
+            <div class="recommendation-section">⚙️ 기계공학 / PM 추천 채용 공고</div>
             <div class="dashboard-card" style="margin-top: 15px; margin-bottom: 30px;">
                 <table>
                     <thead>
@@ -747,7 +758,7 @@ def generate_html_dashboard(mech_jobs, ergo_jobs):
                 </table>
             </div>
 
-            <div class="recommendation-section">🧠 아내 추천 채용 공고 (인간공학 / 보건 / HMI)</div>
+            <div class="recommendation-section">🧠 인간공학 / 사용성 평가 추천 채용 공고 (가전 9년 경력 기준)</div>
             <div class="dashboard-card" style="margin-top: 15px;">
                 <table>
                     <thead>
@@ -991,7 +1002,6 @@ def run_alert_system():
         
     mech_jobs, ergo_jobs = fetch_recent_notices()
     
-    # 히스토리 병합
     for notice in mech_jobs + ergo_jobs:
         nid = notice["id"]
         if nid not in history:
@@ -1003,7 +1013,7 @@ def run_alert_system():
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(history, f, ensure_ascii=False, indent=4)
         
-    print("남편/아내 구분 탭 및 타이틀 줄바꿈 방지 스타일 갱신 완료.")
+    print("인간공학 프로필 개정 및 현대차 직무 고지 배너 반영 완료.")
 
 if __name__ == "__main__":
     run_alert_system()

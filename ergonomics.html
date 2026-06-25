@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>기계공학 & PM 커리어 대시보드</title>
+    <title>인간공학 & 사용성 엔지니어링 커리어 대시보드</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -11,14 +11,14 @@
             --card-bg: #161b26;
             --text-color: #f3f4f6;
             --text-muted: #9ca3af;
-            --primary: #3b82f6;
-            --primary-hover: #60a5fa;
+            --primary: #8b5cf6; /* 보라색 계열로 차별화 */
+            --primary-hover: #a78bfa;
             --border-color: #1f2937;
             
             --status-hot-bg: rgba(239, 68, 68, 0.15);
             --status-hot-text: #f87171;
-            --status-good-bg: rgba(59, 130, 246, 0.15);
-            --status-good-text: #60a5fa;
+            --status-good-bg: rgba(139, 92, 246, 0.15);
+            --status-good-text: #a78bfa;
             --status-normal-bg: rgba(107, 114, 128, 0.15);
             --status-normal-text: #9ca3af;
         }
@@ -50,7 +50,7 @@
             font-size: 2.2rem;
             font-weight: 800;
             margin: 0 0 8px 0;
-            background: linear-gradient(135deg, #f87171, #3b82f6);
+            background: linear-gradient(135deg, #a78bfa, #3b82f6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -162,7 +162,7 @@
         }
         .schedule-company {
             font-weight: 700;
-            color: #60a5fa;
+            color: #a78bfa;
             font-size: 0.9rem;
         }
         .dday-badge {
@@ -251,7 +251,7 @@
         .status-good {
             background-color: var(--status-good-bg);
             color: var(--status-good-text);
-            border: 1px solid rgba(59, 130, 246, 0.3);
+            border: 1px solid rgba(139, 92, 246, 0.3);
         }
         .status-normal {
             background-color: var(--status-normal-bg);
@@ -277,7 +277,7 @@
             width: 100%;
         }
         .progress-bar-fill {
-            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+            background: linear-gradient(90deg, #8b5cf6, #a78bfa);
             height: 100%;
             border-radius: 999px;
         }
@@ -297,6 +297,11 @@
             background-color: rgba(239, 68, 68, 0.12);
             color: #f87171;
             border: 1px solid rgba(239, 68, 68, 0.25);
+        }
+        .badge-mobis {
+            background-color: rgba(139, 92, 246, 0.12);
+            color: #c084fc;
+            border: 1px solid rgba(139, 92, 246, 0.25);
         }
         .badge-robot {
             background-color: rgba(16, 185, 129, 0.12);
@@ -365,7 +370,7 @@
         .phase-title {
             font-size: 1.25rem;
             font-weight: 700;
-            color: #60a5fa;
+            color: #a78bfa;
             margin-bottom: 12px;
         }
         .phase-content {
@@ -387,13 +392,13 @@
         }
 
         .alert-box {
-            background-color: rgba(59, 130, 246, 0.08);
-            border: 1px solid rgba(59, 130, 246, 0.2);
+            background-color: rgba(139, 92, 246, 0.08);
+            border: 1px solid rgba(139, 92, 246, 0.2);
             border-radius: 12px;
             padding: 15px 20px;
             margin-bottom: 25px;
             font-size: 0.9rem;
-            color: #93c5fd;
+            color: #d8b4fe;
             line-height: 1.5;
         }
     </style>
@@ -402,58 +407,38 @@
     <div class="container">
         <header>
             <div class="header-left">
-                <h1>⚙️ 기계공학 & PM 커리어 대시보드</h1>
-                <p>기계 구조 설계, 프로젝트 관리(PM) 및 스마트팩토리 설비 설계 역량 최적화 포털</p>
+                <h1>🧠 인간공학 & 사용성 엔지니어링 대시보드</h1>
+                <p>가전업계 9년 경력 기반 인체공학적 설계, 사용성 평가 및 물리적 인터페이스 최적화 포털</p>
             </div>
             <div class="header-right">
                 <div class="nav-switch">
-                    <a href="index.html" class="active">⚙️ 기계공학 & PM</a>
-                    <a href="ergonomics.html">🧠 인간공학</a>
+                    <a href="index.html">⚙️ 기계공학 & PM</a>
+                    <a href="ergonomics.html" class="active">🧠 인간공학</a>
                 </div>
                 <div class="update-time">
                     <div>최근 업데이트: 2026-06-25 21:07:20</div>
-                    <div class="source-text">데이터 출처: 현대차 talent.hyundai.com, 기아 recruit.kia.com, 모비스 recruit.mobis.co.kr, 두산 www.doosanrobotics.com, 레인보우 www.rainbow-robotics.com</div>
+                    <div class="source-text">데이터 출처: 기업별 채용 플랫폼 및 가전/모빌리티 인간공학 직무 분석</div>
                 </div>
             </div>
         </header>
 
         <div class="alert-box">
-            📌 <strong>현대자동차 배터리 기구 설계 채용 팁:</strong><br>
-            현대자동차 채용 사이트의 경우 '전기차(EV) 배터리 팩 기구 설계'라는 고유 직무명 대신 <strong>'배터리 시스템 모듈/팩 설계'</strong>, <strong>'배터리 시스템 패키지 레이아웃 및 구조 설계'</strong>, 혹은 전동화 R&D 내의 <strong>'배터리 시스템 개발'</strong> 등으로 상시 공고가 오픈됩니다. 경력직은 수시 충원 시 바로 닫히므로, 해당 키워드로 주기적 검색을 수행하거나 채용 플랫폼 내 <strong>'인재풀'</strong>에 사전 등록해 두는 것을 강력히 추천합니다.
+            💡 <strong>가전업계 9년 경력자(인간공학 전공) 타겟팅 분석:</strong><br>
+            보건관리(SHE) 및 HMI 소프트웨어 영역을 제외하고, <strong>제품의 물리적 사용 편의성, 인체 치수 적합성 설계, 작업자 근골격계 편의성을 고려한 설비/작업대 레이아웃 최적화, 디지털 마네킹(RAMSIS 등) 시뮬레이션</strong> 영역에 집중합니다. 완성차/모빌리티 인테리어 사용성 평가 및 스마트팩토리 공정 작업성 설계 직무가 높은 최적 매칭 포지션입니다.
         </div>
 
         <!-- 📅 일정표 -->
-        <div class="section-title">📅 주요 기업 서류 마감 일정</div>
+        <div class="section-title">📅 인간공학 관련 주요 채용 일정</div>
         <div class="schedule-grid">
-            
-            <div class="schedule-card">
-                <div class="schedule-header">
-                    <span class="schedule-company">SK하이닉스</span>
-                    <span class="dday-badge dday-active">D-11</span>
-                </div>
-                <div class="schedule-title">6월 경력 채용 (hy-way)</div>
-                <div class="schedule-deadline">마감: 2026-07-06 17:00</div>
-                <a href="https://careers.skhynix.com" target="_blank" class="schedule-link">공고 이동 ↗</a>
-            </div>
             
             <div class="schedule-card">
                 <div class="schedule-header">
                     <span class="schedule-company">현대자동차</span>
                     <span class="dday-badge dday-active">D-20</span>
                 </div>
-                <div class="schedule-title">상시 경력 채용 (부문별 순차 진행)</div>
+                <div class="schedule-title">R&D 부문 사용성/인체공학 설계</div>
                 <div class="schedule-deadline">마감: 2026-07-15 23:59</div>
                 <a href="https://talent.hyundai.com" target="_blank" class="schedule-link">공고 이동 ↗</a>
-            </div>
-            
-            <div class="schedule-card">
-                <div class="schedule-header">
-                    <span class="schedule-company">기아</span>
-                    <span class="dday-badge dday-active">D-25</span>
-                </div>
-                <div class="schedule-title">하반기 부문별 경력 채용</div>
-                <div class="schedule-deadline">마감: 2026-07-20 23:59</div>
-                <a href="https://recruit.kia.com" target="_blank" class="schedule-link">공고 이동 ↗</a>
             </div>
             
             <div class="schedule-card">
@@ -461,17 +446,27 @@
                     <span class="schedule-company">현대모비스</span>
                     <span class="dday-badge">상시</span>
                 </div>
-                <div class="schedule-title">R&D 및 제조 부문 상시 채용</div>
+                <div class="schedule-title">인테리어/시트 설계 (인간공학)</div>
                 <div class="schedule-deadline">마감: 상시 채용</div>
                 <a href="https://recruit.mobis.co.kr" target="_blank" class="schedule-link">공고 이동 ↗</a>
             </div>
             
             <div class="schedule-card">
                 <div class="schedule-header">
+                    <span class="schedule-company">LG전자</span>
+                    <span class="dday-badge">상시</span>
+                </div>
+                <div class="schedule-title">H&A 가전 디바이스 사용성 평가 경력</div>
+                <div class="schedule-deadline">마감: 상시 채용</div>
+                <a href="https://careers.lg.com" target="_blank" class="schedule-link">공고 이동 ↗</a>
+            </div>
+
+            <div class="schedule-card">
+                <div class="schedule-header">
                     <span class="schedule-company">두산로보틱스</span>
                     <span class="dday-badge">상시</span>
                 </div>
-                <div class="schedule-title">로봇 기구설계 경력 수시 채용</div>
+                <div class="schedule-title">로봇 작업공간 사용성/안전성 가이드라인</div>
                 <div class="schedule-deadline">마감: 상시 채용</div>
                 <a href="https://www.doosanrobotics.com" target="_blank" class="schedule-link">공고 이동 ↗</a>
             </div>
@@ -482,8 +477,7 @@
         <div class="tabs">
             <button class="tab-btn active" onclick="openTab(event, 'tab-jobs')">🎯 채용 추천 리스트</button>
             <button class="tab-btn" onclick="openTab(event, 'tab-analysis')">⚖️ 합격률 & 약점 분석</button>
-            <button class="tab-btn" onclick="openTab(event, 'tab-roadmap-semi')">🔬 반도체 기술 로드맵</button>
-            <button class="tab-btn" onclick="openTab(event, 'tab-roadmap-auto')">⚙️ 완성차/로봇 로드맵</button>
+            <button class="tab-btn" onclick="openTab(event, 'tab-roadmap-ergo')">🧠 인간공학 기술 로드맵</button>
         </div>
 
         <!-- 탭 1: 채용 추천 리스트 -->
@@ -508,163 +502,134 @@
                             </td>
                             <td>
                                 <div class="match-container">
-                                    <span class="match-val">100%</span>
+                                    <span class="match-val">95%</span>
                                     <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill" style="width: 100%;"></div>
+                                        <div class="progress-bar-fill" style="width: 95%;"></div>
                                     </div>
                                 </div>
                             </td>
-                            <td style="white-space: nowrap;"><span class="badge badge-hyundai">현대자동차</span></td>
+                            <td style="white-space: nowrap;"><span class="badge badge-mobis">현대모비스</span></td>
                             <td>
-                                <div class="job-title">전기차(EV) 배터리 시스템(모듈/팩) 구조 및 기구 설계</div>
-                                <div class="job-desc">배터리 시스템 기구 구조 설계, 하우징 다이캐스팅 및 사출 설계, 배터리 모듈 열관리 냉각 플레이트 설계, 진동/내구 해석 대응 및 공차 분석. 기계공학 전공 필수.</div>
+                                <div class="job-title">자동차 인테리어 인간공학 시뮬레이션 연구원</div>
+                                <div class="job-desc">시트 안락감 평가 및 정량화 기하 모형 개발, 디지털 마네킹(RAMSIS 등) 기반의 인체 거동 해석 및 운전 편의성 시뮬레이션 검증. 가전 물리 설계 9년 경력을 기반으로 한 모빌리티 인테리어 인체공학적 검증 업무와 최적 부합.</div>
                             </td>
                             <td>
                                 <div class="keywords-container">
-                                    <span class="keyword-tag">기계</span>
-                                    <span class="keyword-tag">기구설계</span>
-                                    <span class="keyword-tag">사출/금형</span>
-                                    <span class="keyword-tag">진동/열해석</span>
+                                    <span class="keyword-tag">인간공학</span>
+                                    <span class="keyword-tag">디지털 마네킹</span>
+                                    <span class="keyword-tag">시뮬레이션</span>
+                                    <span class="keyword-tag">인체해석</span>
                                 </div>
                             </td>
-                            <td style="white-space: nowrap;"><a href="https://talent.hyundai.com" target="_blank" class="btn-link">지원 ↗</a></td>
+                            <td style="white-space: nowrap;"><a href="https://recruit.mobis.co.kr" target="_blank" class="btn-link">지원 ↗</a></td>
                         </tr>
-                        
+
                         <tr class="job-row">
                             <td style="white-space: nowrap;">
                                 <span class="recommendation-badge status-hot">적극 추천 🔥</span>
                             </td>
                             <td>
                                 <div class="match-container">
-                                    <span class="match-val">100%</span>
+                                    <span class="match-val">90%</span>
                                     <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill" style="width: 100%;"></div>
+                                        <div class="progress-bar-fill" style="width: 90%;"></div>
                                     </div>
                                 </div>
                             </td>
                             <td style="white-space: nowrap;"><span class="badge badge-hyundai">현대자동차</span></td>
                             <td>
-                                <div class="job-title">신차 개발 프로젝트 매니저(PM/PL)</div>
-                                <div class="job-desc">신차 개발 일정 관리 및 프로젝트 리스크 매니지먼트. 설계-구매-품질 부서 간 조율 및 협력업체 일정 관리. 원가 절감(VE) 기획 및 양산 전환 대응.</div>
+                                <div class="job-title">차량 내장(시트/콕핏) 인간공학적 물리 배치 설계</div>
+                                <div class="job-desc">운전석 탑승자 인체 치수 데이터 기반 레이아웃 배치 최적화 및 신체 부하 분석, 운전 자세 시뮬레이션 및 실물 탑승 기반 감성 만족도 정량화.</div>
                             </td>
                             <td>
                                 <div class="keywords-container">
-                                    <span class="keyword-tag">기구설계</span>
-                                    <span class="keyword-tag">PM/PL</span>
-                                    <span class="keyword-tag">일정관리</span>
-                                    <span class="keyword-tag">원가(VE)</span>
-                                </div>
-                            </td>
-                            <td style="white-space: nowrap;"><a href="https://talent.hyundai.com" target="_blank" class="btn-link">지원 ↗</a></td>
-                        </tr>
-                        
-                        <tr class="job-row">
-                            <td style="white-space: nowrap;">
-                                <span class="recommendation-badge status-hot">적극 추천 🔥</span>
-                            </td>
-                            <td>
-                                <div class="match-container">
-                                    <span class="match-val">100%</span>
-                                    <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill" style="width: 100%;"></div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td style="white-space: nowrap;"><span class="badge badge-hyundai">현대자동차</span></td>
-                            <td>
-                                <div class="job-title">스마트 팩토리 조립 자동화 라인 기획 및 설비 기구 설계</div>
-                                <div class="job-desc">공정 자동화 라인 기획 및 설비 설계, 물류 로봇(AGV/AMR) 도입 레이아웃 검토, 공정 개선 및 트러블슈팅, 설비 투자 일정/원가 관리 PM 역량.</div>
-                            </td>
-                            <td>
-                                <div class="keywords-container">
-                                    <span class="keyword-tag">자동화설비</span>
+                                    <span class="keyword-tag">물리배치</span>
+                                    <span class="keyword-tag">인체치수</span>
+                                    <span class="keyword-tag">감성평가</span>
                                     <span class="keyword-tag">레이아웃</span>
-                                    <span class="keyword-tag">PM역량</span>
-                                    <span class="keyword-tag">트러블슈팅</span>
                                 </div>
                             </td>
                             <td style="white-space: nowrap;"><a href="https://talent.hyundai.com" target="_blank" class="btn-link">지원 ↗</a></td>
                         </tr>
-                        
+
                         <tr class="job-row">
                             <td style="white-space: nowrap;">
-                                <span class="recommendation-badge status-hot">적극 추천 🔥</span>
+                                <span class="recommendation-badge status-good">추천 👍</span>
                             </td>
                             <td>
                                 <div class="match-container">
-                                    <span class="match-val">100%</span>
+                                    <span class="match-val">82%</span>
                                     <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill" style="width: 100%;"></div>
+                                        <div class="progress-bar-fill" style="width: 82%;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="white-space: nowrap;"><span class="badge badge-other">LG전자</span></td>
+                            <td>
+                                <div class="job-title">H&A 가전 라이프솔루션 사용성 검증 전문가</div>
+                                <div class="job-desc">신규 프리미엄 가전 제품(의류관리기, 주방가전 등)의 하드웨어 조작 인터페이스 사용 편의성 평가 및 물리적 사용성 가이드라인 수립. 동종 가전 대기업 9년 경력의 강점을 직접 활용 가능.</div>
+                            </td>
+                            <td>
+                                <div class="keywords-container">
+                                    <span class="keyword-tag">가전사용성</span>
+                                    <span class="keyword-tag">인터페이스</span>
+                                    <span class="keyword-tag">물리적사용성</span>
+                                </div>
+                            </td>
+                            <td style="white-space: nowrap;"><a href="https://careers.lg.com" target="_blank" class="btn-link">지원 ↗</a></td>
+                        </tr>
+                        
+                        <tr class="job-row">
+                            <td style="white-space: nowrap;">
+                                <span class="recommendation-badge status-good">추천 👍</span>
+                            </td>
+                            <td>
+                                <div class="match-container">
+                                    <span class="match-val">80%</span>
+                                    <div class="progress-bar-bg">
+                                        <div class="progress-bar-fill" style="width: 80%;"></div>
                                     </div>
                                 </div>
                             </td>
                             <td style="white-space: nowrap;"><span class="badge badge-kia">기아</span></td>
                             <td>
-                                <div class="job-title">부품 물류 창고 자동화 및 레이아웃 기획 담당자</div>
-                                <div class="job-desc">스마트 물류 창고 자동화 설비 구축 및 설계 검토. CAD 도면을 기반으로 공간 배치 및 자재 수급 일정 관리, 물류 시뮬레이션 활용 능력 우대.</div>
+                                <div class="job-title">스마트팩토리 조립 공정 인간공학 작업 개선 담당자</div>
+                                <div class="job-desc">생산 라인 작업자의 작업 자세 평가(RULA, REBA) 및 위해 요인 제거, 제조 생산 설비 및 수작업대 레이아웃 표준화, 피로도 평가 시스템 구축.</div>
                             </td>
                             <td>
                                 <div class="keywords-container">
-                                    <span class="keyword-tag">물류자동화</span>
-                                    <span class="keyword-tag">CAD도면</span>
-                                    <span class="keyword-tag">공간배치</span>
-                                    <span class="keyword-tag">일정관리</span>
+                                    <span class="keyword-tag">작업자세</span>
+                                    <span class="keyword-tag">RULA/REBA</span>
+                                    <span class="keyword-tag">레이아웃</span>
+                                    <span class="keyword-tag">스마트팩토리</span>
                                 </div>
                             </td>
                             <td style="white-space: nowrap;"><a href="https://recruit.kia.com" target="_blank" class="btn-link">지원 ↗</a></td>
                         </tr>
-                        
+
                         <tr class="job-row">
                             <td style="white-space: nowrap;">
-                                <span class="recommendation-badge status-hot">적극 추천 🔥</span>
+                                <span class="recommendation-badge status-normal">보통 💬</span>
                             </td>
                             <td>
                                 <div class="match-container">
-                                    <span class="match-val">100%</span>
+                                    <span class="match-val">70%</span>
                                     <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill" style="width: 100%;"></div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td style="white-space: nowrap;"><span class="badge badge-hyundai">현대모비스</span></td>
-                            <td>
-                                <div class="job-title">섀시 기구 구조 설계 및 방진 시스템 설계</div>
-                                <div class="job-desc">현가장치 기구설계, 고무 부시 및 유압 댐퍼 설계. 차량 진동 및 소음(NVH) 저감 설계 최적화. 3D CAD(CATIA/UG-NX) 활용 필수.</div>
-                            </td>
-                            <td>
-                                <div class="keywords-container">
-                                    <span class="keyword-tag">섀시설계</span>
-                                    <span class="keyword-tag">방진댐퍼</span>
-                                    <span class="keyword-tag">NVH최적화</span>
-                                    <span class="keyword-tag">CATIA</span>
-                                </div>
-                            </td>
-                            <td style="white-space: nowrap;"><a href="https://recruit.mobis.co.kr" target="_blank" class="btn-link">지원 ↗</a></td>
-                        </tr>
-                        
-                        <tr class="job-row">
-                            <td style="white-space: nowrap;">
-                                <span class="recommendation-badge status-hot">적극 추천 🔥</span>
-                            </td>
-                            <td>
-                                <div class="match-container">
-                                    <span class="match-val">92%</span>
-                                    <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill" style="width: 92%;"></div>
+                                        <div class="progress-bar-fill" style="width: 70%;"></div>
                                     </div>
                                 </div>
                             </td>
                             <td style="white-space: nowrap;"><span class="badge badge-robot">두산로보틱스</span></td>
                             <td>
-                                <div class="job-title">협동로봇 관절 액추에이터 기구 설계</div>
-                                <div class="job-desc">로봇 관절 모듈 기구 설계, 하모닉 드라이브 감속기 및 모터 통합 패키징 설계. 베어링 선정 및 하중 모멘트 계산. 기계/자동화 전공 우대.</div>
+                                <div class="job-title">협동로봇 작업 환경 인간공학적 안전성 평가</div>
+                                <div class="job-desc">협동로봇 작업 공간의 인간공학적 안전 보장 가이드라인 수립, 인간-로봇 협업 동역학적 피로 수준 및 접촉 안전성 평가, 사용 편의 가이드 기획.</div>
                             </td>
                             <td>
                                 <div class="keywords-container">
-                                    <span class="keyword-tag">관절모듈</span>
-                                    <span class="keyword-tag">정밀감속기</span>
-                                    <span class="keyword-tag">패키징</span>
-                                    <span class="keyword-tag">하중계산</span>
+                                    <span class="keyword-tag">협동로봇</span>
+                                    <span class="keyword-tag">안전규격</span>
+                                    <span class="keyword-tag">작업공간</span>
+                                    <span class="keyword-tag">사용성</span>
                                 </div>
                             </td>
                             <td style="white-space: nowrap;"><a href="https://www.doosanrobotics.com" target="_blank" class="btn-link">지원 ↗</a></td>
@@ -681,47 +646,44 @@
                 <table>
                     <thead>
                         <tr>
-                            <th style="width: 18%;">타겟 직무군</th>
-                            <th style="width: 22%;">예상 경쟁자 프로필</th>
-                            <th style="width: 12%; text-align: center;">예상 합격률</th>
-                            <th style="width: 48%;">약점 요인 및 극복 전략</th>
+                            <th style="width: 20%;">타겟 직무군</th>
+                            <th style="width: 25%;">경쟁자 대비 강점</th>
+                            <th style="width: 15%; text-align: center;">예상 합격률</th>
+                            <th style="width: 40%;">보완 필요 요인 및 극복 전략</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="job-row">
-                            <td class="job-title">1. 반도체 설비 인프라</td>
-                            <td class="job-desc">플랜트 전문 건설사 및 유틸리티 협력사 엔지니어</td>
-                            <td style="text-align: center;"><span class="recommendation-badge status-good">15%~25%</span></td>
+                            <td class="job-title">1. 모빌리티(자동차) 시트 및 인테리어 기구 평가</td>
                             <td class="job-desc">
-                                <strong>약점:</strong> 배관 규격, 고압가스안전관리법, CCSS/UPW 계통 실무 지식 부재.<br>
-                                <strong>전략:</strong> 대기업 8년 PM/PL 일정/프로젝트 관리 및 트러블슈팅 역량 위주로 어필.
+                                가전 업계에서 9년간 축적된 정밀한 실 사용자 중심 피드백 분석 노하우, 물리적 버튼 및 작동 기구의 인체치수 매핑 경력.
+                            </td>
+                            <td style="text-align: center;"><span class="recommendation-badge status-hot">35%~50%</span></td>
+                            <td class="job-desc">
+                                <strong>약점:</strong> 차량 인체공학 설계 시 사용하는 RAMSIS 등 전문 디지털 마네킹 시뮬레이션 프로그램 실무 활용 경험 부족.<br>
+                                <strong>전략:</strong> 가전 설계 시의 인체 치수 가이드라인 구축 성공 경험을 강조하고, 차량 인체 모델링 툴 신속 습득 의지 제시.
                             </td>
                         </tr>
                         <tr class="job-row">
-                            <td class="job-title">2. 이차전지 배터리 팩</td>
-                            <td class="job-desc">타 가전사 설계자 및 배터리 협력사 설계 엔지니어</td>
-                            <td style="text-align: center;"><span class="recommendation-badge status-hot">30%~45%</span></td>
+                            <td class="job-title">2. 가전업계 사용성 검증 (타사/경쟁사)</td>
                             <td class="job-desc">
-                                <strong>약점:</strong> 배터리 셀 팽창(Swelling), 고전압 배선 및 열폭주 제어 지식 부족.<br>
-                                <strong>전략:</strong> 배터리 팩/모듈은 사실상 기구 프레임 설계이므로, 사출 설계 및 금형 DFM 역량을 100% 매칭.
+                                9년의 H&A 가전 분야 전문성으로 즉각적인 도메인 투입이 가능하며, 사용자 시나리오 기반 물리 개선 경력 탁월.
+                            </td>
+                            <td style="text-align: center;"><span class="recommendation-badge status-hot">40%~60%</span></td>
+                            <td class="job-desc">
+                                <strong>약점:</strong> 하드웨어 중심에서 최근 사물인터넷(IoT) 연계 스마트 가전의 사용 편의성 영역으로의 변화 대처.<br>
+                                <strong>전략:</strong> 가전의 물리적 그립감, 개폐력 등 아날로그/물리 사용성 원천 지식의 희소성을 내세워 핵심 경쟁력 어필.
                             </td>
                         </tr>
                         <tr class="job-row">
-                            <td class="job-title">3. 완성차 & 부품사</td>
-                            <td class="job-desc">현대위아, 만도 등 자동차 1차 협력사 경력자</td>
-                            <td style="text-align: center;"><span class="recommendation-badge status-good">20%~30%</span></td>
+                            <td class="job-title">3. 스마트팩토리/제조 작업성 개선</td>
                             <td class="job-desc">
-                                <strong>약점:</strong> 자동차 부품 개발 프로세스(APQP) 및 규격(IATF 16949), 차량용 NVH 지식 부족.<br>
-                                <strong>전략:</strong> 가전 조립 라인 셋업 및 공차 개선 성공 사례를 신차 품질 평가 부서에 적극 매핑.
+                                공정 내 수작업 시 발생하는 작업 부하 정량 분석 능력 및 ISO 표준 가이드 기반 공정 개선 지식 보유.
                             </td>
-                        </tr>
-                        <tr class="job-row">
-                            <td class="job-title">4. 로봇 기구 설계</td>
-                            <td class="job-desc">로봇 벤처, 자동화 설비 설계 경력 엔지니어</td>
-                            <td style="text-align: center;"><span class="recommendation-badge status-normal">15%~20%</span></td>
+                            <td style="text-align: center;"><span class="recommendation-badge status-good">25%~35%</span></td>
                             <td class="job-desc">
-                                <strong>약점:</strong> 정밀 감속기(하모닉 드라이브) 및 중공형 회전 액추에이터 설계 경험 부족.<br>
-                                <strong>전략:</strong> 대형 모터/베어링 구동부 설계 및 내구 수명 평가 경험을 로봇 관절 내구 설계 기술로 치환.
+                                <strong>약점:</strong> 공장 제조 설비 표준 레이아웃 설계 지식 및 라인 셋업 관련 현장 협업 경험 부족.<br>
+                                <strong>전략:</strong> 가전 제품의 양산 조립 편리성을 개선했던 '조립 용이성(DFMA) 및 작업자 피로도 개선' 관점의 성과와 연계.
                             </td>
                         </tr>
                     </tbody>
@@ -729,81 +691,41 @@
             </div>
         </div>
 
-        <!-- 탭 3: 반도체 학습 로드맵 -->
-        <div id="tab-roadmap-semi" class="tab-content">
+        <!-- 탭 3: 인간공학 학습 로드맵 -->
+        <div id="tab-roadmap-ergo" class="tab-content">
             <div class="dashboard-card">
                 <div class="roadmap-container">
                     <div class="roadmap-phase">
-                        <div class="phase-title">🟢 1단계: 입문 (Beginner) - 반도체 기본 개념 및 공정 이해</div>
+                        <div class="phase-title">🟢 1단계: 모빌리티 및 로봇 물리 사용성 도메인 학습</div>
                         <div class="phase-content">
-                            반도체 8대 공정 기초 흐름(웨이퍼 제조 ➡️ 노광 ➡️ 식각 ➡️ 증착 ➡️ 패키징) 및 클린룸(Clean Room)의 원리(차압, FFU 작동)를 이해합니다.
+                            가전 분야의 인체치수 매핑 원리를 모빌리티 차량 내부(콕핏, 시트) 인체공학적 레이아웃으로 확장하고, 협동로봇의 물리적 가동부 충돌 안전 규격을 학습합니다.
                         </div>
                         <div class="phase-resources">
                             <div class="resource-title">📚 추천 자료:</div>
-                            - <strong>유튜브</strong>: 삼성반도체 '반도체 과외선생님' 시리즈 / SK하이닉스 '반도체 제조공정' 다큐멘터리<br>
-                            - <strong>온라인 강의</strong>: K-MOOC '반도체 공정 기초 및 소자 이해' 강좌 (무료)
+                            - <strong>기술 규격</strong>: ISO/TS 15066 (협동로봇 안전 요구사항 표준 가이드라인 중 충돌 가이드라인)<br>
+                            - <strong>학술 도서</strong>: *인간공학 실무 가이드 (한국인간공학회)* 및 차량 감성 디자인 가이드
                         </div>
                     </div>
                     <div class="roadmap-phase">
-                        <div class="phase-title">🟡 2단계: 중급 (Intermediate) - 기계 기반 유틸리티 인프라</div>
+                        <div class="phase-title">🟡 2단계: 디지털 인간 모델링 및 해석 툴(RAMSIS) 학습</div>
                         <div class="phase-content">
-                            초순수(UPW) 정밀 배관 설계, 화학물질 중앙공급장치(CCSS) 안전 배관(이중 배관), 클린룸 공조(HVAC) 방진 마운트 설계 및 초고진공 펌프(Dry/TMP) 구동 역학 학습.
+                            글로벌 완성차 및 모비스 등에서 표준으로 사용하는 3D 인체 시뮬레이션 소프트웨어인 <strong>RAMSIS(램시스)</strong>의 작동 메커니즘, 운전자 거동 예측 해석 방법론을 파악합니다.
                         </div>
                         <div class="phase-resources">
                             <div class="resource-title">📚 추천 자료:</div>
-                            - <strong>전문 도서</strong>: *진공공학 (한상준 저)* / *반도체 클린룸 및 공조 설계 가이드 (한국설비기술협회)*<br>
-                            - <strong>지침서</strong>: 안전보건공단(KOSHA Guide) '특수가스 공급 설비 안전 지침'
+                            - <strong>학술지 검색</strong>: RISS 또는 학술논문 플랫폼에서 'RAMSIS', '디지털 마네킹', '차량 시트 안락감 평가' 관련 논문 분석<br>
+                            - <strong>기술 자료</strong>: Human Solutions 사의 RAMSIS 공식 매뉴얼 요약 및 데모 분석
                         </div>
                     </div>
                     <div class="roadmap-phase">
-                        <div class="phase-title">🔴 3단계: 고급 (Advanced) - 차세대 패키징 물리 및 플랜트 PM</div>
+                        <div class="phase-title">🔴 3단계: 스마트팩토리 공정 작업 자세 최적화 기법</div>
                         <div class="phase-content">
-                            HBM 적층 시 이종 접합부 열팽창 계수(CTE) 차이에 따른 Warpage(휨) 제어 및 Mechanical Stress 수치 해석, 대형 FAB 건설 관리 프로세스 학습.
+                            공정 작업자의 신체 부하를 과학적으로 검증하기 위해 RULA, REBA, OWAS 기법을 활용한 가상 작업 시뮬레이션 및 유해요인조사 지침을 체계화합니다.
                         </div>
                         <div class="phase-resources">
                             <div class="resource-title">📚 추천 자료:</div>
-                            - <strong>학술 자료</strong>: RISS 학술지 'HBM Warpage', '패키징 열변형 해석' 검색 논문 정독<br>
-                            - <strong>기술 자료</strong>: SK하이닉스 뉴스룸 기술 칼럼 / TSMC/ASML 기술 백서
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 탭 4: 자동차/로봇 학습 로드맵 -->
-        <div id="tab-roadmap-auto" class="tab-content">
-            <div class="dashboard-card">
-                <div class="roadmap-container">
-                    <div class="roadmap-phase">
-                        <div class="phase-title">🟢 1단계: 입문 (Beginner) - EV 플랫폼 및 로봇 매커니즘 기초</div>
-                        <div class="phase-content">
-                            현대차 E-GMP 플랫폼 기반 전기차 아키텍처(배터리 팩, PE 시스템) 및 다관절 로봇 매니퓰레이터의 링크와 기본 좌표 변환(Kinematics) 이해.
-                        </div>
-                        <div class="phase-resources">
-                            <div class="resource-title">📚 추천 자료:</div>
-                            - <strong>유튜브</strong>: 현대자동차그룹 공식 'E-GMP 기술 설명회' 영상 / 두산로보틱스 협동로봇 구동 시연<br>
-                            - <strong>온라인 강의</strong>: K-MOOC '로봇공학 입문' 또는 '로봇 매니퓰레이터 설계'
-                        </div>
-                    </div>
-                    <div class="roadmap-phase">
-                        <div class="phase-title">🟡 2단계: 중급 (Intermediate) - 차량 NVH, 열관리 및 로봇 감속기 관절 설계</div>
-                        <div class="phase-content">
-                            EV 배터리 팩 냉각 유로 설계, 모터 마운트/고무 부시를 통한 차량 진동/소음(NVH) 최적화, 로봇 하모닉 감속기 및 크로스 롤러 베어링 선정, 자동차 부품 품질 표준(IATF 16949 / APQP) 학습.
-                        </div>
-                        <div class="phase-resources">
-                            <div class="resource-title">📚 추천 자료:</div>
-                            - <strong>전문 도서</strong>: *자동차 진동 소음의 기초 (서병선 저)* / *기하공차(GD&T) 실무 설계 (정영훈 저)*<br>
-                            - <strong>지침서</strong>: IATF 16949 규격 해설서 및 APQP 협력사 부품 품질 교육서 / Harmonic Drive Systems 카탈로그
-                        </div>
-                    </div>
-                    <div class="roadmap-phase">
-                        <div class="phase-title">🔴 3단계: 고급 (Advanced) - 하우징 경량화 및 로봇 링크 동역학 최적화</div>
-                        <div class="phase-content">
-                            알루미늄 다이캐스팅 파워트레인 하우징 강성 최적화 설계, 가감속 시 관성(Inertia) 최소화를 위한 로봇 암(Arm) 프레임 위상 최적화 및 굽힘 처짐 시뮬레이션 제어.
-                        </div>
-                        <div class="phase-resources">
-                            <div class="resource-title">📚 추천 자료:</div>
-                            - <strong>추천 도서 및 소프트웨어 자료</strong>: 재료역학 및 기계요소설계 동역학 이론 검토 / KSAE 학술지 논문 참고
+                            - <strong>전문 사이트</strong>: 한국산업안전보건공단 안전보건기술지침(KOSHA GUIDE)의 '근골격계 부담작업 평가 방법'<br>
+                            - <strong>실무 프로그램</strong>: Delmia, Jack 등 스마트팩토리 공정 시뮬레이션 프로그램 내 인체 해석 기능 스터디
                         </div>
                     </div>
                 </div>
