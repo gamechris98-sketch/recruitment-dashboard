@@ -709,7 +709,7 @@
             <div class="schedule-card">
                 <div class="schedule-header">
                     <span class="schedule-company">SK하이닉스</span>
-                    <span class="dday-badge dday-active">D-11</span>
+                    <span class="dday-badge dday-active">D-Day</span>
                 </div>
                 <div class="schedule-title">6월 경력 채용 (hy-way)</div>
                 <div class="schedule-deadline">마감: 2026-07-06 17:00</div>
@@ -719,7 +719,7 @@
             <div class="schedule-card">
                 <div class="schedule-header">
                     <span class="schedule-company">현대자동차</span>
-                    <span class="dday-badge dday-active">D-20</span>
+                    <span class="dday-badge dday-active">D-9</span>
                 </div>
                 <div class="schedule-title">상시 경력 채용 (부문별 순차 진행)</div>
                 <div class="schedule-deadline">마감: 2026-07-15 23:59</div>
@@ -729,7 +729,7 @@
             <div class="schedule-card">
                 <div class="schedule-header">
                     <span class="schedule-company">기아</span>
-                    <span class="dday-badge dday-active">D-25</span>
+                    <span class="dday-badge dday-active">D-14</span>
                 </div>
                 <div class="schedule-title">하반기 부문별 경력 채용</div>
                 <div class="schedule-deadline">마감: 2026-07-20 23:59</div>
@@ -1187,6 +1187,51 @@
     </div>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            updateDdays();
+        });
+
+        function updateDdays() {
+            const cards = document.querySelectorAll('.schedule-card');
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            cards.forEach(card => {
+                const badge = card.querySelector('.dday-badge');
+                const deadlineEl = card.querySelector('.schedule-deadline');
+                if (!badge || !deadlineEl) return;
+                
+                const text = deadlineEl.textContent.replace('마감:', '').trim();
+                if (text.includes('상시')) {
+                    badge.textContent = '상시';
+                    badge.className = 'dday-badge';
+                    return;
+                }
+                
+                const dateMatch = text.match(/^(\d{4})-(\d{2})-(\d{2})/);
+                if (dateMatch) {
+                    const year = parseInt(dateMatch[1]);
+                    const month = parseInt(dateMatch[2]) - 1;
+                    const day = parseInt(dateMatch[3]);
+                    
+                    const deadlineDate = new Date(year, month, day);
+                    const timeDiff = deadlineDate.getTime() - today.getTime();
+                    const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                    
+                    if (diffDays === 0) {
+                        badge.textContent = 'D-Day';
+                        badge.className = 'dday-badge dday-active';
+                    } else if (diffDays > 0) {
+                        badge.textContent = `D-${diffDays}`;
+                        badge.className = 'dday-badge dday-active';
+                    } else {
+                        badge.textContent = '마감';
+                        badge.className = 'dday-badge';
+                        badge.style.opacity = '0.5';
+                    }
+                }
+            });
+        }
         
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(function() {
